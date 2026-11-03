@@ -3,8 +3,8 @@
 [![XAUUSD](https://img.shields.io/badge/Asset-XAUUSD-gold.svg)](https://github.com/amfitrite/Liquidity-Map)
 [![Feed](https://img.shields.io/badge/Feed-Dukascopy%20Live-10b981.svg)](docs/DUKASCOPY_LIVE_PRICE_FEED_SPEC.md)
 [![World](https://img.shields.io/badge/World-Centered%20Live--Price-38bdf8.svg)](docs/CENTERED_PRICE_GAME_WORLD_SPEC.md)
-[![GUI](https://img.shields.io/badge/GUI-Google%20Chrome%20Frameless-f59e0b.svg)](liquidity_map/gui/templates/index.html)
-[![Tests](https://img.shields.io/badge/Tests-Passing%20(7%2F7)-emerald.svg)](tests/)
+[![GUI](https://img.shields.io/badge/GUI-PyWebView%20Frameless%20Chrome-f59e0b.svg)](liquidity_map/gui/templates/chrome_ui.html)
+[![Tests](https://img.shields.io/badge/Tests-Passing-emerald.svg)](tests/)
 
 An institutional-grade, multi-timeframe liquidity visualization terminal and game-world engine for **XAUUSD**. Built with a **Centered Live-Price Follow Camera**, eliminating traditional candlestick clutter in favor of pure institutional liquidity pools and straight horizontal horizon rays.
 
@@ -19,12 +19,12 @@ Double-click `run_app.bat` or execute in terminal:
 # Install dependencies
 pip install -r requirements.txt
 
-# Launch application (starts backend and opens Google Chrome Frameless GUI)
-python run_app.py
+# Launch application (starts backend and opens Frameless PyWebView GUI)
+python main.py
 ```
 
 ### Desktop Shortcut
-To install a shortcut on your Windows desktop with the official custom icon:
+To install a shortcut on your Windows desktop with the official custom icon (zero console window):
 ```powershell
 powershell -ExecutionPolicy Bypass -File "scripts/create_desktop_shortcut.ps1"
 ```
@@ -40,12 +40,12 @@ powershell -ExecutionPolicy Bypass -File "scripts/create_desktop_shortcut.ps1"
   - **▼ DOWN (Red/Coral)**: Pressure towards Sell-Side Liquidity (SSL).
   - **◄► NEUTRAL (Gold)**: Balanced market consolidation.
 * **Past vs. Future**:
-  - **Left of Center**: Historical world moving left as time advances, populated by observed Liquidity Orbs and straight horizontal trails.
-  - **Right of Center**: Future Liquidity Engine scenario horizons, quantile corridors, and conditional structural formation models.
+  - **Left of Center**: Historical world moving left as time advances, populated by observed Liquidity Orbs and straight horizontal trails detected from authentic Dukascopy price history.
+  - **Right of Center**: Future Liquidity Engine scenario horizons, Block Bootstrap Monte Carlo quantile corridors, and conditional structural formation models.
 
 ---
 
-## 3. The 7 Royal Social Hierarchy Tiers & Trail Heatmaps
+## 3. The 7 Royal Social Hierarchy Tiers & Vector SVG Sprites
 
 | Tier | Rank Identity | Base Frame | Core Hue | Trail Heatmap Hue | 1x Size | Signature Silhouette |
 |---|---|---|---|---|---:|---|
@@ -56,6 +56,8 @@ powershell -ExecutionPolicy Bypass -File "scripts/create_desktop_shortcut.ps1"
 | **B** | **Jade Merchant** | H1 | `#16866B` Jade | `#73E6FF` Cyan | **17 px** | Polished Jade Cabochon, Guild Trade Seal, Thin Hoop |
 | **C** | **Iron Crafter** | M15 | `#64748B` Iron | `#2787E5` Blue | **13 px** | Forged Slag Nugget, Worn Chisel Facets, **Zero Ornaments** |
 | **D** | **Earthen Peasant** | M5 / M1 | `#9A7658` Clay | `#092B68` Deep Blue | **10 px** | Handmade Clay Nodule, Organic Thumb Dents, **Zero Halo** |
+
+*All 7 tiers feature authentic 256x256 vector SVG artwork embedded directly into the canvas renderer (`chrome_ui.html`).*
 
 ---
 
@@ -89,35 +91,34 @@ Liquidity-Map/
 │   ├── CENTERED_PRICE_GAME_WORLD_SPEC.md     # Follow camera & coordinate transforms
 │   ├── DUKASCOPY_LIVE_PRICE_FEED_SPEC.md     # Real-time tick contract & price basis
 │   ├── LIQUIDITY_MASTER_REGISTRY.md          # Canonical structural detector registry
-│   ├── FUTURE_LIQUIDITY_ENGINE_SPEC.md       # Monte Carlo quantile corridors & scenarios
+│   ├── FUTURE_LIQUIDITY_ENGINE_SPEC.md       # Block Bootstrap Monte Carlo specifications
 │   ├── AAA_STRAIGHT_TRAIL_SPEC.md            # Straight-line horizon VFX specifications
 │   └── ORB_TRAIL_PRODUCTION_INTEGRATION_SPEC.md # Renderer contracts & performance QA
 ├── liquidity_map/
 │   ├── config.py                             # Central application configurations
 │   ├── service.py                            # Master orchestration service
 │   ├── data/
-│   │   ├── dukascopy_feed.py                 # Live tick feed & jump-diffusion simulator
-│   │   └── registry.py                       # Master liquidity candidate store
+│   │   ├── dukascopy_feed.py                 # Live tick feed, state machine & stale detection
+│   │   ├── detector.py                       # Canonical MTF structural detector
+│   │   └── registry.py                       # Master liquidity candidate store & demo isolation
 │   ├── engine/
-│   │   ├── world.py                          # Centered camera math & coordinate engine
-│   │   └── future_engine.py                  # Quantile fans & structural scenario generator
+│   │   ├── lifecycle.py                      # Sequential crossing & state transition engine
+│   │   ├── future_engine.py                  # Block Bootstrap Monte Carlo scenario engine
+│   │   └── world.py                          # Centered follow camera & screen projection
 │   └── gui/
-│       ├── app.py                            # FastAPI server & Chrome frameless launcher
-│       └── templates/index.html              # 60 FPS Canvas2D Game Viewport with Kronos Layout
+│       ├── app.py                            # PyWebView Chrome Frameless window bridge
+│       └── templates/
+│           ├── chrome_ui.html                # Active Frameless Desktop UI (with SVG sprites)
+│           └── index.html                    # Browser preview layout
 ├── scripts/
-│   └── create_desktop_shortcut.ps1           # Windows Desktop shortcut generator
-├── tests/                                    # Unit test suite (7/7 passing)
-├── run_app.py / main.py                      # Application entry points
-├── run_app.bat                               # Windows launcher batch script
-└── requirements.txt                          # Python dependencies
-```
-
----
-
-## 6. Testing
-
-Run the automated test suite:
-
-```bash
-python -m unittest discover tests
+│   ├── create_desktop_shortcut.ps1           # Windows Desktop shortcut installer
+│   ├── benchmark_engine.py                   # Performance & FPS stress-testing suite
+│   └── integrate_sprites.py                  # Vector SVG sprite embedding utility
+└── tests/
+    ├── test_feed.py                          # Feed state machine & stale detection tests
+    ├── test_detector.py                      # Structural detector & stable identity tests
+    ├── test_registry.py                      # Registry deduplication & demo isolation tests
+    ├── test_lifecycle.py                     # Sequential crossing & idempotence tests
+    ├── test_future_engine.py                 # Block Bootstrap & calibration tests
+    └── test_camera.py                        # World camera follow & projection tests
 ```
