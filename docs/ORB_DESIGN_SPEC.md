@@ -64,9 +64,33 @@ Allow Auto quality to adapt to visible object count and frame rate. Quality chan
 
 Do not imply a precise mitigation percentage unless the detection model defines and validates it.
 
-## Trail Effect — ten selectable movement-trail options
+## Trail Effect — ten selectable premium cosmetic trails
 
-A trail is the **visual residue left behind an object as it moves**, like cosmetic movement trails in MOBA games. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
+A trail is the **visual residue left behind an object as it moves**, like a premium MOBA skin cosmetic. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
+
+Provide exactly ten user-selectable options:
+
+1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. Its line color still follows the tier heatmap. This is the lightweight default.
+2. **Aurora Flow** — a luxury pearlescent silk trail: a broad translucent ribbon, two or three fine interwoven filaments, refractive edge highlights, and subtle iridescent color separation. The trailing end dissolves into fine light dust.
+3. **Stardust Wake** — a dense but art-directed particle field with multiple particle scales, jewel-bright star glints, tiny bokeh, and depth layering. Particle density and brightness taper smoothly toward the oldest trail section.
+4. **Nebula Veil** — layered volumetric-looking clouds, fine internal filaments, softly illuminated vapor edges, and sparse embedded star points. The cloud must remain connected to the historic path and gently dissipate, not look like an impact explosion.
+5. **Spectral Afterimage** — a procession of glossy, semi-transparent orb echoes with individual soft halos and subtle refraction. Older echoes become progressively smaller, dimmer, and more diffuse.
+6. **Prismatic Serpentine** — multiple glass-like filaments braided around a soft central flow, with refractive edges, controlled chromatic highlights, and fine connecting threads. The silhouette must feel fluid and continuous, never like a blade.
+7. **Astral Filigree** — delicate ornamental geometry embedded along the wake: fine arcs, jeweled nodes, tiny star points, and elegant repeating motifs. Treat it like a costly cosmetic ornament, not readable text, runes for attack, or a weapon effect.
+8. **Frosted Crystal Drift** — small faceted crystal motes with translucent surfaces, icy caustics, micro highlights, and gently drifting frost dust. Keep fragments small and soft-edged; do not form large sharp shards or projectiles.
+9. **Blooming Petals** — opalescent petal fragments and miniature floral clusters floating along a soft luminous thread. Petals rotate and drift subtly, then fade; avoid a sharp slash or a one-time burst.
+10. **Celestial Rings** — a series of translucent elliptical echoes deposited along the path, with subtle refraction, double outlines, fine luminous nodes, and fading arcs. These are stationary residues along the recorded history, not expanding shockwaves.
+
+### Premium cosmetic / gacha-quality visual standard
+
+The previous simple line-and-dot sketches are not the target. Enabled effects must feel like a premium, unlockable game cosmetic: composed, layered, distinctive, and richly finished rather than merely brighter or blurrier.
+
+- Build each enabled effect from multiple composited layers where appropriate: a soft base envelope, a signature material/motif layer, fine filaments or secondary geometry, micro-particles, and controlled bloom/specular accents.
+- Give each preset a recognizable silhouette and material identity. Do not make all nine presets the same ribbon with a different particle overlay.
+- Use high-resolution gradients, smooth curves, antialiased edges, layered alpha, subtle refraction/caustics, and carefully distributed detail. Avoid flat primitives, generic dotted lines, noisy particle clouds, and overexposed bloom.
+- Details should be richest near the live orb and gradually become sparse, smaller, softer, and more transparent toward the old trail end. The transition must feel intentional, not like a hard cutoff.
+- Premium detail must remain legible at normal chart zoom. Add level-of-detail variants so detail reduces gracefully when zoomed out or when many trails overlap.
+- Do not use a static decorative slash or forward-moving projectile as a substitute for a movement trail. Every flourish remains behind the orb along its recorded path.
 
 ### Trail tier heatmap palette
 
@@ -88,24 +112,11 @@ Trail color is assigned by liquidity tier, not by Orb Style or Trail Effect. Thi
 - Orb core colors are unchanged. Do not recolor orb bodies to match the trail heatmap.
 - Style and effect control shape/material; tier controls trail hue. These dimensions must remain independent.
 
-Provide exactly ten user-selectable options:
-
-1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. Its line color still follows the tier heatmap below. This is the lightweight default.
-2. **Aurora Flow** — a broad, softly luminous ribbon left behind the orb. Use layered translucent color, gentle flow variation, and diffused ends. It follows the recorded path and must not look like a blade.
-3. **Particle Wake** — small glowing motes and dust particles deposited along and slightly around the path. Vary size and opacity; let particles spread subtly and fade with age. It must read as a lingering wake, not an explosion or forward projectile.
-4. **Mist Veil** — a soft, semi-transparent haze that lingers behind the orb. Use overlapping diffuse wisps with slow dissipation and low contrast; no impact-cloud shape.
-5. **Afterimage Echo** — faint orb afterimages left along the path. Each older echo becomes smaller, dimmer, and more diffuse. Align every echo to recorded trail history.
-6. **Twin Streamers** — two or three narrow, translucent filaments flowing in parallel behind the orb. Add gentle lateral waviness and soft edges; keep them continuous and ribbon-like, never sharp or blade-shaped.
-7. **Sparkle Drift** — sparse tiny glints and soft star-like motes scattered along the wake. Keep sparkle density low and distributed over the trail length; no central burst, impact flash, or pointed slash composition.
-8. **Frost Dust** — delicate crystalline specks and tiny soft-edged flakes left in the wake. Crystals should drift and fade in place rather than shoot outward like projectiles. Avoid large sharp shards.
-9. **Luminous Drift** — small elongated glow motes and diffuse light flecks that gently disperse around the trail. Their hue follows the tier; do not force a fire/orange palette. No flame jet or rocket exhaust.
-10. **Ripple Echo** — a sequence of faint, soft elliptical rings deposited along the path, with older rings wider and more transparent. Rings remain centered on the historical path and dissipate gently; they are residue, not an expanding attack shockwave.
-
-### Movement-trail behavior and visual rules
+### Movement-trail behavior and technical rules
 
 - The live orb is the head of the effect. Every visible trail element must remain behind it along the object's recorded path; never project the effect forward.
 - Trail residue fades progressively with age/distance from the live head. Use smooth alpha dissipation, not abrupt cut-offs.
-- The nine effect presets must meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation. Each must use the owning tier's heatmap color.
+- The nine effect presets meet the premium cosmetic standard above while preserving distinct visual identities.
 - Use the fixed Trail Tier Heatmap palette above. Lighter/darker shades of the assigned tier hue may add depth, but the tier's base hue must remain recognizable.
 - Trail Effect is independent of Orb Style and Render Quality. Any orb skin can be combined with any trail option.
 - The trail records the object's age/history from formation to now; it is not a price forecast, target path, or directional trading signal.
@@ -142,7 +153,8 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] Orb Style can be changed with a live preview.
 - [ ] Render Quality can be changed independently from Orb Style.
 - [ ] Trail Effect selector contains exactly ten options, including No Effect.
-- [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
+- [ ] Nine premium cosmetic presets have distinct silhouettes/material identities and read as movement residue, not slashes or projectiles.
+- [ ] Enabled presets have layered materials, signature detail, and a deliberate fade profile; not just a line with dots.
 - [ ] Trail hue maps SSS white → SS red → S orange → A yellow → B light blue → C blue → D deep blue.
 - [ ] Trail hue remains fixed per tier; trail age changes opacity only. Orb body colors remain unchanged.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
