@@ -19,13 +19,13 @@ The tier hierarchy contains exactly seven tiers:
 
 | Tier | Color | Core / material | Signature |
 |---|---|---|---|
-| SSS | Ice cyan-white `#E0F7FF` | Celestial crystal | Faceted crystal core, 3 concentric rings, radial glints |
+| SSS | Royal gold `#E8B84D` | Golden Sovereign | Imperial crown silhouette, gold core, 3 royal orbits, jeweled highlights |
 | SS | Cyan `#22D3EE` | Vortex / liquid energy | Smooth energy core, 2 orbit rings, vortex arcs |
 | S | Blue `#3B82F6` | Sapphire / prism | Geometric faceted core, 1 segmented orbit |
 | A | Violet `#A78BFA` | Arcane / ethereal | Soft spherical core, 1 fine ring, faint aura |
 | B | Silver `#A1A1AA` | Brushed metal | Metallic bead, partial ring, controlled specular highlight |
 | C | Slate `#64748B` | Rough mineral | Small irregular/faceted stone core, minimal outline |
-| D | Graphite `#475569` | Shadow seed | Dark compact core, broken outline, no aura |
+| D | Earth / worn clay `#80634B` | Humble Earthen Seed | Rough unadorned clay-stone nucleus, uneven facets, no aura or jewels |
 
 Suggested nominal diameters at 1x: SSS 36 px, SS 31 px, S 26 px, A 21 px, B 17 px, C 13 px, D 10 px. These are starting values only. Size must not be the sole strength cue.
 
@@ -35,16 +35,16 @@ Each tier must have its own recognizable base object. The reference SVG is an en
 
 | Tier | Named identity | Required geometry and material cues |
 |---|---|---|
-| SSS | Celestial Crystal | A prominent faceted crystal nucleus with a clear diamond/star silhouette, three concentric precision rings, multiple internal facet planes, and restrained radial glints. Ice cyan-white glass with bright refractive edges. |
+| SSS | Golden Sovereign | The unmistakable ruler of all seven tiers: rich royal-gold core, a clearly readable crown silhouette, three precise royal orbit rings, engraved regalia, and restrained jewel-like highlights. It must look prestigious, commanding, and expensive without becoming visually noisy. Gold is the SSS orb identity; the separate trail heatmap remains white for SSS. |
 | SS | Vortex Energy | A smooth, rounded liquid-energy nucleus with a visible internal spiral/swirl, two intersecting elliptical orbit rings, and flowing energy arcs. Cyan luminous-fluid material; less angular than SSS. |
 | S | Sapphire Prism | A sharply cut polygonal sapphire nucleus with distinct triangular facet planes and one segmented orbital ring. Strong blue glass, crisp edges, and geometric symmetry. |
 | A | Arcane Sphere | A soft spherical violet nucleus with a single fine orbit ring, a faint diffuse aura, and subtle internal light. Keep the silhouette calm and less ornamented than the upper tiers. |
 | B | Brushed Silver | A metallic bead with fine brushed surface grooves, a controlled specular highlight, and one partial machined ring. Silver-gray material; avoid excessive glow. |
 | C | Rough Mineral | A small irregular stone/mineral nucleus with uneven facets, low-reflective slate material, and only a minimal outline. The silhouette should feel naturally fractured, not polished. |
-| D | Shadow Seed | The smallest compact dark seed/nucleus with a broken, incomplete outline and graphite material. No aura; use only subtle surface contrast so it remains visible on the dark chart. |
+| D | Humble Earthen Seed | The lowest/commoner identity: a small worn clay-and-stone nucleus with uneven rough facets, muted earth-brown material, no crown, no jewelry, no orbit ornament, and no aura. It should feel ordinary and unadorned, while retaining enough edge contrast to remain visible. |
 
 - The tier identity owns the base silhouette, base material family, and base hue. The user-selected Orb Style may decorate or finish that object but must not turn every tier into the same orb geometry.
-- Preserve the signature cues at all supported zoom levels: three-ring crystal for SSS, double-orbit vortex for SS, segmented sapphire prism for S, fine-ring sphere for A, brushed partial-ring metal for B, rough mineral for C, and broken-outline shadow seed for D.
+- Preserve the signature cues at all supported zoom levels: imperial gold crown and three royal orbits for SSS, double-orbit vortex for SS, segmented sapphire prism for S, fine-ring sphere for A, brushed partial-ring metal for B, rough mineral for C, and unadorned earthen commoner seed for D.
 - At the chart's nominal 1x size, simplify micro-details through LOD rather than removing the defining silhouette. SSS/SS may carry more fine detail; C/D must remain compact and readable without invented glow.
 - The showcase SVG enlarges all seven identities for inspection. Use the 1x nominal size row as the implementation size reference.
 
@@ -60,7 +60,7 @@ Provide a visible Orb Style setting with a live preview. The selected style appl
 5. **Arcane Aura** — smooth orb, fine rune-like ring, soft controlled aura.
 6. **Minimal / Clean** — compact solid core, thin outline, no particles, minimal glow.
 
-The style changes secondary finishing and embellishment only; it must not erase the tier-specific base geometry or material signature. Tier hue remains the source of truth; a style may use lighter/darker shades of that hue for highlights and shadows but must not replace it with a fixed style color.
+The style changes secondary finishing and embellishment only; it must not erase the tier-specific base geometry or material signature. Tier identity remains the source of truth: SSS is royal gold and D is humble earth/clay. A style may add lighter/darker shades and surface finishing, but must not replace these identities with a fixed style color.
 
 ## AAA game-quality rendering option
 
