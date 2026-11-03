@@ -594,6 +594,8 @@ All numbers and prices above are illustrative only; they are not XAUUSD predicti
 
 ## 12. Renderer and visual semantics
 
+**Primary camera model:** use the centered live-price game world defined in [CENTERED_PRICE_GAME_WORLD_SPEC.md](CENTERED_PRICE_GAME_WORLD_SPEC.md). The latest live market point is anchored at the center of the main playfield; historical data occupies the left/past side and future scenarios the right/future side. Price offsets are drawn vertically relative to the live price. Do not use a conventional right-edge latest-candle layout. Camera transforms must never modify forecast prices, timestamps, probabilities, or IDs.
+
 Future and Historical layers must be unmistakably different at normal chart zoom.
 
 Historical:
