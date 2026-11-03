@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Squircle Gradients -->
+    <radialGradient id="icon-bg-radial" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1A243B"/>
+      <stop offset="55%" stop-color="#0E1424"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </radialGradient>
+
+    <!-- Bezel Border Gradient -->
+    <linearGradient id="icon-bezel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="25%" stop-color="#D97706"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="75%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <linearGradient id="inner-rim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Core Golden Emperor Gradients -->
+    <radialGradient id="core-glow" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="20%" stop-color="#FFF5CE"/>
+      <stop offset="48%" stop-color="#F2C247"/>
+      <stop offset="78%" stop-color="#B88019"/>
+      <stop offset="100%" stop-color="#452604"/>
+    </radialGradient>
+
+    <!-- Kinetic Compass Needle (Bullish North / Bearish South) -->
+    <linearGradient id="needle-up" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <linearGradient id="needle-down" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="50%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <!-- Trail Horizontal Ray Gradients -->
+    <linearGradient id="laser-ray" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#73E6FF" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#FDE047" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="laser-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Crown Linear Gradient -->
+    <linearGradient id="crown-gold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="30%" stop-color="#FDE047"/>
+      <stop offset="70%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+
+    <!-- High-End Bloom Filters -->
+    <filter id="bloom" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="heavy-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 1. ICON SQUIRCLE CHASSIS (Windows App Icon / Mac Squircle standard) -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#icon-bg-radial)" stroke="url(#icon-bezel)" stroke-width="5"/>
+  <rect x="28" y="28" width="456" height="456" rx="104" fill="none" stroke="url(#inner-rim)" stroke-width="3"/>
+
+  <!-- Subtle Coordinate Grid Background Lines -->
+  <g stroke="#334155" stroke-opacity="0.25" stroke-width="1">
+    <line x1="80" y1="256" x2="432" y2="256"/>
+    <line x1="256" y1="80" x2="256" y2="432"/>
+    <circle cx="256" cy="256" r="160" fill="none" stroke-dasharray="6 6"/>
+  </g>
+
+  <!-- 2. STRAIGHT HORIZONTAL LIQUIDITY HORIZON RAY -->
+  <line x1="40" y1="256" x2="472" y2="256" stroke="url(#laser-glow)" stroke-width="32" filter="url(#heavy-glow)"/>
+  <line x1="60" y1="256" x2="452" y2="256" stroke="url(#laser-ray)" stroke-width="4.5" stroke-linecap="round" filter="url(#bloom)"/>
+  <line x1="120" y1="256" x2="392" y2="256" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Telemetry Calibration Ticks on Horizon Ray -->
+  <g stroke="#FDE047" stroke-width="1.5" opacity="0.75">
+    <line x1="120" y1="250" x2="120" y2="262"/>
+    <line x1="170" y1="252" x2="170" y2="260"/>
+    <line x1="342" y1="252" x2="342" y2="260"/>
+    <line x1="392" y1="250" x2="392" y2="262"/>
+  </g>
+
+  <!-- 3. CELESTIAL ROTATIONAL ORBITS (Sovereign Authority) -->
+  <ellipse cx="256" cy="256" rx="170" ry="54" transform="rotate(-30 256 256)"
+           fill="none" stroke="#FDE047" stroke-width="3.2" stroke-opacity="0.85" filter="url(#bloom)"/>
+  <ellipse cx="256" cy="256" rx="160" ry="50" transform="rotate(50 256 256)"
+           fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-opacity="0.75" filter="url(#bloom)"/>
+
+  <!-- Satellite Energy Sparks on Orbits -->
+  <circle cx="118" cy="180" r="5" fill="#FFFFFF" filter="url(#bloom)"/>
+  <circle cx="394" cy="332" r="4.5" fill="#FDE047" filter="url(#bloom)"/>
+  <circle cx="370" cy="165" r="4" fill="#38BDF8" filter="url(#bloom)"/>
+  <circle cx="142" cy="345" r="3.5" fill="#FFFFFF"/>
+
+  <!-- 4. DIAL RING (COMPASS HOUSING) -->
+  <circle cx="256" cy="256" r="105" fill="none" stroke="#D97706" stroke-width="2.5" stroke-opacity="0.6"/>
+  <circle cx="256" cy="256" r="95" fill="none" stroke="#FDE047" stroke-width="1.8" stroke-dasharray="8 6"/>
+
+  <!-- Cardinal Compass Points (N, S, E, W) -->
+  <polygon points="256,145 261,154 251,154" fill="#38BDF8"/>
+  <polygon points="256,367 261,358 251,358" fill="#94A3B8"/>
+  <polygon points="145,256 154,261 154,251" fill="#FDE047"/>
+  <polygon points="367,256 358,261 358,251" fill="#FDE047"/>
+
+  <!-- 5. KINETIC PRICE COMPASS NEEDLE (Focused Bullish Upward Bias) -->
+  <g filter="url(#bloom)">
+    <!-- North/Bullish Arrow (Cyan/Blue Diamond Blade) -->
+    <polygon points="256,155 272,256 256,245 240,256" fill="url(#needle-up)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <polygon points="256,155 256,245 240,256" fill="#0284C7" opacity="0.4"/>
+    
+    <!-- South/Bearish Arrow (Dark Titanium Blade) -->
+    <polygon points="256,357 272,256 256,267 240,256" fill="url(#needle-down)" stroke="#64748B" stroke-width="1.2"/>
+    <polygon points="256,357 256,267 272,256" fill="#0F172A" opacity="0.6"/>
+  </g>
+
+  <!-- 6. IMPERIAL SOVEREIGN CROWN (Sitting atop the North Vector) -->
+  <g transform="translate(256 142) scale(0.75)" filter="url(#bloom)">
+    <path d="M-40 -5 L-30 -38 L-12 -20 L0 -52 L12 -20 L30 -38 L40 -5 H-40 Z"
+          fill="url(#crown-gold)" stroke="#FFFBEB" stroke-width="2.8" stroke-linejoin="round"/>
+    <circle cy="-52" r="5.5" fill="#FFFFFF" stroke="#D97706" stroke-width="1.8"/>
+    <circle cx="-30" cy="-38" r="4" fill="#FDE047"/>
+    <circle cx="30" cy="-38" r="4" fill="#FDE047"/>
+  </g>
+
+  <!-- 7. CENTER PIVOT REACTOR (White-Hot Live Price Anchor) -->
+  <circle cx="256" cy="256" r="28" fill="#D97706" opacity="0.4" filter="url(#heavy-glow)"/>
+  <circle cx="256" cy="256" r="18" fill="url(#core-glow)" stroke="#FFF" stroke-width="2.5"/>
+  <circle cx="256" cy="256" r="7" fill="#FFFFFF"/>
+</svg>
