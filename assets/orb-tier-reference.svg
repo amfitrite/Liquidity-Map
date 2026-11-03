@@ -2,6 +2,7 @@
 <defs>
   <radialGradient id="bg"><stop stop-color="#182331"/><stop offset="1" stop-color="#080D14"/></radialGradient>
   <radialGradient id="sss"><stop stop-color="#FFFFFF"/><stop offset=".28" stop-color="#DDF9FF"/><stop offset=".68" stop-color="#78DDF5"/><stop offset="1" stop-color="#1B8EBC"/></radialGradient>
+  <radialGradient id="aaa"><stop stop-color="#FFFFFF"/><stop offset=".28" stop-color="#FFF1B8"/><stop offset=".68" stop-color="#FBBF24"/><stop offset="1" stop-color="#A85B08"/></radialGradient>
   <radialGradient id="ss"><stop stop-color="#D9FCFF"/><stop offset=".35" stop-color="#22D3EE"/><stop offset="1" stop-color="#087A9C"/></radialGradient>
   <radialGradient id="s"><stop stop-color="#C9E2FF"/><stop offset=".35" stop-color="#3B82F6"/><stop offset="1" stop-color="#173B9A"/></radialGradient>
   <radialGradient id="a"><stop stop-color="#F1E8FF"/><stop offset=".38" stop-color="#A78BFA"/><stop offset="1" stop-color="#5B36A7"/></radialGradient>
@@ -27,6 +28,18 @@
  <path d="M0 -78 V-68 M78 0 H68 M0 78 V68 M-78 0 H-68" stroke="#E0F7FF" stroke-width="3" stroke-linecap="round"/>
  <circle cx="0" cy="-87" r="4" fill="#FFFFFF"/><circle cx="87" cy="0" r="4" fill="#FFFFFF"/><circle cx="-87" cy="0" r="4" fill="#FFFFFF"/>
  <text y="112" text-anchor="middle" fill="#E0F7FF" font-size="23" font-weight="700">SSS</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">CELESTIAL CRYSTAL</text>
+</g>
+<!-- AAA -->
+<g transform="translate(525 650)">
+ <circle r="58" fill="#FBBF24" opacity=".12" filter="url(#glowViolet)"/>
+ <ellipse rx="54" ry="28" transform="rotate(-28)" fill="none" stroke="#FBBF24" stroke-width="2.5"/>
+ <ellipse rx="43" ry="34" transform="rotate(42)" fill="none" stroke="#FFE7A3" stroke-width="1.8" opacity=".9"/>
+ <path d="M0 -48 L7 -31 L22 -39 L19 -20 L38 -22 L25 -7 L0 -14 L-25 -7 L-38 -22 L-19 -20 L-22 -39 L-7 -31Z" fill="#FBBF24" opacity=".95"/>
+ <circle r="24" fill="url(#aaa)" stroke="#FFF7D6" stroke-width="2"/>
+ <circle r="10" fill="#FFFFFF" opacity=".8"/>
+ <path d="M0 -65 V-55 M46 -46 L39 -39 M65 0 H55 M-46 -46 L-39 -39 M-65 0 H-55" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+ <circle cx="0" cy="-73" r="3.5" fill="#FFFFFF"/><circle cx="72" cy="12" r="3" fill="#FBBF24"/><circle cx="-62" cy="26" r="3" fill="#FDE68A"/>
+ <text y="94" text-anchor="middle" fill="#FBBF24" font-size="23" font-weight="700">AAA</text><text y="120" text-anchor="middle" fill="#A7C8D8" font-size="13">SOLAR CROWN</text>
 </g>
 <!-- SS -->
 <g transform="translate(525 290)">
@@ -55,7 +68,7 @@
  <text y="112" text-anchor="middle" fill="#A78BFA" font-size="23" font-weight="700">A</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">ARCANE AURA</text>
 </g>
 <!-- B -->
-<g transform="translate(350 650)">
+<g transform="translate(175 650)">
  <circle r="37" fill="#A1A1AA" opacity=".10"/>
  <circle r="31" fill="none" stroke="#D4D4D8" stroke-width="2" stroke-dasharray="55 12"/>
  <circle r="23" fill="url(#b)" stroke="#E4E4E7" stroke-width="1.5"/>
@@ -63,14 +76,14 @@
  <text y="78" text-anchor="middle" fill="#D4D4D8" font-size="23" font-weight="700">B</text><text y="104" text-anchor="middle" fill="#A7C8D8" font-size="13">METALLIC CORE</text>
 </g>
 <!-- C -->
-<g transform="translate(700 650)">
+<g transform="translate(875 650)">
  <path d="M0 -30 L23 -14 L19 17 L-5 29 L-26 12 L-22 -17Z" fill="url(#c)" stroke="#94A3B8" stroke-width="1.5"/>
  <path d="M0 -30 L-5 29 M-22 -17 L23 -14 M-26 12 L19 17" stroke="#CBD5E1" stroke-width="1" opacity=".35"/>
  <circle r="34" fill="none" stroke="#64748B" stroke-width="1" opacity=".6"/>
  <text y="78" text-anchor="middle" fill="#94A3B8" font-size="23" font-weight="700">C</text><text y="104" text-anchor="middle" fill="#A7C8D8" font-size="13">STONE FRAGMENT</text>
 </g>
 <!-- D -->
-<g transform="translate(1050 650)">
+<g transform="translate(1225 650)">
  <circle r="25" fill="url(#d)" stroke="#64748B" stroke-width="1.5"/>
  <circle r="34" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="7 7"/>
  <circle cx="-7" cy="-8" r="5" fill="#CBD5E1" opacity=".25"/>
