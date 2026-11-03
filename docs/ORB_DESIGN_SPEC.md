@@ -7,8 +7,8 @@
 
 These are three independent settings:
 
-- **Liquidity tier** communicates the model's assessed level strength. It controls the tier color and tier label.
-- **Orb style** is a user-selectable visual skin. It controls core geometry, material, rings, aura, particles, and trail treatment.
+- **Liquidity tier** communicates the model's assessed level strength and tier label. The orb core keeps its existing tier palette; the trail uses a separate heatmap palette defined below.
+- **Orb style** is a user-selectable visual skin. It controls core geometry, material, rings, aura, and orb particles. Trail appearance is controlled independently by Trail Effect.
 - **Render quality** controls visual fidelity and performance cost. "AAA quality" means premium game-quality rendering; it is not a liquidity tier and must never appear as a signal grade.
 
 Changing style or quality must never change detection, tier, score, lifecycle, coordinates, or probabilities.
@@ -68,9 +68,29 @@ Do not imply a precise mitigation percentage unless the detection model defines 
 
 A trail is the **visual residue left behind an object as it moves**, like cosmetic movement trails in MOBA games. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
 
+### Trail tier heatmap palette
+
+Trail color is assigned by liquidity tier, not by Orb Style or Trail Effect. This is a **categorical visual heat scale** for tier strength, not a measured temperature, order-book heat, volatility reading, or live liquidity intensity.
+
+| Tier | Heat level | Trail color | Hex |
+|---|---|---|---|
+| SSS | Hottest | White | `#FFFFFF` |
+| SS | Very hot | Red | `#FF303B` |
+| S | Hot | Orange | `#FF7900` |
+| A | Warm | Yellow | `#FFD52A` |
+| B | Cool | Light blue | `#73E6FF` |
+| C | Colder | Blue | `#2787E5` |
+| D | Coldest | Deep blue | `#092B68` |
+
+- Each tier has its own fixed trail hue. The seven hues must remain visually distinguishable.
+- Preserve that tier hue along the entire trail; age/fade changes opacity and softness only, not the hue. Do not turn every trail into a white-to-blue thermal gradient.
+- The heatmap colors apply to all nine VFX options and to the plain No Effect line.
+- Orb core colors are unchanged. Do not recolor orb bodies to match the trail heatmap.
+- Style and effect control shape/material; tier controls trail hue. These dimensions must remain independent.
+
 Provide exactly ten user-selectable options:
 
-1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. This is the lightweight default.
+1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. Its line color still follows the tier heatmap below. This is the lightweight default.
 2. **Aurora Flow** — a broad, softly luminous ribbon left behind the orb. Use layered translucent color, gentle flow variation, and diffused ends. It follows the recorded path and must not look like a blade.
 3. **Particle Wake** — small glowing motes and dust particles deposited along and slightly around the path. Vary size and opacity; let particles spread subtly and fade with age. It must read as a lingering wake, not an explosion or forward projectile.
 4. **Mist Veil** — a soft, semi-transparent haze that lingers behind the orb. Use overlapping diffuse wisps with slow dissipation and low contrast; no impact-cloud shape.
@@ -85,8 +105,8 @@ Provide exactly ten user-selectable options:
 
 - The live orb is the head of the effect. Every visible trail element must remain behind it along the object's recorded path; never project the effect forward.
 - Trail residue fades progressively with age/distance from the live head. Use smooth alpha dissipation, not abrupt cut-offs.
-- The nine effect presets must meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation.
-- Use the owning liquidity tier's hue as the primary color. Lighter/darker shades may add depth; do not impose one fixed palette across all tiers.
+- The nine effect presets must meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation. Each must use the owning tier's heatmap color.
+- Use the fixed Trail Tier Heatmap palette above. Lighter/darker shades of the assigned tier hue may add depth, but the tier's base hue must remain recognizable.
 - Trail Effect is independent of Orb Style and Render Quality. Any orb skin can be combined with any trail option.
 - The trail records the object's age/history from formation to now; it is not a price forecast, target path, or directional trading signal.
 - Active trails extend to NOW. Swept/mitigated trails end at the event time. Historical trails become static and gradually fade.
@@ -123,6 +143,8 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] Render Quality can be changed independently from Orb Style.
 - [ ] Trail Effect selector contains exactly ten options, including No Effect.
 - [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
+- [ ] Trail hue maps SSS white → SS red → S orange → A yellow → B light blue → C blue → D deep blue.
+- [ ] Trail hue remains fixed per tier; trail age changes opacity only. Orb body colors remain unchanged.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
 - [ ] Trail Effect selector contains exactly ten options, including No Effect.
 - [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
