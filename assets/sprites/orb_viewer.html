@@ -33,7 +33,7 @@
     .paused {
       animation-play-state: paused !important;
     }
-    .chart-grid {
+    .world-grid {
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
                         linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
       background-size: 32px 32px;
@@ -66,7 +66,7 @@
         <div class="flex items-center gap-1.5">
           <span class="text-slate-400 font-medium">Scale:</span>
           <div class="inline-flex rounded-lg bg-slate-950 p-0.5 border border-slate-800" id="scale-controls">
-            <button onclick="setScale('nominal')" class="scale-btn active px-2.5 py-1 rounded text-xs font-semibold bg-amber-500 text-slate-950">1x Chart</button>
+            <button onclick="setScale('nominal')" class="scale-btn active px-2.5 py-1 rounded text-xs font-semibold bg-amber-500 text-slate-950">1x World</button>
             <button onclick="setScale('2x')" class="scale-btn px-2.5 py-1 rounded text-xs font-semibold text-slate-400 hover:text-white">2x (64px)</button>
             <button onclick="setScale('4x')" class="scale-btn px-2.5 py-1 rounded text-xs font-semibold text-slate-400 hover:text-white">4x (128px)</button>
             <button onclick="setScale('8x')" class="scale-btn px-2.5 py-1 rounded text-xs font-semibold text-slate-400 hover:text-white">8x (256px)</button>
@@ -99,7 +99,7 @@
     <!-- BACKGROUND & ENVIRONMENT SWITCHER -->
     <div class="flex items-center justify-between text-xs bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
       <div class="flex items-center gap-2">
-        <span class="text-slate-400 font-medium">Chart Backdrop:</span>
+        <span class="text-slate-400 font-medium">World Backdrop:</span>
         <button onclick="setThemeBg('#131722', true)" class="px-2 py-1 rounded bg-[#131722] border border-slate-700 text-slate-300 hover:border-amber-400">TradingView (#131722)</button>
         <button onclick="setThemeBg('#08090E', false)" class="px-2 py-1 rounded bg-[#08090E] border border-slate-700 text-slate-300 hover:border-amber-400">Deep Space (#08090E)</button>
         <button onclick="setThemeBg('#0F172A', true)" class="px-2 py-1 rounded bg-[#0F172A] border border-slate-700 text-slate-300 hover:border-amber-400">Navy (#0F172A)</button>
@@ -127,7 +127,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="sss" data-nominal="36">
             <img src="orbs/tier_sss_sovereign.svg" alt="SSS Sovereign" class="orb-img transition-all duration-300 drop-shadow-lg" style="width: 36px; height: 36px;">
           </div>
@@ -167,7 +167,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="ss" data-nominal="31">
             <img src="orbs/tier_ss_dynast.svg" alt="SS Dynast" class="orb-img transition-all duration-300 drop-shadow-lg" style="width: 31px; height: 31px;">
           </div>
@@ -207,7 +207,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="s" data-nominal="26">
             <img src="orbs/tier_s_duke.svg" alt="S Duke" class="orb-img transition-all duration-300 drop-shadow-lg" style="width: 26px; height: 26px;">
           </div>
@@ -247,7 +247,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="a" data-nominal="21">
             <img src="orbs/tier_a_knight.svg" alt="A Knight" class="orb-img transition-all duration-300 drop-shadow-lg" style="width: 21px; height: 21px;">
           </div>
@@ -287,7 +287,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="b" data-nominal="17">
             <img src="orbs/tier_b_merchant.svg" alt="B Merchant" class="orb-img transition-all duration-300 drop-shadow-lg" style="width: 17px; height: 17px;">
           </div>
@@ -326,7 +326,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="c" data-nominal="13">
             <img src="orbs/tier_c_crafter.svg" alt="C Crafter" class="orb-img transition-all duration-300 drop-shadow-md" style="width: 13px; height: 13px;">
           </div>
@@ -365,7 +365,7 @@
         </div>
 
         <!-- STAGE PREVIEW -->
-        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] chart-grid stage-container">
+        <div class="my-6 flex items-center justify-center p-6 bg-slate-950/80 rounded-xl border border-slate-800/80 min-h-[220px] world-grid stage-container">
           <div class="orb-preview-wrapper transition-all duration-300 flex items-center justify-center" data-tier="d" data-nominal="10">
             <img src="orbs/tier_d_peasant.svg" alt="D Peasant" class="orb-img transition-all duration-300 drop-shadow-sm" style="width: 10px; height: 10px;">
           </div>
@@ -461,9 +461,9 @@
       document.querySelectorAll('.stage-container').forEach(el => {
         el.style.backgroundColor = color;
         if (hasGrid) {
-          el.classList.add('chart-grid');
+          el.classList.add('world-grid');
         } else {
-          el.classList.remove('chart-grid');
+          el.classList.remove('world-grid');
         }
       });
     }
