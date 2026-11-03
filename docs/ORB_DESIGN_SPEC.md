@@ -19,6 +19,7 @@ The hierarchy includes an apex **AAA** tier above SSS. AAA is intentionally rare
 |---|---|---|---|---|
 | AAA | Aurora magenta-white `#F5D0FE` with spectral violet `#C026D3` accents | Eclipse singularity / star-core | Dark radiant center, 4 asymmetric orbital arcs, crown-like diffraction spikes and a restrained white corona | Apex / exceptional |
 | SSS | Ice cyan-white `#E0F7FF` | Celestial crystal | Faceted crystal core, 3 concentric rings, four small radial glints | Highest |
+| AAA | Solar gold `#FBBF24` | Crowned sun-core | White-hot gold center, six crown rays, 2 offset elliptical orbit rings, small floating sparks; warm gold identity, not an enlarged SSS | Very high |
 | SS | Cyan `#22D3EE` | Vortex / liquid energy | Smooth energy core, 2 orbit rings, subtle vortex arcs | High |
 | S | Blue `#3B82F6` | Sapphire / prism | Geometric faceted core, 1 segmented orbit | Medium-high |
 | A | Violet `#A78BFA` | Arcane / ethereal | Soft spherical core, 1 fine ring, faint aura | Medium |
@@ -34,6 +35,7 @@ These are starting values for a 1x UI scale, not fixed limits:
 |---|---:|
 | AAA | 42 px |
 | SSS | 36 px |
+| AAA | 34 px |
 | SS | 31 px |
 | S | 26 px |
 | A | 21 px |
@@ -43,7 +45,7 @@ These are starting values for a 1x UI scale, not fixed limits:
 
 Allow modest within-tier size variation from the structural-strength score. Do not let size alone encode the full score.
 
-## State styling (orthogonal to tier)
+### AAA visual distinction\n\nAAA sits directly below SSS and above SS. Its signature is a **solar crown**, not more rings or a larger crystal: use a compact white-hot core, six short gold rays, two thin elliptical orbits at different angles, and a few restrained sparks. Keep the warm gold hue (`#FBBF24`) stable in every lifecycle state. SSS remains the only ice-white celestial-crystal tier; AAA must never visually impersonate SSS.\n\n## State styling (orthogonal to tier)
 
 Tier and lifecycle are separate dimensions.
 
