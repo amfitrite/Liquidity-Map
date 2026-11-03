@@ -64,28 +64,31 @@ Allow Auto quality to adapt to visible object count and frame rate. Quality chan
 
 Do not imply a precise mitigation percentage unless the detection model defines and validates it.
 
-## Trail Effect — five selectable options
+## Trail Effect — five selectable movement-trail options
 
-Keep the first release deliberately focused: exactly **five** choices in the Trail Effect selector. Four are premium, AAA-game-quality VFX presets; the fifth is a plain line with no effect.
+A trail is the **visual residue left behind an object as it moves**, similar to cosmetic movement trails in MOBA games. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
 
-1. **No Effect (Straight Line)** — a clean, straight, unadorned line connecting the orb's historical origin to its current endpoint. No glow, particles, gradients, animation, distortion, or decorative geometry. This is the default lightweight option.
-2. **Particle Stream** — a refined stream of small tier-colored particles following the trail, with varied particle size, soft depth, controlled fade, and subtle motion. It should feel like a polished game VFX system, not noisy confetti.
-3. **Comet Trail** — a luminous tapered tail with a bright leading edge, layered soft bloom, fine sparks, and a smooth fade toward the origin. The orb remains the visual head; the trail must not imply a direction of future price movement.
-4. **Energy Ribbon** — a smooth flowing, multi-layer ribbon with a restrained inner highlight, subtle turbulence, and tier-colored edge lighting. Keep its width controlled so nearby trails remain readable.
-5. **Arcane Sigil** — a premium magical trail made from sparse geometric/rune fragments, fine luminous filaments, and occasional tiny glints. Keep symbols subtle and legible; do not create text-like glyph clutter.
+Provide exactly five user-selectable options:
 
-### Trail rendering rules
+1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. This is the lightweight default.
+2. **Aurora Flow** — a smooth, softly luminous ribbon left behind the orb. Use a few translucent flowing layers, gentle color variation within the tier hue, and rounded/diffused ends. The ribbon follows the object's actual trail path; it must not resemble a blade or sharp slash.
+3. **Particle Wake** — small glowing motes and dust particles left along and slightly around the object's path. Particles vary in size and opacity, spread subtly, then fade with age. Keep the distribution like a lingering wake, not an explosion, impact burst, or forward projectile.
+4. **Mist Veil** — a soft, semi-transparent volumetric-looking haze that lingers behind the orb. Use overlapping diffuse wisps with slow dissipation and low contrast. The trail should read as a clouded wake, not smoke from an explosion.
+5. **Afterimage Echo** — a sequence of faint, soft orb afterimages left along the path. Each echo is older, smaller/lower-opacity, and more diffuse than the one nearer the live orb. Keep the repeated forms aligned to the trail history; do not turn them into sharp geometric marks or attack glyphs.
 
-- All four effect presets must share the same high-quality visual standard: smooth curves, clean antialiasing, soft but controlled bloom, tier-colored highlights, polished fade transitions, and no jagged particle edges.
-- Trail hue follows the orb's liquidity tier. Effects may use lighter/darker shades of that hue for depth, but may not replace the tier identity with a fixed palette.
-- Trail style is independent of Orb Style and Render Quality. The user can combine any orb skin with any trail effect.
-- Trail is a visual history/age trace from formation to now, **not** a price path, prediction, or directional signal. Do not bend it toward forecast prices or use arrowheads.
-- Active liquidity trail extends to NOW. Swept/mitigated trail ends at the event time. Historical trails remain static and fade.
-- No Effect must remain a literal straight line; do not add a glow or particle effect to it, even when Render Quality is Ultra / AAA.
-- Render Quality may improve the fidelity of an enabled effect, but must never change which effect is selected or silently turn No Effect into an effect.
-- Provide a reduced-motion option. When animation is disabled, preserve the selected effect's static appearance.
-- Apply LOD and particle budgets. Animate only visible active/replay-window trails; simplify or bake historical trails to protect frame rate.
-- Trail effects must never alter liquidity detection, tier, score, lifecycle, coordinates, or probability calculations.
+### Movement-trail behavior and visual rules
+
+- The live orb is the head of the effect. Every visible trail element must remain behind it along the object's recorded path; never project the effect forward.
+- Trail residue should fade progressively with age/distance from the live head. Use smooth alpha dissipation, not abrupt cut-offs.
+- The four effect presets should meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation.
+- Use the owning liquidity tier's hue as the primary color. Lighter/darker shades may add depth; do not impose one fixed palette across all tiers.
+- Trail Effect is independent of Orb Style and Render Quality. Any orb skin can be combined with any trail option.
+- The trail records the object's age/history from formation to now; it is not a price forecast, target path, or directional trading signal.
+- Active trails extend to NOW. Swept/mitigated trails end at the event time. Historical trails become static and gradually fade.
+- **No Effect stays a literal plain straight line**, regardless of Render Quality. Ultra / AAA must not secretly add glow or particles to it.
+- Reduced-motion and disable-animation modes must preserve a clean static representation of the selected trail.
+- Use LOD and particle budgets. Animate only visible active/replay-window trails; simplify or bake historical trails.
+- Visual trail settings must never alter liquidity detection, tier, score, lifecycle, coordinates, or probability calculations.
 
 ## Overlap and multi-timeframe handling
 
@@ -115,7 +118,8 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] Render Quality can be changed independently from Orb Style.
 - [ ] Trail Effect selector contains exactly five options: No Effect, Particle Stream, Comet Trail, Energy Ribbon, Arcane Sigil.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
-- [ ] Four effect presets meet the premium AAA-game visual quality target without obscuring nearby liquidity objects.
+- [ ] Four movement-trail presets look like residue left behind a moving orb, not slashes or attack effects.
+- [ ] Trail residue fades progressively behind the orb and never projects forward.
 - [ ] Tier hue and lifecycle identity persist across all styles and quality levels.
 - [ ] Nearby liquidity objects remain individually selectable with true price/time coordinates.
 - [ ] Visual effects never alter data, scoring, or probabilities.
