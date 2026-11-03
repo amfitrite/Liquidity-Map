@@ -13,8 +13,11 @@
 
 ## Tier identity system
 
+The hierarchy includes an apex **AAA** tier above SSS. AAA is intentionally rare and must not be assigned merely because a level looks visually prominent; its scoring criteria belong to the detection/scoring specification.
+
 | Tier | Color | Core / material | Signature geometry | Visual intensity |
 |---|---|---|---|---|
+| AAA | Aurora magenta-white `#F5D0FE` with spectral violet `#C026D3` accents | Eclipse singularity / star-core | Dark radiant center, 4 asymmetric orbital arcs, crown-like diffraction spikes and a restrained white corona | Apex / exceptional |
 | SSS | Ice cyan-white `#E0F7FF` | Celestial crystal | Faceted crystal core, 3 concentric rings, four small radial glints | Highest |
 | SS | Cyan `#22D3EE` | Vortex / liquid energy | Smooth energy core, 2 orbit rings, subtle vortex arcs | High |
 | S | Blue `#3B82F6` | Sapphire / prism | Geometric faceted core, 1 segmented orbit | Medium-high |
@@ -29,6 +32,7 @@ These are starting values for a 1x UI scale, not fixed limits:
 
 | Tier | Nominal diameter |
 |---|---:|
+| AAA | 42 px |
 | SSS | 36 px |
 | SS | 31 px |
 | S | 26 px |
@@ -83,7 +87,7 @@ The chosen effect may change shape, texture, and animation, but must not change 
 
 ## Acceptance checklist
 
-- [ ] Seven tiers are visually distinguishable when displayed at equal diameter.
+- [ ] Eight tiers (AAA, SSS, SS, S, A, B, C, D) are visually distinguishable when displayed at equal diameter.
 - [ ] Tier color remains identifiable in all lifecycle states.
 - [ ] Individual nearby liquidity objects can be selected independently.
 - [ ] Visual offsets never modify underlying price/time coordinates.
