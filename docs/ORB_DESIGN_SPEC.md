@@ -64,23 +64,28 @@ Allow Auto quality to adapt to visible object count and frame rate. Quality chan
 
 Do not imply a precise mitigation percentage unless the detection model defines and validates it.
 
-## Trail Effect — five selectable movement-trail options
+## Trail Effect — ten selectable movement-trail options
 
-A trail is the **visual residue left behind an object as it moves**, similar to cosmetic movement trails in MOBA games. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
+A trail is the **visual residue left behind an object as it moves**, like cosmetic movement trails in MOBA games. It is not a slash, attack arc, projectile, skill cast, or directional blade. The orb is the moving head; the trail remains behind it and gradually dissipates.
 
-Provide exactly five user-selectable options:
+Provide exactly ten user-selectable options:
 
 1. **No Effect (Straight Line)** — one plain, straight, unadorned line. No glow, particles, texture, animation, distortion, taper decoration, or bloom. This is the lightweight default.
-2. **Aurora Flow** — a smooth, softly luminous ribbon left behind the orb. Use a few translucent flowing layers, gentle color variation within the tier hue, and rounded/diffused ends. The ribbon follows the object's actual trail path; it must not resemble a blade or sharp slash.
-3. **Particle Wake** — small glowing motes and dust particles left along and slightly around the object's path. Particles vary in size and opacity, spread subtly, then fade with age. Keep the distribution like a lingering wake, not an explosion, impact burst, or forward projectile.
-4. **Mist Veil** — a soft, semi-transparent volumetric-looking haze that lingers behind the orb. Use overlapping diffuse wisps with slow dissipation and low contrast. The trail should read as a clouded wake, not smoke from an explosion.
-5. **Afterimage Echo** — a sequence of faint, soft orb afterimages left along the path. Each echo is older, smaller/lower-opacity, and more diffuse than the one nearer the live orb. Keep the repeated forms aligned to the trail history; do not turn them into sharp geometric marks or attack glyphs.
+2. **Aurora Flow** — a broad, softly luminous ribbon left behind the orb. Use layered translucent color, gentle flow variation, and diffused ends. It follows the recorded path and must not look like a blade.
+3. **Particle Wake** — small glowing motes and dust particles deposited along and slightly around the path. Vary size and opacity; let particles spread subtly and fade with age. It must read as a lingering wake, not an explosion or forward projectile.
+4. **Mist Veil** — a soft, semi-transparent haze that lingers behind the orb. Use overlapping diffuse wisps with slow dissipation and low contrast; no impact-cloud shape.
+5. **Afterimage Echo** — faint orb afterimages left along the path. Each older echo becomes smaller, dimmer, and more diffuse. Align every echo to recorded trail history.
+6. **Twin Streamers** — two or three narrow, translucent filaments flowing in parallel behind the orb. Add gentle lateral waviness and soft edges; keep them continuous and ribbon-like, never sharp or blade-shaped.
+7. **Sparkle Drift** — sparse tiny glints and soft star-like motes scattered along the wake. Keep sparkle density low and distributed over the trail length; no central burst, impact flash, or pointed slash composition.
+8. **Frost Dust** — delicate crystalline specks and tiny soft-edged flakes left in the wake. Crystals should drift and fade in place rather than shoot outward like projectiles. Avoid large sharp shards.
+9. **Luminous Drift** — small elongated glow motes and diffuse light flecks that gently disperse around the trail. Their hue follows the tier; do not force a fire/orange palette. No flame jet or rocket exhaust.
+10. **Ripple Echo** — a sequence of faint, soft elliptical rings deposited along the path, with older rings wider and more transparent. Rings remain centered on the historical path and dissipate gently; they are residue, not an expanding attack shockwave.
 
 ### Movement-trail behavior and visual rules
 
 - The live orb is the head of the effect. Every visible trail element must remain behind it along the object's recorded path; never project the effect forward.
-- Trail residue should fade progressively with age/distance from the live head. Use smooth alpha dissipation, not abrupt cut-offs.
-- The four effect presets should meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation.
+- Trail residue fades progressively with age/distance from the live head. Use smooth alpha dissipation, not abrupt cut-offs.
+- The nine effect presets must meet a premium AAA-game VFX standard: clean antialiasing, smooth gradients, controlled bloom, layered transparency, natural particle distribution, and stable animation.
 - Use the owning liquidity tier's hue as the primary color. Lighter/darker shades may add depth; do not impose one fixed palette across all tiers.
 - Trail Effect is independent of Orb Style and Render Quality. Any orb skin can be combined with any trail option.
 - The trail records the object's age/history from formation to now; it is not a price forecast, target path, or directional trading signal.
@@ -116,6 +121,9 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] No "AAA" liquidity tier or signal grade is introduced by the visual system.
 - [ ] Orb Style can be changed with a live preview.
 - [ ] Render Quality can be changed independently from Orb Style.
+- [ ] Trail Effect selector contains exactly ten options, including No Effect.
+- [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
+- [ ] No Effect renders only a plain straight line, regardless of Render Quality.
 - [ ] Trail Effect selector contains exactly five options: No Effect, Particle Stream, Comet Trail, Energy Ribbon, Arcane Sigil.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
 - [ ] Four movement-trail presets look like residue left behind a moving orb, not slashes or attack effects.
