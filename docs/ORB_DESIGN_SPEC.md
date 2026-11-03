@@ -124,4 +124,5 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 ## Reference artwork
 
 - [Tier identity and style examples](../assets/orb-tier-reference.svg)
+- [Five trail-effect visual options](../assets/trail-effect-reference.svg)
 - [Solar Crown style close-up](../assets/orb-aaa-reference.svg) — the filename is retained for compatibility; this image is a style/quality reference, not an AAA tier.
