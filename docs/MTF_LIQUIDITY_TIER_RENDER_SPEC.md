@@ -24,12 +24,16 @@ Scope: XAUUSD liquidity detection presentation and rendering
 |---|---|
 | MN1 | Previous Month High/Low (PMH/PML), monthly swing high/low, monthly EQH/EQL |
 | W1 | Previous Week High/Low (PWH/PWL), weekly swing high/low, weekly EQH/EQL |
-| D1 | Previous Day High/Low (PDH/PDL), daily swing high/low, daily EQH/EQL |
-| H4 | Major H4 swing high/low, H4 EQH/EQL, H4 range high/low |
-| H1 | H1 swing high/low, H1 EQH/EQL, intraday range high/low |
-| M15 | Asia/London/New York session high/low, M15 swing high/low, M15 EQH/EQL, opening-range high/low |
-| M5 | M5 minor swing high/low, M5 EQH/EQL, micro-range high/low |
-| M1 | M1 micro swing high/low, M1 EQH/EQL, internal liquidity |
+| D1 | Previous Day High/Low (PDH/PDL), daily swing high/low, daily EQH/EQL, daily range boundaries |
+| H4 | Major H4 swing high/low, H4 EQH/EQL, H4 range high/low, validated H4 channel/trendline boundaries |
+| H1 | H1 swing high/low, H1 EQH/EQL, intraday range high/low, validated H1 geometric boundaries |
+| M15 | Asia/London/New York previous and current session high/low, M15 swing high/low, M15 EQH/EQL, opening-range and Initial Balance high/low, geometric boundaries |
+| M5 | M5 minor swing high/low, M5 EQH/EQL, micro-range high/low, internal swing structures |
+| M1 | M1 micro swing high/low, M1 EQH/EQL, internal liquidity and micro-structure |
+
+Cross-timeframe geometric structures, inducement hypotheses, psychological references, and gap/context objects may reference more than one timeframe. Their source timeframe, anchor events, and confirmation time must remain explicit.
+
+See the [Master Liquidity Registry](LIQUIDITY_MASTER_REGISTRY.md) for canonical detector types, definitions, context-only classifications, identity/relationship rules, and implementation priorities. This inventory is a taxonomy, not evidence that every detector has been implemented.
 
 Session boundaries must be configurable and timezone-aware. Store timestamps unambiguously (preferably UTC); allow Asia/Jakarta display.
 
