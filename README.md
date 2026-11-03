@@ -9,6 +9,7 @@ A multi-timeframe liquidity visualization project.
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
 - [Premium trail VFX reference — 10 distinct effects](assets/trail-effect-premium-reference.svg)
 - [Trail VFX implementation and animation specification](docs/TRAIL_VFX_IMPLEMENTATION_SPEC.md)
+- [Centered live-price game world — camera and coordinate specification](docs/CENTERED_PRICE_GAME_WORLD_SPEC.md)
 - [Future Liquidity Engine v2.0 — corrected concept, event definitions, tier policy, and validation protocol](docs/FUTURE_LIQUIDITY_ENGINE_SPEC.md)
 - [Legacy trail reference — retained for comparison](assets/trail-effect-reference.svg)
 
