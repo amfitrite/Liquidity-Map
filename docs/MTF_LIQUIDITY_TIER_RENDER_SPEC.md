@@ -5,6 +5,10 @@ Scope: XAUUSD liquidity detection presentation and rendering
 
 ## 1. Core principles
 
+- The default world view uses a centered live-price follow camera, not a conventional right-edge trading chart. See [Centered Live-Price Game World specification](CENTERED_PRICE_GAME_WORLD_SPEC.md).
+- In FOLLOW mode, the latest accepted live time/price point stays at the center of the main playfield. Historical world content is left/past; future scenarios are right/future; higher prices are above and lower prices are below the live anchor.
+- Camera transforms and visual offsets must never rewrite source timestamps, exact prices, object IDs, detection results, lifecycle, or tiers.
+
 - Keep every liquidity object independent, with its own ID, price zone, source timeframe, type, side, tier, and lifecycle status.
 - Never merge separate liquidity objects into one cluster or discard their identities for visual convenience.
 - Rendering limits apply only to visible objects. Detection, storage, and lifecycle history remain independent of those limits.
