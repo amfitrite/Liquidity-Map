@@ -186,7 +186,7 @@ Each input series must identify:
 Rules:
 1. Train, simulate, and evaluate using a consistent price basis. Do not silently mix bid, ask, midpoint, spot, futures, and CFD prices.
 2. A price-touch probability is not an execution probability. Include spread, slippage, latency, and fill assumptions only for a separately named execution event.
-3. Reject or flag incomplete/stale input windows. Never quietly backfill future data or use candles that were not available at forecast issuance time.
+3. Reject or flag incomplete/stale input windows. Never quietly backfill future data or use source ticks/quotes or derived features that were not available at forecast issuance time.
 4. Normalize instrument mapping and session boundaries explicitly. Store timestamps in UTC; convert to Asia/Jakarta only for display.
 5. If feed metadata or price basis is unknown, mark the forecast DATA_UNVERIFIED and prevent validated tier assignment.
 
