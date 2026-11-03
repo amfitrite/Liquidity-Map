@@ -1,6 +1,10 @@
 @echo off
+title Liquidity Map - Centered Live-Price Game World (XAUUSD)
 cd /d "%~dp0"
-title Liquidity Map
 echo Starting Liquidity Map Game World...
-python run_app.py
-pause
+python main.py
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo Application exited with error. Press any key to close...
+    pause >nul
+)
