@@ -150,7 +150,7 @@ If the product later decides that the live point must remain centered at all tim
 - Replay selects a historical cursor `(t_replay, p_replay)` and treats it as the camera anchor.
 - Render only data available at or before the replay timestamp in the historical world.
 - Future scenario objects may be shown only if they were actually issued by that replay timestamp.
-- Never reveal later candles, later forecast revisions, or outcomes while replaying an earlier moment.
+- Never reveal later Dukascopy ticks/quotes, later forecast revisions, or outcomes while replaying an earlier moment.
 - A replay forecast is immutable and must display its original issue time and model version.
 
 ## 6. How market objects map into the centered world
