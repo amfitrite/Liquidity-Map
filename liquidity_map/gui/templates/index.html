@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquidity Map | Centered Live-Price Game World (XAUUSD)</title>
+  <link rel="icon" type="image/x-icon" href="/assets/icon.ico">
+  <style>
+    :root {
+      --bg-window: #191c24;
+      --bg-toolbar: #222632;
+      --bg-content: #0a0d16;
+      --bg-card: #141824;
+      --bg-card-border: #262e42;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-gold: #f59e0b;
+      --accent-cyan: #38bdf8;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-window);
+      color: var(--text-main);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Draggable Frameless Header (Kronos/Entry-Strategy Style) --- */
+    .app-header {
+      height: 44px;
+      background-color: var(--bg-window);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--bg-card-border);
+      -webkit-app-region: drag;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .app-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.8px;
+      color: #fff;
+    }
+
+    .app-logo img {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+    }
+
+    .badge-symbol {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fde047;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-feed {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      -webkit-app-region: no-drag;
+    }
+
+    .btn-action {
+      background: var(--bg-toolbar);
+      border: 1px solid var(--bg-card-border);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #333a4d;
+      border-color: var(--accent-cyan);
+    }
+
+    .btn-action.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--accent-cyan);
+      color: #38bdf8;
+    }
+
+    /* --- Sub-Header HUD Bar --- */
+    .hud-bar {
+      height: 38px;
+      background: var(--bg-toolbar);
+      border-bottom: 1px solid var(--bg-card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 12px;
+    }
+
+    .hud-metric {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hud-label {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .hud-val {
+      font-family: monospace;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* --- Game World Playfield Viewport --- */
+    .game-viewport {
+      flex: 1;
+      position: relative;
+      background-color: var(--bg-content);
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    #world-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* --- Tooltip Overlay --- */
+    #orb-tooltip {
+      position: absolute;
+      display: none;
+      pointer-events: none;
+      background: rgba(15, 20, 32, 0.95);
+      border: 1px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 11px;
+      color: #f8fafc;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      z-index: 100;
+      min-width: 200px;
+    }
+
+    /* --- Bottom Dock Control Bar --- */
+    .dock-bar {
+      height: 36px;
+      background: var(--bg-window);
+      border-top: 1px solid var(--bg-card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tier-legend {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    .legend-color {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+
+    .recenter-pill {
+      display: none;
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(245, 158, 11, 0.95);
+      color: #000;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+      z-index: 50;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- APP HEADER (Frameless Draggable Window) -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="app-logo">
+        <img src="/assets/icon.png" alt="Liquidity Map Icon">
+        <span>LIQUIDITY MAP</span>
+      </div>
+      <span class="badge-symbol">XAUUSD</span>
+      <div class="badge-feed">
+        <span class="pulse-dot" id="feed-dot"></span>
+        <span id="feed-status">DUKASCOPY LIVE</span>
+      </div>
+    </div>
+
+    <div class="header-center">
+      <div>Camera: <strong id="camera-mode-text" class="text-white">FOLLOW (CENTERED)</strong></div>
+      <div>World Time: <span id="world-time-text" style="font-family: monospace;">UTC</span></div>
+    </div>
+
+    <div class="header-right">
+      <button class="btn-action active" id="btn-follow" onclick="setMode('FOLLOW')">Follow Mode</button>
+      <button class="btn-action" id="btn-inspect" onclick="setMode('INSPECT')">Inspect Mode</button>
+      <button class="btn-action" onclick="zoomIn()">Zoom +</button>
+      <button class="btn-action" onclick="zoomOut()">Zoom -</button>
+    </div>
+  </header>
+
+  <!-- HUD STATUS BAR -->
+  <div class="hud-bar">
+    <div class="hud-metric">
+      <span class="hud-label">LIVE PRICE:</span>
+      <span class="hud-val" id="hud-live-price" style="color: #38bdf8; font-size: 14px;">2,748.50</span>
+    </div>
+    <div class="hud-metric">
+      <span class="hud-label">BID / ASK:</span>
+      <span class="hud-val" id="hud-bid-ask">2,748.30 / 2,748.70</span>
+    </div>
+    <div class="hud-metric">
+      <span class="hud-label">SPREAD:</span>
+      <span class="hud-val" id="hud-spread" style="color: #fde047;">0.40</span>
+    </div>
+    <div class="hud-metric">
+      <span class="hud-label">COMPASS BIAS:</span>
+      <span class="hud-val" id="hud-momentum" style="color: #10b981;">NEUTRAL (0.00)</span>
+    </div>
+    <div class="hud-metric">
+      <span class="hud-label">SESSIONS:</span>
+      <span class="hud-val" style="color: #94a3b8;">LONDON &amp; NEW YORK OVERLAP</span>
+    </div>
+    <div class="hud-metric">
+      <span class="hud-label">LATENCY:</span>
+      <span class="hud-val" id="hud-latency">12.4 ms</span>
+    </div>
+  </div>
+
+  <!-- MAIN GAME WORLD CANVAS PLAYFIELD -->
+  <main class="game-viewport" id="viewport-container">
+    <canvas id="world-canvas"></canvas>
+
+    <!-- Recenter Button when in inspect mode -->
+    <div class="recenter-pill" id="recenter-btn" onclick="setMode('FOLLOW')">
+      RECENTER ON LIVE PRICE
+    </div>
+
+    <!-- Interactive Tooltip for hovered liquidity objects -->
+    <div id="orb-tooltip">
+      <div id="tt-title" style="font-weight: 800; font-size: 13px; color: #fde047; margin-bottom: 4px;">SSS Sovereign</div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #94a3b8;">Structure:</span><strong id="tt-type">PREVIOUS_MONTH_HIGH</strong></div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #94a3b8;">Level Price:</span><strong id="tt-price" style="font-family: monospace;">2,780.50</strong></div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #94a3b8;">Side:</span><strong id="tt-side" style="color: #38bdf8;">BSL</strong></div>
+      <div style="display: flex; justify-content: space-between; margin-bottom: 2px;"><span style="color: #94a3b8;">Lifecycle:</span><strong id="tt-lifecycle" style="color: #10b981;">FRESH</strong></div>
+      <div style="display: flex; justify-content: space-between;"><span style="color: #94a3b8;">Source Frame:</span><strong id="tt-tf">MN1</strong></div>
+    </div>
+  </main>
+
+  <!-- BOTTOM DOCK STATUS BAR -->
+  <footer class="dock-bar">
+    <div class="tier-legend">
+      <span style="font-weight: 700; color: #fff;">ROYAL HIERARCHY:</span>
+      <div class="legend-item"><span class="legend-color" style="background: #ffffff; border: 1px solid #aaa;"></span><span>SSS Sovereign</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #ff303b;"></span><span>SS Dynast</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #ff7900;"></span><span>S Duke</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #ffd52a;"></span><span>A Knight</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #73e6ff;"></span><span>B Merchant</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #2787e5;"></span><span>C Crafter</span></div>
+      <div class="legend-item"><span class="legend-color" style="background: #092b68; border: 1px solid #4f80c2;"></span><span>D Peasant</span></div>
+    </div>
+
+    <div>
+      <span>ACTIVE OBJECTS: <strong id="tele-count" style="color: #fff;">20</strong> / 120 BUDGET CAP</span>
+      <span style="margin-left: 14px;">TARGET: <strong>60 FPS</strong></span>
+    </div>
+  </footer>
+
+  <script>
+    // --- Application State ---
+    let cameraMode = "FOLLOW";
+    let pixelsPerSecond = 8.0;
+    let pixelsPerPrice = 36.0;
+
+    let panX = 0;
+    let panY = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+
+    let hoveredObject = null;
+    let lastWorldData = null;
+
+    const canvas = document.getElementById("world-canvas");
+    const ctx = canvas.getContext("2d");
+    const viewport = document.getElementById("viewport-container");
+    const tooltip = document.getElementById("orb-tooltip");
+
+    function resizeCanvas() {
+      canvas.width = viewport.clientWidth;
+      canvas.height = viewport.clientHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // --- Camera Controls ---
+    function setMode(mode) {
+      cameraMode = mode;
+      document.getElementById("btn-follow").classList.toggle("active", mode === "FOLLOW");
+      document.getElementById("btn-inspect").classList.toggle("active", mode === "INSPECT");
+      document.getElementById("camera-mode-text").innerText = mode === "FOLLOW" ? "FOLLOW (CENTERED)" : "INSPECT (EXPLORE)";
+      document.getElementById("recenter-btn").style.display = mode === "INSPECT" ? "block" : "none";
+      if (mode === "FOLLOW") {
+        panX = 0;
+        panY = 0;
+      }
+    }
+
+    function zoomIn() {
+      pixelsPerSecond = Math.min(30.0, pixelsPerSecond * 1.25);
+      pixelsPerPrice = Math.min(120.0, pixelsPerPrice * 1.25);
+    }
+    function zoomOut() {
+      pixelsPerSecond = Math.max(2.0, pixelsPerSecond / 1.25);
+      pixelsPerPrice = Math.max(10.0, pixelsPerPrice / 1.25);
+    }
+
+    // Mouse drag interaction
+    viewport.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      dragStartX = e.clientX - panX;
+      dragStartY = e.clientY - panY;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (isDragging) {
+        panX = e.clientX - dragStartX;
+        panY = e.clientY - dragStartY;
+        setMode("INSPECT");
+      }
+
+      // Hit test orbs for tooltip
+      if (lastWorldData && lastWorldData.liquidity_objects) {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        
+        let found = null;
+        for (const obj of lastWorldData.liquidity_objects) {
+          const sx = obj.screen_x + (cameraMode === "INSPECT" ? panX : 0);
+          const sy = obj.screen_y + (cameraMode === "INSPECT" ? panY : 0);
+          const r = obj.nominal_size / 2 + 6;
+          if (Math.hypot(mx - sx, my - sy) <= r) {
+            found = obj;
+            break;
+          }
+        }
+
+        if (found) {
+          hoveredObject = found;
+          tooltip.style.display = "block";
+          tooltip.style.left = (e.clientX + 14) + "px";
+          tooltip.style.top = (e.clientY + 14) + "px";
+          document.getElementById("tt-title").innerText = `${found.tier} · ${found.tier_name}`;
+          document.getElementById("tt-type").innerText = found.structure_type;
+          document.getElementById("tt-price").innerText = found.price_level.toFixed(2);
+          document.getElementById("tt-side").innerText = found.side;
+          document.getElementById("tt-lifecycle").innerText = found.lifecycle;
+          document.getElementById("tt-tf").innerText = found.source_timeframe;
+        } else {
+          hoveredObject = null;
+          tooltip.style.display = "none";
+        }
+      }
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+    viewport.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      if (e.ctrlKey) {
+        // Vertical price zoom
+        if (e.deltaY < 0) pixelsPerPrice = Math.min(150, pixelsPerPrice * 1.1);
+        else pixelsPerPrice = Math.max(10, pixelsPerPrice / 1.1);
+      } else {
+        // Horizontal time zoom
+        if (e.deltaY < 0) pixelsPerSecond = Math.min(40, pixelsPerSecond * 1.1);
+        else pixelsPerSecond = Math.max(2, pixelsPerSecond / 1.1);
+      }
+    }, { passive: false });
+
+    // --- State Polling & Synchronization ---
+    async function fetchWorldState() {
+      try {
+        const res = await fetch(`/api/state?w=${canvas.width}&h=${canvas.height}`);
+        if (res.ok) {
+          const data = await res.json();
+          lastWorldData = data;
+          updateHUD(data);
+        }
+      } catch (err) {
+        console.warn("Feed poll warning:", err);
+      }
+    }
+    setInterval(fetchWorldState, 250);
+
+    function updateHUD(data) {
+      const q = data.anchor.quote;
+      document.getElementById("hud-live-price").innerText = q.provider_price.toFixed(2);
+      document.getElementById("hud-bid-ask").innerText = `${q.bid.toFixed(2)} / ${q.ask.toFixed(2)}`;
+      document.getElementById("hud-spread").innerText = q.spread.toFixed(2);
+      document.getElementById("hud-latency").innerText = `${q.latency_ms.toFixed(1)} ms`;
+      document.getElementById("tele-count").innerText = data.telemetry.visible_count;
+      document.getElementById("feed-status").innerText = `DUKASCOPY ${q.status}`;
+
+      const m = q.momentum;
+      const score = q.momentum_score;
+      const momEl = document.getElementById("hud-momentum");
+      momEl.innerText = `${m} (${score > 0 ? "+" : ""}${score.toFixed(2)})`;
+      if (m === "UP") momEl.style.color = "#10b981";
+      else if (m === "DOWN") momEl.style.color = "#ef4444";
+      else momEl.style.color = "#fde047";
+
+      const now = new Date();
+      document.getElementById("world-time-text").innerText = now.toUTCString().replace("GMT", "UTC");
+    }
+
+    // --- 60 FPS Render Loop (Centered Game World Engine) ---
+    function renderWorld() {
+      requestAnimationFrame(renderWorld);
+
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      if (!lastWorldData) return;
+
+      const cx = (w / 2) + (cameraMode === "INSPECT" ? panX : 0);
+      const cy = (h / 2) + (cameraMode === "INSPECT" ? panY : 0);
+      const p_live = lastWorldData.anchor.price;
+      const quote = lastWorldData.anchor.quote;
+
+      // 1. Draw Background Orthogonal Price Grid & Horizon Lines
+      drawPriceGrid(cx, cy, p_live, w, h);
+
+      // 2. Draw Right Side: Future Liquidity Quantile Corridor Fan
+      drawFutureFan(cx, cy, lastWorldData.future, w, h);
+
+      // 3. Draw Left Side: Historical Liquidity Straight Trails & Orbs
+      drawHistoricalLiquidity(cx, cy, lastWorldData.liquidity_objects, p_live);
+
+      // 4. Draw Center: Kinetic Price Compass Player (Main Character)
+      drawPriceCompassPlayer(cx, cy, quote);
+    }
+
+    function drawPriceGrid(cx, cy, p_live, w, h) {
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+      ctx.lineWidth = 1;
+
+      // Vertical past/future divider line through player
+      ctx.beginPath();
+      ctx.moveTo(cx, 0);
+      ctx.lineTo(cx, h);
+      ctx.stroke();
+
+      // Horizontal price lines at $1.00 intervals
+      const startPrice = Math.floor(p_live - (h / 2) / pixelsPerPrice) - 2;
+      const endPrice = Math.ceil(p_live + (h / 2) / pixelsPerPrice) + 2;
+
+      for (let p = startPrice; p <= endPrice; p += 1.0) {
+        const y = cy - (p - p_live) * pixelsPerPrice;
+        if (y < 0 || y > h) continue;
+
+        ctx.strokeStyle = (p % 5 === 0) ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.03)";
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+
+        // Price label on right border
+        ctx.fillStyle = (p % 5 === 0) ? "#94a3b8" : "#475569";
+        ctx.font = "10px monospace";
+        ctx.fillText(p.toFixed(2), w - 55, y - 3);
+      }
+    }
+
+    function drawFutureFan(cx, cy, future, w, h) {
+      if (!future || !future.screen_fan || future.screen_fan.length < 2) return;
+
+      const fan = future.screen_fan;
+      const offsetX = cameraMode === "INSPECT" ? panX : 0;
+      const offsetY = cameraMode === "INSPECT" ? panY : 0;
+
+      // Draw 90% outer quantile envelope (cyan translucent fill)
+      ctx.fillStyle = "rgba(56, 189, 248, 0.04)";
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      for (const pt of fan) ctx.lineTo(pt.screen_x + offsetX, pt.y_p90 + offsetY);
+      for (let i = fan.length - 1; i >= 0; i--) ctx.lineTo(fan[i].screen_x + offsetX, fan[i].y_p10 + offsetY);
+      ctx.closePath();
+      ctx.fill();
+
+      // Draw 75% inner corridor
+      ctx.fillStyle = "rgba(56, 189, 248, 0.08)";
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      for (const pt of fan) ctx.lineTo(pt.screen_x + offsetX, pt.y_p75 + offsetY);
+      for (let i = fan.length - 1; i >= 0; i--) ctx.lineTo(fan[i].screen_x + offsetX, fan[i].y_p25 + offsetY);
+      ctx.closePath();
+      ctx.fill();
+
+      // Median trajectory path (dashed)
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.35)";
+      ctx.lineWidth = 1.2;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      for (const pt of fan) ctx.lineTo(pt.screen_x + offsetX, pt.y_p50 + offsetY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Future label
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = "10px sans-serif";
+      ctx.fillText("FUTURE SCENARIO HORIZON ->", cx + 40, cy - 45);
+    }
+
+    function drawHistoricalLiquidity(cx, cy, objects, p_live) {
+      if (!objects) return;
+      const offsetX = cameraMode === "INSPECT" ? panX : 0;
+      const offsetY = cameraMode === "INSPECT" ? panY : 0;
+
+      for (const obj of objects) {
+        const sx = obj.screen_x + offsetX;
+        const sy = obj.screen_y + offsetY;
+
+        // Skip if way off viewport
+        if (sy < -50 || sy > canvas.height + 50) continue;
+
+        const isSwept = obj.lifecycle === "SWEPT";
+        const isTested = obj.lifecycle === "TESTED";
+
+        // --- 1. Draw Straight Horizontal Liquidity Trail ---
+        // Trail extends horizontally from sx (origin in past) to cx (live player X)
+        const trailStartX = Math.min(sx, cx - 20);
+        const trailEndX = cx;
+
+        if (trailStartX < trailEndX) {
+          const grad = ctx.createLinearGradient(trailStartX, sy, trailEndX, sy);
+          const trailColor = obj.trail_color;
+
+          if (isSwept) {
+            grad.addColorStop(0, "rgba(100, 116, 139, 0)");
+            grad.addColorStop(1, "rgba(100, 116, 139, 0.25)");
+          } else {
+            grad.addColorStop(0, "rgba(255, 255, 255, 0)");
+            grad.addColorStop(0.3, trailColor + "22");
+            grad.addColorStop(0.8, trailColor + "88");
+            grad.addColorStop(1, trailColor + "DD");
+          }
+
+          // Volumetric outer glow line
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = isSwept ? 1.5 : (obj.nominal_size > 24 ? 4 : 2.5);
+          ctx.beginPath();
+          ctx.moveTo(trailStartX, sy);
+          ctx.lineTo(trailEndX, sy);
+          ctx.stroke();
+
+          // Incandescent razor center core
+          if (!isSwept) {
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.75)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(trailStartX + 40, sy);
+            ctx.lineTo(trailEndX, sy);
+            ctx.stroke();
+          }
+        }
+
+        // --- 2. Draw Historical Orb Sprite ---
+        drawOrbSprite(ctx, sx, sy, obj, isSwept, isTested);
+      }
+    }
+
+    function drawOrbSprite(ctx, x, y, obj, isSwept, isTested) {
+      const size = obj.nominal_size;
+      const r = size / 2;
+
+      ctx.save();
+      ctx.translate(x, y);
+
+      if (isSwept) {
+        ctx.globalAlpha = 0.35;
+        ctx.fillStyle = "#64748b";
+        ctx.strokeStyle = "#94a3b8";
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        // Swept cross mark
+        ctx.beginPath();
+        ctx.moveTo(-r * 0.7, -r * 0.7); ctx.lineTo(r * 0.7, r * 0.7);
+        ctx.moveTo(r * 0.7, -r * 0.7); ctx.lineTo(-r * 0.7, r * 0.7);
+        ctx.stroke();
+        ctx.restore();
+        return;
+      }
+
+      // Outer Bloom Halo for higher tiers
+      if (obj.tier === "SSS" || obj.tier === "SS") {
+        ctx.fillStyle = obj.core_color;
+        ctx.globalAlpha = isTested ? 0.45 : 0.2;
+        ctx.beginPath();
+        ctx.arc(0, 0, r * 2.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1.0;
+
+      // Tier Specific Geometry
+      if (obj.tier === "SSS") {
+        // Golden Sovereign (Crown + Triple Orbits + Diamond)
+        ctx.strokeStyle = "#fde047";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, r * 1.6, r * 0.6, -0.5, 0, Math.PI * 2);
+        ctx.ellipse(0, 0, r * 1.5, r * 0.5, 0.8, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.fillStyle = "#d6a332";
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // 5-point crown motif
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.moveTo(-r * 0.7, -r * 0.3);
+        ctx.lineTo(-r * 0.5, -r * 1.2);
+        ctx.lineTo(-r * 0.2, -r * 0.7);
+        ctx.lineTo(0, -r * 1.4);
+        ctx.lineTo(r * 0.2, -r * 0.7);
+        ctx.lineTo(r * 0.5, -r * 1.2);
+        ctx.lineTo(r * 0.7, -r * 0.3);
+        ctx.closePath();
+        ctx.fill();
+      } else if (obj.tier === "SS") {
+        // Crimson Dynast (Coronet + Ruby)
+        ctx.strokeStyle = "#fda4af";
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, r * 1.4, r * 0.5, -0.4, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.fillStyle = "#c02645";
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // 3-point coronet
+        ctx.fillStyle = "#ffe4e6";
+        ctx.beginPath();
+        ctx.moveTo(-r * 0.6, -r * 0.2);
+        ctx.lineTo(-r * 0.4, -r * 0.9);
+        ctx.lineTo(0, -r * 1.1);
+        ctx.lineTo(r * 0.4, -r * 0.9);
+        ctx.lineTo(r * 0.6, -r * 0.2);
+        ctx.closePath();
+        ctx.fill();
+      } else if (obj.tier === "S") {
+        // Sapphire Duke (Heraldic Shield)
+        ctx.fillStyle = "#7251c8";
+        ctx.strokeStyle = "#bfdbfe";
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(0, -r * 1.2);
+        ctx.lineTo(r, -r * 0.4);
+        ctx.lineTo(r, r * 0.6);
+        ctx.lineTo(0, r * 1.2);
+        ctx.lineTo(-r, r * 0.6);
+        ctx.lineTo(-r, -r * 0.4);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      } else if (obj.tier === "A") {
+        // Azure Knight (Armored Prism)
+        ctx.fillStyle = "#1d4ed8";
+        ctx.strokeStyle = "#93c5fd";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(0, -r); ctx.lineTo(r * 0.9, -r * 0.4); ctx.lineTo(r * 0.9, r * 0.4);
+        ctx.lineTo(0, r); ctx.lineTo(-r * 0.9, r * 0.4); ctx.lineTo(-r * 0.9, -r * 0.4);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      } else if (obj.tier === "B") {
+        // Jade Merchant (Smooth Bead)
+        ctx.fillStyle = "#16866b";
+        ctx.strokeStyle = "#a7f3d0";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      } else if (obj.tier === "C") {
+        // Iron Crafter (Forged Chiseled Metal)
+        ctx.fillStyle = "#64748b";
+        ctx.strokeStyle = "#cbd5e1";
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(-r * 0.8, -r * 0.6); ctx.lineTo(r * 0.4, -r * 0.8);
+        ctx.lineTo(r * 0.9, r * 0.2); ctx.lineTo(r * 0.2, r * 0.8);
+        ctx.lineTo(-r * 0.7, r * 0.5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      } else {
+        // D Peasant (Organic Clay Nodule)
+        ctx.fillStyle = "#9a7658";
+        ctx.strokeStyle = "#d6b99a";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      ctx.restore();
+    }
+
+    function drawPriceCompassPlayer(cx, cy, quote) {
+      const p = quote.provider_price;
+      const momentum = quote.momentum;
+      const score = quote.momentum_score;
+
+      ctx.save();
+      ctx.translate(cx, cy);
+
+      // 1. Dynamic Spread Ring
+      const spreadR = Math.max(24, Math.min(50, 24 + quote.spread * 18));
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.25)";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.arc(0, 0, spreadR, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 2. Dial Outer Ring with Cardinal Notches
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.arc(0, 0, 20, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // 3. Kinetic Compass Needle (Points UP / DOWN / NEUTRAL)
+      const needleAngle = -score * (Math.PI / 2.2); // Tilt up or down
+
+      ctx.save();
+      ctx.rotate(needleAngle);
+
+      // Bullish Arrow (Up)
+      ctx.fillStyle = (momentum === "UP") ? "#10b981" : (momentum === "DOWN" ? "#ef4444" : "#38bdf8");
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(0, -22);
+      ctx.lineTo(5, -6);
+      ctx.lineTo(-5, -6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Bearish Counterweight (Down)
+      ctx.fillStyle = "#475569";
+      ctx.beginPath();
+      ctx.moveTo(0, 22);
+      ctx.lineTo(4, 6);
+      ctx.lineTo(-4, 6);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+
+      // 4. White-Hot Center Reactor (The Exact Live Price Point)
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(0, 0, 5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // 5. Floating Live Price Label beside Compass
+      ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(32, -14, 82, 28, 6);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = "bold 13px monospace";
+      ctx.fillText(p.toFixed(2), 38, 4);
+
+      ctx.restore();
+    }
+
+    // Start 60 FPS animation loop
+    requestAnimationFrame(renderWorld);
+  </script>
+</body>
+</html>
