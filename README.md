@@ -4,6 +4,11 @@ A multi-timeframe liquidity visualization project.
 
 ## Visual design references
 
+- [Orb & Trail Production Integration Specification](docs/ORB_TRAIL_PRODUCTION_INTEGRATION_SPEC.md)
+- [Corrected AAA straight-trail specification](docs/AAA_STRAIGHT_TRAIL_SPEC.md)
+- [Centered live-price trail studio](assets/sprites/trails/trail_studio.html)
+- [Trail effects showcase atlas](assets/sprites/trails/trail_effects_showcase.svg)
+
 - [Seven tier-specific orb designs and selectable styles](docs/ORB_DESIGN_SPEC.md)
 - [Seven distinct orb tier designs (SVG)](assets/orb-tier-reference.svg)
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
