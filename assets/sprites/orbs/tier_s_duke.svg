@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Violet Aura -->
+    <radialGradient id="s-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#DDD6FE" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#8B5CF6" stop-opacity="0.2"/>
+      <stop offset="75%" stop-color="#5B21B6" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#2E1065" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Heraldic Violet Shield Core -->
+    <radialGradient id="s-violet-core" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="25%" stop-color="#C084FC"/>
+      <stop offset="55%" stop-color="#7E22CE"/>
+      <stop offset="85%" stop-color="#581C87"/>
+      <stop offset="100%" stop-color="#240B3B"/>
+    </radialGradient>
+
+    <!-- Sapphire Center Inset -->
+    <linearGradient id="s-sapphire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="35%" stop-color="#60A5FA"/>
+      <stop offset="70%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#0F2860"/>
+    </linearGradient>
+
+    <!-- Half-Orbit Arc Gradient -->
+    <linearGradient id="s-orbit" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DDD6FE" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#A78BFA" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#DDD6FE" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="s-glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="s-soft-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 1: AMBIENT VIOLET AURA -->
+  <g id="layer-aura">
+    <circle cx="128" cy="128" r="98" fill="url(#s-aura)"/>
+    <circle cx="128" cy="128" r="60" fill="#8B5CF6" opacity="0.14" filter="url(#s-glow)"/>
+  </g>
+
+  <!-- LAYER 2: DUCAL HALF-ORBITS (Nobility Crescent Arcs) -->
+  <g id="layer-orbits">
+    <!-- Upper Crescent Arc -->
+    <path d="M52 120 A78 78 0 0 1 204 120"
+          fill="none" stroke="url(#s-orbit)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Lower Crescent Arc -->
+    <path d="M64 152 A72 72 0 0 0 192 152"
+          fill="none" stroke="url(#s-orbit)" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Cardinal Noble Pin Dots -->
+    <circle cx="52" cy="120" r="2.5" fill="#DDD6FE"/>
+    <circle cx="204" cy="120" r="2.5" fill="#DDD6FE"/>
+  </g>
+
+  <!-- LAYER 3: HERALDIC SHIELD-CUT GEM (Noble House Geometry) -->
+  <g id="layer-core" filter="url(#s-soft-glow)">
+    <!-- Main Heraldic Faceted Hexagon/Shield -->
+    <path d="M128 64 L184 96 L184 158 L128 196 L72 158 L72 96 Z"
+          fill="url(#s-violet-core)" stroke="#E9D5FF" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Heraldic Chiseled Facets -->
+    <path d="M128 64 V196 M72 96 L128 128 L184 96 M72 158 L128 128 L184 158"
+          fill="none" stroke="#F5F3FF" stroke-width="1.8" opacity="0.75"/>
+    <polygon points="128,64 184,96 128,128" fill="#DDD6FE" opacity="0.12"/>
+    <polygon points="128,128 184,158 128,196" fill="#4C1D95" opacity="0.25"/>
+  </g>
+
+  <!-- LAYER 4: SAPPHIRE DUKE CENTERPIECE (Sapphire Inset) -->
+  <g id="layer-emblem" filter="url(#s-soft-glow)">
+    <!-- Inner Sapphire Gemstone -->
+    <path d="M128 98 L152 122 L128 152 L104 122 Z"
+          fill="url(#s-sapphire)" stroke="#BFDBFE" stroke-width="2"/>
+    <!-- Facet Cross -->
+    <path d="M104 122 H152 M128 98 V152" stroke="#DBEAFE" stroke-width="1.2" opacity="0.9"/>
+    <!-- Specular Flare on Gem Top Left -->
+    <circle cx="123" cy="113" r="3.2" fill="#FFFFFF" opacity="0.95"/>
+  </g>
+
+  <!-- LAYER 5: NOBLE PARTICLES -->
+  <g id="layer-particles">
+    <circle cx="70" cy="80" r="2.5" fill="#E9D5FF" filter="url(#s-glow)"/>
+    <circle cx="186" cy="80" r="2.5" fill="#E9D5FF" filter="url(#s-glow)"/>
+    <circle cx="128" cy="214" r="3" fill="#A78BFA" opacity="0.7"/>
+  </g>
+</svg>

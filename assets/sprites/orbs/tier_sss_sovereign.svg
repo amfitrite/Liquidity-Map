@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Soft Outer Golden Aura -->
+    <radialGradient id="sss-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE485" stop-opacity="0.45"/>
+      <stop offset="35%" stop-color="#D6A332" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#94670D" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#63390D" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Imperial Core Gradient -->
+    <radialGradient id="sss-core" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="15%" stop-color="#FFF5CE"/>
+      <stop offset="42%" stop-color="#F2C247"/>
+      <stop offset="75%" stop-color="#B88019"/>
+      <stop offset="100%" stop-color="#543306"/>
+    </radialGradient>
+
+    <!-- Crown Gradient -->
+    <linearGradient id="sss-crown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBEB"/>
+      <stop offset="25%" stop-color="#FDE047"/>
+      <stop offset="65%" stop-color="#D69E2E"/>
+      <stop offset="100%" stop-color="#744210"/>
+    </linearGradient>
+
+    <!-- Royal Jewel Gradient -->
+    <linearGradient id="sss-jewel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#FEF08A"/>
+      <stop offset="70%" stop-color="#EAB308"/>
+      <stop offset="100%" stop-color="#854D0E"/>
+    </linearGradient>
+
+    <!-- Orbit Ring Gradient -->
+    <linearGradient id="sss-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBE8" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#ECC94B" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#B7791F" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="sss-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="sss-soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 1: AMBIENT AURA & REGAL BLOOM -->
+  <g id="layer-aura">
+    <circle cx="128" cy="128" r="116" fill="url(#sss-aura)"/>
+    <circle cx="128" cy="128" r="76" fill="#ECC94B" opacity="0.18" filter="url(#sss-glow)"/>
+  </g>
+
+  <!-- LAYER 2: TRIPLE CELESTIAL ORBITS (Sovereign Authority) -->
+  <g id="layer-orbits">
+    <!-- Orbit 1: Tilted Equator -30deg -->
+    <ellipse cx="128" cy="128" rx="104" ry="34" transform="rotate(-28 128 128)"
+             fill="none" stroke="url(#sss-ring)" stroke-width="2.2" opacity="0.85"/>
+    <!-- Orbit 2: Inclined Counter-Orbit +45deg -->
+    <ellipse cx="128" cy="128" rx="100" ry="32" transform="rotate(48 128 128)"
+             fill="none" stroke="url(#sss-ring)" stroke-width="1.8" opacity="0.75"/>
+    <!-- Orbit 3: Grand Circular Stator Halo -->
+    <circle cx="128" cy="128" r="88"
+            fill="none" stroke="#F6E05E" stroke-width="1.5" stroke-dasharray="8 5 2 5" opacity="0.6"/>
+  </g>
+
+  <!-- LAYER 3: REGAL SOLID BODY & SHIELD BASE -->
+  <g id="layer-core">
+    <!-- Outer Shield / Jewel Facet Base -->
+    <path d="M78 114 L85 166 L128 198 L171 166 L178 114 Z"
+          fill="url(#sss-core)" stroke="#FEF08A" stroke-width="2" filter="url(#sss-soft-glow)"/>
+    
+    <!-- Facet Inner Shading Lines -->
+    <path d="M78 114 L128 138 L178 114 M85 166 L128 138 L171 166 M128 138 L128 198"
+          fill="none" stroke="#FFFDF0" stroke-width="1.8" opacity="0.7"/>
+
+    <!-- Central Diamond Gem Core -->
+    <circle cx="128" cy="132" r="38" fill="url(#sss-core)" stroke="#FDE047" stroke-width="1.5"/>
+  </g>
+
+  <!-- LAYER 4: IMPERIAL CROWN (SSS Sovereign Signature) -->
+  <g id="layer-crown" filter="url(#sss-soft-glow)">
+    <!-- 5-Point Sovereign Emperor Crown -->
+    <path d="M68 96 L82 58 L108 80 L128 40 L148 80 L174 58 L188 96 L172 116 H84 Z"
+          fill="url(#sss-crown)" stroke="#FFFDF0" stroke-width="2.5" stroke-linejoin="round"/>
+    
+    <!-- Crown Base Band & Filigree -->
+    <path d="M84 114 H172 V120 H84 Z" fill="#92400E" stroke="#FEF08A" stroke-width="1"/>
+    <circle cx="98" cy="117" r="2.5" fill="#FFFDF0"/>
+    <circle cx="128" cy="117" r="3.5" fill="#FFF" filter="url(#sss-glow)"/>
+    <circle cx="158" cy="117" r="2.5" fill="#FFFDF0"/>
+
+    <!-- Crown Jewels on Spire Tips -->
+    <circle cx="128" cy="40" r="7.5" fill="#FFFFFF" stroke="#D97706" stroke-width="2" filter="url(#sss-glow)"/>
+    <circle cx="82" cy="58" r="5" fill="#FEF08A" stroke="#B45309" stroke-width="1.5"/>
+    <circle cx="174" cy="58" r="5" fill="#FEF08A" stroke="#B45309" stroke-width="1.5"/>
+    <circle cx="108" cy="80" r="3.5" fill="#FFFBEB"/>
+    <circle cx="148" cy="80" r="3.5" fill="#FFFBEB"/>
+  </g>
+
+  <!-- LAYER 5: HERALDIC EMBLEM & CENTERPIECE GEM -->
+  <g id="layer-emblem">
+    <!-- Sovereign Heart Diamond -->
+    <path d="M110 134 L128 110 L146 134 L128 160 Z"
+          fill="url(#sss-jewel)" stroke="#FFFFFF" stroke-width="2" filter="url(#sss-soft-glow)"/>
+    <!-- Gem Inner Facets -->
+    <path d="M110 134 H146 M128 110 V160" stroke="#FFFBE8" stroke-width="1.2" opacity="0.9"/>
+    <!-- Specular Highlight Glint -->
+    <polygon points="128,118 132,128 142,128 134,133 137,143 128,137 120,143 123,133 114,128 124,128"
+             fill="#FFFFFF" opacity="0.95"/>
+  </g>
+
+  <!-- LAYER 6: ORBITING SATELLITE PARTICLES & STELLAR GLINTS -->
+  <g id="layer-particles">
+    <circle cx="44" cy="98" r="4" fill="#FFFFFF" filter="url(#sss-glow)"/>
+    <circle cx="216" cy="154" r="3.5" fill="#FEF08A" filter="url(#sss-glow)"/>
+    <circle cx="196" cy="74" r="3" fill="#FFFBEB"/>
+    <circle cx="62" cy="180" r="2.5" fill="#FDE047"/>
+    <circle cx="128" cy="222" r="3" fill="#ECC94B" opacity="0.8"/>
+  </g>
+</svg>

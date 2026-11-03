@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Jade Glow Aura -->
+    <radialGradient id="b-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A7F3D0" stop-opacity="0.32"/>
+      <stop offset="45%" stop-color="#10B981" stop-opacity="0.16"/>
+      <stop offset="75%" stop-color="#047857" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#022C22" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Polished Jade Spherical Bead Gradient -->
+    <radialGradient id="b-jade-core" cx="36%" cy="34%" r="65%">
+      <stop offset="0%" stop-color="#F0FDF4"/>
+      <stop offset="25%" stop-color="#A7F3D0"/>
+      <stop offset="55%" stop-color="#10B981"/>
+      <stop offset="85%" stop-color="#047857"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </radialGradient>
+
+    <!-- Simple Guild Halo Gradient -->
+    <linearGradient id="b-halo" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D1FAE5" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#34D399" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="b-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 1: JADE TRANSLUCENT AURA -->
+  <g id="layer-aura">
+    <circle cx="128" cy="128" r="86" fill="url(#b-aura)"/>
+    <circle cx="128" cy="128" r="48" fill="#10B981" opacity="0.12" filter="url(#b-glow)"/>
+  </g>
+
+  <!-- LAYER 2: SIMPLE GUILD HALO (Merchant Ring) -->
+  <g id="layer-halo">
+    <circle cx="128" cy="128" r="64"
+            fill="none" stroke="url(#b-halo)" stroke-width="1.8"/>
+  </g>
+
+  <!-- LAYER 3: POLISHED JADE BEAD CORE -->
+  <g id="layer-core" filter="url(#b-glow)">
+    <circle cx="128" cy="128" r="46"
+            fill="url(#b-jade-core)" stroke="#D1FAE5" stroke-width="2"/>
+    <!-- Translucent Subsurface Luster Arc -->
+    <path d="M96 112 A36 36 0 0 1 154 100"
+          fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- LAYER 4: TRADE SEAL EMBLEM (Guild Seal Motif) -->
+  <g id="layer-emblem">
+    <!-- Merchant Trade Diamond Seal -->
+    <path d="M112 128 L128 112 L144 128 L128 144 Z"
+          fill="#ECFDF5" fill-opacity="0.28" stroke="#D1FAE5" stroke-width="1.8"/>
+    <!-- Intersecting Seal Loop Lines -->
+    <path d="M98 128 Q128 92 158 128 Q128 164 98 128 Z"
+          fill="none" stroke="#A7F3D0" stroke-width="1.6" opacity="0.8"/>
+    <!-- Seal Center Node -->
+    <circle cx="128" cy="128" r="2.8" fill="#FFFFFF"/>
+  </g>
+
+  <!-- LAYER 5: POLISHED SPECULAR HIGHLIGHT -->
+  <g id="layer-highlights">
+    <!-- Soft Glossy Specular Highlight Spot -->
+    <ellipse cx="112" cy="112" rx="7" ry="4" transform="rotate(-30 112 112)"
+             fill="#FFFFFF" opacity="0.85"/>
+  </g>
+</svg>

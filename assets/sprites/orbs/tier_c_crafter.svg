@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Forged Iron Angular Core Gradient -->
+    <linearGradient id="c-iron-core" x1="20%" y1="20%" x2="80%" y2="80%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="25%" stop-color="#CBD5E1"/>
+      <stop offset="55%" stop-color="#64748B"/>
+      <stop offset="85%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+
+    <!-- Slag Metal Dark Shading -->
+    <linearGradient id="c-slag-facet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- STRICT NOTE PER SPEC: Tier C has NO aura, NO orbit, NO crown, and NO gemstone -->
+  <!-- LAYER 1: FORGED IRON FRAGMENT (Worn Facets & Rough Slag) -->
+  <g id="layer-core">
+    <!-- Asymmetric Forged Iron Polygon -->
+    <polygon points="86,92 118,74 162,82 182,118 172,160 130,174 90,150 78,118"
+             fill="url(#c-iron-core)" stroke="#94A3B8" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- Worn Chiseled Internal Facet Planes -->
+    <polygon points="86,92 118,74 128,118 78,118" fill="#E2E8F0" opacity="0.25"/>
+    <polygon points="118,74 162,82 128,118" fill="#CBD5E1" opacity="0.4"/>
+    <polygon points="162,82 182,118 128,118" fill="url(#c-slag-facet)" opacity="0.6"/>
+    <polygon points="182,118 172,160 128,118" fill="#1E293B" opacity="0.5"/>
+    <polygon points="172,160 130,174 128,118" fill="#0F172A" opacity="0.6"/>
+    <polygon points="130,174 90,150 128,118" fill="#334155" opacity="0.4"/>
+    <polygon points="90,150 78,118 128,118" fill="#475569" opacity="0.3"/>
+
+    <!-- Forged Chisel Seams -->
+    <line x1="86" y1="92" x2="128" y2="118" stroke="#F8FAFC" stroke-width="1.6" opacity="0.8"/>
+    <line x1="118" y1="74" x2="128" y2="118" stroke="#F8FAFC" stroke-width="1.6" opacity="0.8"/>
+    <line x1="162" y1="82" x2="128" y2="118" stroke="#94A3B8" stroke-width="1.4" opacity="0.7"/>
+    <line x1="182" y1="118" x2="128" y2="118" stroke="#475569" stroke-width="1.4"/>
+    <line x1="172" y1="160" x2="128" y2="118" stroke="#334155" stroke-width="1.4"/>
+    <line x1="130" y1="174" x2="128" y2="118" stroke="#334155" stroke-width="1.4"/>
+    <line x1="90" y1="150" x2="128" y2="118" stroke="#64748B" stroke-width="1.4"/>
+  </g>
+
+  <!-- LAYER 2: WORK-WORN SURFACE SCRATCHES & HAMMER CHIPS -->
+  <g id="layer-highlights">
+    <!-- Work Chisel Marks -->
+    <line x1="96" y1="106" x2="108" y2="108" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7"/>
+    <line x1="140" y1="94" x2="152" y2="98" stroke="#E2E8F0" stroke-width="1.2" opacity="0.6"/>
+    <line x1="146" y1="144" x2="158" y2="136" stroke="#94A3B8" stroke-width="1.2" opacity="0.5"/>
+    <!-- Specular Cold Apex Glint -->
+    <circle cx="128" cy="118" r="2" fill="#FFFFFF" opacity="0.85"/>
+  </g>
+</svg>

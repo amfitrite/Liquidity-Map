@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Baked Terracotta Clay Gradient -->
+    <radialGradient id="d-clay-core" cx="35%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FBF7F4"/>
+      <stop offset="25%" stop-color="#D6B99A"/>
+      <stop offset="55%" stop-color="#9A7658"/>
+      <stop offset="85%" stop-color="#6B4B32"/>
+      <stop offset="100%" stop-color="#2D1C11"/>
+    </radialGradient>
+
+    <!-- Clay Shading Depth -->
+    <linearGradient id="d-clay-shade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B674B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#24180E" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <!-- STRICT NOTE PER SPEC: Tier D has NO halo, NO crown, NO gemstone, and NO glow. Humble clay form. -->
+  <!-- LAYER 1: HANDMADE EARTHEN CLAY NUCLEUS -->
+  <g id="layer-core">
+    <!-- Asymmetric pinched clay form -->
+    <path d="M96 108 C102 86 124 84 146 88 C168 92 178 108 174 130 C170 152 152 168 128 166 C104 164 90 148 88 132 C86 122 90 114 96 108 Z"
+          fill="url(#d-clay-core)" stroke="#B89270" stroke-width="2" stroke-linejoin="round"/>
+
+    <!-- Organic Thumb Impressions & Surface Indents -->
+    <path d="M102 114 Q124 102 144 112"
+          fill="none" stroke="#E1C5A7" stroke-width="2.2" stroke-linecap="round" opacity="0.6"/>
+    <path d="M108 142 Q126 154 150 138"
+          fill="none" stroke="#523824" stroke-width="2.2" stroke-linecap="round" opacity="0.5"/>
+    
+    <!-- Pebble / Clay Grain Impurities -->
+    <circle cx="116" cy="118" r="3" fill="#D6B99A" opacity="0.6"/>
+    <circle cx="142" cy="138" r="2.2" fill="#523824" opacity="0.5"/>
+    <circle cx="126" cy="132" r="1.8" fill="#E1C5A7" opacity="0.7"/>
+  </g>
+
+  <!-- LAYER 2: MATTE NATURAL TEXTURE -->
+  <g id="layer-highlights">
+    <!-- Soft Matte Ridge Highlight -->
+    <path d="M112 96 C124 94 136 96 142 100"
+          fill="none" stroke="#FBF7F4" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+  </g>
+</svg>

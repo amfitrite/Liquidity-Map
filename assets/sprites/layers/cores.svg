@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 256" width="1400" height="256">
+  <defs>
+    <radialGradient id="c-sss" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FFFFFF"/><stop offset="25%" stop-color="#F2C247"/>
+      <stop offset="75%" stop-color="#B88019"/><stop offset="100%" stop-color="#543306"/>
+    </radialGradient>
+    <radialGradient id="c-ss" cx="36%" cy="34%" r="65%">
+      <stop offset="0%" stop-color="#FFF1F2"/><stop offset="35%" stop-color="#E11D48"/>
+      <stop offset="80%" stop-color="#9F1239"/><stop offset="100%" stop-color="#4C0519"/>
+    </radialGradient>
+    <radialGradient id="c-s" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FAF5FF"/><stop offset="35%" stop-color="#7E22CE"/>
+      <stop offset="80%" stop-color="#581C87"/><stop offset="100%" stop-color="#240B3B"/>
+    </radialGradient>
+    <linearGradient id="c-a" x1="0%" y1="0%" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/><stop offset="45%" stop-color="#2563EB"/>
+      <stop offset="85%" stop-color="#1E40AF"/><stop offset="100%" stop-color="#0F214D"/>
+    </linearGradient>
+    <radialGradient id="c-b" cx="36%" cy="34%" r="65%">
+      <stop offset="0%" stop-color="#F0FDF4"/><stop offset="40%" stop-color="#10B981"/>
+      <stop offset="85%" stop-color="#047857"/><stop offset="100%" stop-color="#064E3B"/>
+    </radialGradient>
+    <linearGradient id="c-c" x1="0%" y1="0%" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F1F5F9"/><stop offset="45%" stop-color="#64748B"/>
+      <stop offset="85%" stop-color="#334155"/><stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <radialGradient id="c-d" cx="35%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#FBF7F4"/><stop offset="45%" stop-color="#9A7658"/>
+      <stop offset="85%" stop-color="#6B4B32"/><stop offset="100%" stop-color="#2D1C11"/>
+    </radialGradient>
+  </defs>
+
+  <!-- SSS CORE (X=100, Y=128) -->
+  <g id="core-sss" transform="translate(100 128)">
+    <circle r="44" fill="url(#c-sss)" stroke="#FEF08A" stroke-width="2"/>
+    <circle r="14" fill="#FFF" opacity="0.9"/>
+  </g>
+
+  <!-- SS CORE (X=300, Y=128) -->
+  <g id="core-ss" transform="translate(300 128)">
+    <circle r="38" fill="url(#c-ss)" stroke="#FDA4AF" stroke-width="2"/>
+    <circle r="11" fill="#FFF" opacity="0.9"/>
+  </g>
+
+  <!-- S CORE (X=500, Y=128) -->
+  <g id="core-s" transform="translate(500 128)">
+    <path d="M0 -42 L38 -20 L38 20 L0 42 L-38 20 L-38 -20 Z" fill="url(#c-s)" stroke="#E9D5FF" stroke-width="2"/>
+  </g>
+
+  <!-- A CORE (X=700, Y=128) -->
+  <g id="core-a" transform="translate(700 128)">
+    <polygon points="0,-36 28,-20 32,10 0,36 -32,10 -28,-20" fill="url(#c-a)" stroke="#BFDBFE" stroke-width="2"/>
+  </g>
+
+  <!-- B CORE (X=900, Y=128) -->
+  <g id="core-b" transform="translate(900 128)">
+    <circle r="32" fill="url(#c-b)" stroke="#D1FAE5" stroke-width="1.8"/>
+  </g>
+
+  <!-- C CORE (X=1100, Y=128) -->
+  <g id="core-c" transform="translate(1100 128)">
+    <polygon points="-28,-22 -6,-36 22,-28 36,-6 28,20 2,30 -26,14 -34,-6" fill="url(#c-c)" stroke="#94A3B8" stroke-width="1.8"/>
+  </g>
+
+  <!-- D CORE (X=1300, Y=128) -->
+  <g id="core-d" transform="translate(1300 128)">
+    <path d="M-22 -14 C-18 -28 -3 -30 11 -26 C26 -22 32 -12 28 2 C25 16 14 28 -2 26 C-18 24 -26 12 -28 3 Z" fill="url(#c-d)" stroke="#B89270" stroke-width="1.8"/>
+  </g>
+</svg>

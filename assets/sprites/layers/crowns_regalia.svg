@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 256" width="1000" height="256">
+  <defs>
+    <linearGradient id="reg-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFDF0"/><stop offset="30%" stop-color="#FDE047"/>
+      <stop offset="70%" stop-color="#D69E2E"/><stop offset="100%" stop-color="#744210"/>
+    </linearGradient>
+    <linearGradient id="reg-ruby" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF1F2"/><stop offset="35%" stop-color="#F43F5E"/>
+      <stop offset="75%" stop-color="#BE123C"/><stop offset="100%" stop-color="#4C0519"/>
+    </linearGradient>
+    <linearGradient id="reg-sapphire" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EFF6FF"/><stop offset="40%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="reg-jade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ECFDF5"/><stop offset="50%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+
+  <!-- SSS IMPERIAL CROWN (X=150, Y=128) -->
+  <g id="crown-sss" transform="translate(150 128)">
+    <path d="M-48 10 L-36 -32 L-14 -12 L0 -48 L14 -12 L36 -32 L48 10 H-48 Z" fill="url(#reg-gold)" stroke="#FFFDF0" stroke-width="2" stroke-linejoin="round"/>
+    <circle cy="-48" r="6" fill="#FFF" stroke="#D97706" stroke-width="1.8"/>
+    <circle cx="-36" cy="-32" r="4" fill="#FEF08A"/>
+    <circle cx="36" cy="-32" r="4" fill="#FEF08A"/>
+  </g>
+
+  <!-- SS CORONET (X=400, Y=128) -->
+  <g id="coronet-ss" transform="translate(400 128)">
+    <path d="M-36 10 L-26 -24 L-8 -10 L0 -38 L8 -10 L26 -24 L36 10 H-36 Z" fill="url(#reg-ruby)" stroke="#FFE4E6" stroke-width="2" stroke-linejoin="round"/>
+    <circle cy="-38" r="4.5" fill="#FFF" stroke="#9F1239" stroke-width="1.5"/>
+    <circle cx="-26" cy="-24" r="3" fill="#FECDD3"/>
+    <circle cx="26" cy="-24" r="3" fill="#FECDD3"/>
+  </g>
+
+  <!-- S SAPPHIRE HERALDIC INSET (X=650, Y=128) -->
+  <g id="crest-s" transform="translate(650 128)">
+    <path d="M0 -30 L26 -4 L0 26 L-26 -4 Z" fill="url(#reg-sapphire)" stroke="#DBEAFE" stroke-width="2"/>
+    <path d="M-26 -4 H26 M0 -30 V26" stroke="#FFF" stroke-width="1.2" opacity="0.8"/>
+  </g>
+
+  <!-- B JADE GUILD SEAL (X=880, Y=128) -->
+  <g id="seal-b" transform="translate(880 128)">
+    <path d="M-28 0 Q0 -34 28 0 Q0 34 -28 0 Z" fill="none" stroke="url(#reg-jade)" stroke-width="2.5"/>
+    <path d="M-14 0 L0 -14 L14 0 L0 14 Z" fill="#ECFDF5" fill-opacity="0.4" stroke="#D1FAE5" stroke-width="1.8"/>
+  </g>
+</svg>

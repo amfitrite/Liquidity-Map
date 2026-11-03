@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Azure Guard Aura -->
+    <radialGradient id="a-aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.3"/>
+      <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.16"/>
+      <stop offset="75%" stop-color="#1D4ED8" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Armored Azure Prism Gradient -->
+    <linearGradient id="a-prism-core" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="25%" stop-color="#93C5FD"/>
+      <stop offset="55%" stop-color="#2563EB"/>
+      <stop offset="85%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#0F214D"/>
+    </linearGradient>
+
+    <!-- Steel Halo Gradient -->
+    <linearGradient id="a-steel-halo" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DBEAFE" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1E40AF" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="a-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- LAYER 1: DISCIPLINED AZURE AURA -->
+  <g id="layer-aura">
+    <circle cx="128" cy="128" r="92" fill="url(#a-aura)"/>
+    <circle cx="128" cy="128" r="54" fill="#3B82F6" opacity="0.12" filter="url(#a-glow)"/>
+  </g>
+
+  <!-- LAYER 2: SINGLE STEEL HALO (Knightly Halo) -->
+  <g id="layer-halo">
+    <!-- Precision Circular Halo Ring -->
+    <circle cx="128" cy="128" r="70"
+            fill="none" stroke="url(#a-steel-halo)" stroke-width="2.2"/>
+    <!-- Halo Guard Cross-Notches -->
+    <line x1="128" y1="52" x2="128" y2="60" stroke="#DBEAFE" stroke-width="2"/>
+    <line x1="128" y1="196" x2="128" y2="204" stroke="#DBEAFE" stroke-width="2"/>
+    <line x1="52" y1="128" x2="60" y2="128" stroke="#DBEAFE" stroke-width="2"/>
+    <line x1="196" y1="128" x2="204" y2="128" stroke="#DBEAFE" stroke-width="2"/>
+  </g>
+
+  <!-- LAYER 3: ARMORED PRISM CORE (Disciplined Geometry) -->
+  <g id="layer-core" filter="url(#a-glow)">
+    <!-- Octagonal Armored Guard Plate -->
+    <polygon points="128,74 168,96 174,142 128,180 82,142 88,96"
+             fill="url(#a-prism-core)" stroke="#BFDBFE" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- Sharp Chiseled Ridge Lines -->
+    <line x1="128" y1="74" x2="128" y2="180" stroke="#FFFFFF" stroke-width="1.8" opacity="0.85"/>
+    <line x1="88" y1="96" x2="128" y2="124" stroke="#DBEAFE" stroke-width="1.5" opacity="0.75"/>
+    <line x1="168" y1="96" x2="128" y2="124" stroke="#DBEAFE" stroke-width="1.5" opacity="0.75"/>
+    <line x1="82" y1="142" x2="128" y2="124" stroke="#93C5FD" stroke-width="1.5" opacity="0.75"/>
+    <line x1="174" y1="142" x2="128" y2="124" stroke="#93C5FD" stroke-width="1.5" opacity="0.75"/>
+  </g>
+
+  <!-- LAYER 4: STEEL SPECULAR HIGHLIGHT -->
+  <g id="layer-highlights">
+    <!-- Prismatic Glint Top Left -->
+    <polygon points="128,74 128,124 88,96" fill="#FFFFFF" opacity="0.22"/>
+    <!-- Center Micro Point -->
+    <circle cx="128" cy="124" r="3.2" fill="#FFFFFF" filter="url(#a-glow)"/>
+    <!-- Guard Edge Glint -->
+    <circle cx="168" cy="96" r="2.2" fill="#DBEAFE"/>
+  </g>
+</svg>
