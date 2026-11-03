@@ -6,5 +6,6 @@ A multi-timeframe liquidity visualization project.
 
 - [Liquidity orb tier design](docs/ORB_DESIGN_SPEC.md)
 - [Orb tier sprite reference sheet](assets/orb-tier-reference.svg)
+- [AAA apex orb concept](assets/orb-aaa-reference.svg)
 
 The SVG is an illustrative concept sheet, not a production sprite atlas. Final sprites should use transparent backgrounds, separable core/ring/aura layers, and multiple resolution or level-of-detail variants.
