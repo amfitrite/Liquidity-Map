@@ -5,9 +5,10 @@ Scope: XAUUSD liquidity detection presentation and rendering
 
 ## 1. Core principles
 
-- The default world view uses a centered live-price follow camera, not a conventional right-edge trading chart. See [Centered Live-Price Game World specification](CENTERED_PRICE_GAME_WORLD_SPEC.md).
+- The default world view uses a centered Dukascopy live-price marker and game-like follow camera, not a conventional candlestick chart. No candles are rendered. See [Centered Live-Price Game World specification](CENTERED_PRICE_GAME_WORLD_SPEC.md) and [Dukascopy Live Price Feed specification](DUKASCOPY_LIVE_PRICE_FEED_SPEC.md).
 - In FOLLOW mode, the latest accepted live time/price point stays at the center of the main playfield. Historical world content is left/past; future scenarios are right/future; higher prices are above and lower prices are below the live anchor.
 - Camera transforms and visual offsets must never rewrite source timestamps, exact prices, object IDs, detection results, lifecycle, or tiers.
+- Historical detection may use raw price updates or internal derived bars where appropriate, but any such bars are data/model inputs only and must not appear as visible candlesticks.
 
 - Keep every liquidity object independent, with its own ID, price zone, source timeframe, type, side, tier, and lifecycle status.
 - Never merge separate liquidity objects into one cluster or discard their identities for visual convenience.
