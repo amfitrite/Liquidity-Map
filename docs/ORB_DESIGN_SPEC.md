@@ -124,9 +124,9 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] Trail Effect selector contains exactly ten options, including No Effect.
 - [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
-- [ ] Trail Effect selector contains exactly five options: No Effect, Particle Stream, Comet Trail, Energy Ribbon, Arcane Sigil.
+- [ ] Trail Effect selector contains exactly ten options, including No Effect.
+- [ ] Nine VFX presets read as movement residue behind the orb, not slashes, projectiles, or attack effects.
 - [ ] No Effect renders only a plain straight line, regardless of Render Quality.
-- [ ] Four movement-trail presets look like residue left behind a moving orb, not slashes or attack effects.
 - [ ] Trail residue fades progressively behind the orb and never projects forward.
 - [ ] Tier hue and lifecycle identity persist across all styles and quality levels.
 - [ ] Nearby liquidity objects remain individually selectable with true price/time coordinates.
