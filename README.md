@@ -4,8 +4,8 @@ A multi-timeframe liquidity visualization project.
 
 ## Visual design references
 
-- [Orb tier identity and selectable styles](docs/ORB_DESIGN_SPEC.md)
-- [Tier and style reference sheet](assets/orb-tier-reference.svg)
+- [Seven tier-specific orb designs and selectable styles](docs/ORB_DESIGN_SPEC.md)
+- [Seven distinct orb tier designs (SVG)](assets/orb-tier-reference.svg)
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
 - [Premium trail VFX reference — 10 distinct effects](assets/trail-effect-premium-reference.svg)
 - [Trail VFX implementation and animation specification](docs/TRAIL_VFX_IMPLEMENTATION_SPEC.md)
