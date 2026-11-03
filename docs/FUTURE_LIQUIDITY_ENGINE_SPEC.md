@@ -12,7 +12,7 @@ Future Liquidity is a collection of **forward-looking, testable scenarios**. It 
 The system must distinguish three different questions:
 
 1. **Where might price travel?** — estimated with conditional price-path, volatility, and statistical-distribution models.
-2. **Where might a new liquidity-relevant structure form if a scenario develops?** — estimated with conditional structural-formation scenarios. Until the relevant candles form, this is only a scenario, not an existing liquidity pool.
+2. **Where might a new liquidity-relevant structure form if a scenario develops?** — estimated with conditional structural-formation scenarios. Until subsequent observed Dukascopy price updates meet the required structural criteria, this is only a scenario, not an existing liquidity pool.
 3. **What external market context may affect price?** — for example, options-derived gamma exposure, when authentic options data and mapping are available.
 
 These outputs must not be collapsed into one generic “liquidity” object. A price-density area, expected-range boundary, potential EQH/EQL formation scenario, and options-derived gamma level have different meanings and must retain different types.
@@ -67,7 +67,7 @@ Recommended starting approach:
 - Run explicit event evaluators on simulated paths to estimate touch, breach, sweep-reclaim, reaction, and continuation events separately.
 - Store model parameters, data cutoff, random seed or reproducibility metadata, block-selection method, and model version.
 
-Monte Carlo is a **sampling and scenario-generation technique**, not an independent source of market information. One thousand simulations generated from the same candle history do not represent one thousand independent market observations.
+Monte Carlo is a **sampling and scenario-generation technique**, not an independent source of market information. One thousand simulations generated from the same underlying Dukascopy price history do not represent one thousand independent market observations.
 
 Outputs may include:
 - Raw and calibrated probability of touch by horizon.
@@ -90,11 +90,11 @@ Potential scenario types:
 - A potential session-extreme formation scenario.
 - A conditional scenario in which repeated tests may make a future level visually obvious to market participants.
 
-These are **formation scenarios**, not current EQH/EQL, swing levels, or known stop clusters. The structure only becomes an observed Historical Liquidity candidate after the required candles and detection rules confirm it.
+These are **formation scenarios**, not current EQH/EQL, swing levels, or known stop clusters. The structure only becomes an observed Historical Liquidity candidate after actual subsequent price observations meet the detection rules. Any internal resampling used by detection is not rendered as candles.
 
 A scenario must state its condition. Example: “If price enters this region and forms two or more qualifying highs within the configured tolerance, a future EQH candidate may be created.” It must not state that an EQH or a stop cluster already exists.
 
-Do not infer the location or quantity of actual resting stops from candle structure alone. BSL/SSL may be used only as a hypothesis about the likely side of potential stop placement, not as an observed order-pool classification or trade instruction.
+Do not infer the location or quantity of actual resting stops from observed price structure alone. BSL/SSL may be used only as a hypothesis about the likely side of potential stop placement, not as an observed order-pool classification or trade instruction.
 
 ### 2.3 Volatility projection
 
@@ -175,12 +175,12 @@ No model may calculate or display a probability until its source data contract i
 Each input series must identify:
 - Symbol and exact instrument/feed identity.
 - Broker/provider and dataset version.
-- Timeframe and candle construction method.
+- Tick/quote event semantics and any internal time-resampling method.
 - Timestamp convention and timezone; store UTC internally.
 - Price basis: BID, ASK, MID, LAST, or another explicitly named basis.
 - Tick size, price precision, and any contract/unit conversion.
 - Whether volume is tick volume, feed volume, or documented traded volume.
-- Candle completeness, missing intervals, duplicate timestamps, out-of-order bars, and bad ticks.
+- Tick/quote completeness, missing intervals, duplicate timestamps, out-of-order events, and malformed updates.
 - Spread availability and whether the requested event concerns price-touch or executable trading.
 
 Rules:
@@ -210,7 +210,7 @@ For a zone `[L, U]`, TOUCH occurs when a valid observed/simulated price path ent
 
 `P_TOUCH(zone, H)` is the probability of that event.
 
-A candle range overlapping the zone can establish that the zone was traded when the OHLC series is built from the same declared price basis. However, OHLC alone may not resolve the order of multiple events inside the candle. If a price gap jumps from one side of the entire zone to the other without a recorded price inside it, classify it as GAP_CROSS, not a confirmed touch, unless finer data proves otherwise.
+A valid Dukascopy price observation inside the zone can establish a touch on the declared quote/price basis. If only internally aggregated OHLC data is available, a range overlap can establish that the range intersected the zone, but it may not resolve event order. If a price gap jumps from one side of the entire zone to the other without a recorded price inside it, classify it as GAP_CROSS, not a confirmed touch, unless finer source data proves otherwise.
 
 ### 5.2 Boundary breach
 
@@ -247,13 +247,13 @@ Do not infer any reaction or continuation probability from P_TOUCH or P_BREACH.
 
 ### 5.5 Intrabar ambiguity
 
-OHLC bars do not encode the complete intrabar path. If the order of two relevant barriers/events cannot be established:
+Internally aggregated OHLC bars do not encode the complete intrabar path. If the order of two relevant barriers/events cannot be established:
 - Resolve using lower-timeframe or tick data when available and aligned to the same price basis.
 - Otherwise label the outcome AMBIGUOUS, or apply a pre-registered conservative evaluation rule.
 - Never invent an intrabar sequence or choose the path that improves model performance.
 - Report how many outcomes were ambiguous and how they were handled.
 
-For a simple touch event, a valid OHLC range intersection can establish that a price was reached. For ordering-dependent events, such as whether one of two barriers was reached first, OHLC alone may be insufficient.
+For a simple touch event, an observed source price inside the zone establishes a touch on that price basis. If only internal OHLC aggregation is available, a valid range intersection can show that the range reached the zone. For ordering-dependent events, OHLC alone may be insufficient.
 
 ### 5.6 Raw and calibrated probabilities
 
@@ -361,7 +361,7 @@ Candidate components:
 - Incremental out-of-sample value from genuinely distinct evidence families.
 - Agreement/dependence among inputs.
 
-Do not reward the number of indicators or models by itself. Several features built from the same OHLC candles are correlated evidence. Multiple Monte Carlo runs using the same price history are one model family, not independent votes.
+Do not reward the number of indicators or models by itself. Several features built from the same underlying price stream or internal OHLC aggregations are correlated evidence. Multiple Monte Carlo runs using the same price history are one model family, not independent votes.
 
 ### 8.3 Tier policy
 
@@ -421,7 +421,7 @@ For each event definition, store:
 - Outcome: YES, NO_BY_HORIZON, AMBIGUOUS, DATA_GAP, or CENSORED.
 - First event timestamp and relevant price, if observed.
 - Measurement window and price basis.
-- Resolution source (tick, lower timeframe, OHLC proxy, etc.).
+- Resolution source (Dukascopy quote/tick, finer source interval, internal OHLC proxy, etc.).
 - Evaluation timestamp and evaluator version.
 
 An invalidated or superseded forecast must not silently disappear from evaluation. Define in advance whether its event outcome is still measurable, censored, or invalidated for a documented reason. Report all categories and never exclude difficult forecasts after seeing their outcomes.
@@ -594,7 +594,7 @@ All numbers and prices above are illustrative only; they are not XAUUSD predicti
 
 ## 12. Renderer and visual semantics
 
-**Primary camera model:** use the centered live-price game world defined in [CENTERED_PRICE_GAME_WORLD_SPEC.md](CENTERED_PRICE_GAME_WORLD_SPEC.md). The latest live market point is anchored at the center of the main playfield; historical data occupies the left/past side and future scenarios the right/future side. Price offsets are drawn vertically relative to the live price. Do not use a conventional right-edge latest-candle layout. Camera transforms must never modify forecast prices, timestamps, probabilities, or IDs.
+**Primary camera model:** use the centered live-price game world defined in [CENTERED_PRICE_GAME_WORLD_SPEC.md](CENTERED_PRICE_GAME_WORLD_SPEC.md). The latest Dukascopy live-price point is anchored at the center of the main playfield; historical data occupies the left/past side and future scenarios the right/future side. Price offsets are drawn vertically relative to the live price. No candles are rendered and no conventional right-edge latest-price layout is used. Camera transforms must never modify forecast prices, timestamps, probabilities, or IDs.
 
 Future and Historical layers must be unmistakably different at normal chart zoom.
 
@@ -631,11 +631,11 @@ Tier SSS/SS/S/A/B/C/D may share the familiar hierarchy, but Future styling must 
 
 ### Phase 0 — repository and data audit
 
-- Inspect the real repository tree, runtime, dependencies, data provider, and candle schema.
+- Inspect the real repository tree, runtime, dependencies, Dukascopy event payload, price basis, and any internal aggregation schema.
 - Confirm instrument/feed identity, timezone, price basis, precision, completeness, and volume semantics.
 - Define event specifications, forecast IDs, immutable logs, and outcome records.
 - Build a chronological evaluator and simple baselines before a sophisticated model.
-- Do not assume the repository already has a working Historical engine or Dukascopy pipeline until verified in source.
+- Do not assume the repository already has a working Historical engine or Dukascopy live-feed adapter until verified in source.
 
 ### Phase 1 — event and evaluation foundation
 
@@ -643,7 +643,7 @@ Tier SSS/SS/S/A/B/C/D may share the familiar hierarchy, but Future styling must 
 - Add intrabar ambiguity and data-gap handling.
 - Create forecast snapshot storage and immutable outcome ledger.
 - Add walk-forward splits, leakage checks, baseline comparison, metrics, and reports.
-- Test the evaluator with synthetic edge cases and hand-checkable candles.
+- Test the evaluator with synthetic tick/quote streams, gaps, duplicates, out-of-order events, and internal-bar edge cases.
 
 ### Phase 2 — first price-path baseline
 
@@ -725,3 +725,10 @@ Version 2.0 corrects the earlier concept by:
 - Replacing overloaded lifecycle states with a forecast state machine plus an independent event-outcome ledger.
 - Tightening GEX assumptions, dealer-positioning limitations, and futures/ETF-to-XAUUSD mapping requirements.
 - Adding controls for overlapping forecasts, effective sample size, selection bias, immutability, and calibration drift.
+
+
+## 18. UI rendering clarification — no candles
+
+Future Liquidity is rendered inside the centered live-price game world, not on a candlestick chart. The player/anchor is the current Dukascopy price marker. No candle bodies, wicks, OHLC bars, or synthetic per-tick candles are displayed.
+
+The forecast engine may still consume raw Dukascopy price updates or optional internal time aggregation. Such aggregation is a model input only and does not authorize a candlestick UI. See [Dukascopy Live Price Feed specification](DUKASCOPY_LIVE_PRICE_FEED_SPEC.md).
