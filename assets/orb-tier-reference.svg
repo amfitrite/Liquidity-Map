@@ -1,94 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
 <defs>
-  <radialGradient id="bg"><stop stop-color="#182331"/><stop offset="1" stop-color="#080D14"/></radialGradient>
-  <radialGradient id="sss"><stop stop-color="#FFFFFF"/><stop offset=".28" stop-color="#DDF9FF"/><stop offset=".68" stop-color="#78DDF5"/><stop offset="1" stop-color="#1B8EBC"/></radialGradient>
-  <radialGradient id="aaa"><stop stop-color="#FFFFFF"/><stop offset=".28" stop-color="#FFF1B8"/><stop offset=".68" stop-color="#FBBF24"/><stop offset="1" stop-color="#A85B08"/></radialGradient>
-  <radialGradient id="ss"><stop stop-color="#D9FCFF"/><stop offset=".35" stop-color="#22D3EE"/><stop offset="1" stop-color="#087A9C"/></radialGradient>
-  <radialGradient id="s"><stop stop-color="#C9E2FF"/><stop offset=".35" stop-color="#3B82F6"/><stop offset="1" stop-color="#173B9A"/></radialGradient>
-  <radialGradient id="a"><stop stop-color="#F1E8FF"/><stop offset=".38" stop-color="#A78BFA"/><stop offset="1" stop-color="#5B36A7"/></radialGradient>
-  <radialGradient id="b"><stop stop-color="#F8FAFC"/><stop offset=".35" stop-color="#A1A1AA"/><stop offset="1" stop-color="#52525B"/></radialGradient>
-  <radialGradient id="c"><stop stop-color="#B8C4D3"/><stop offset=".4" stop-color="#64748B"/><stop offset="1" stop-color="#334155"/></radialGradient>
-  <radialGradient id="d"><stop stop-color="#94A3B8"/><stop offset=".25" stop-color="#475569"/><stop offset="1" stop-color="#1E293B"/></radialGradient>
-  <filter id="glowCyan" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <filter id="glowBlue" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <filter id="glowViolet" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <radialGradient id="bg"><stop stop-color="#182331"/><stop offset="1" stop-color="#080D14"/></radialGradient>
+ <radialGradient id="core"><stop stop-color="#FFFFFF"/><stop offset=".35" stop-color="#DDF9FF"/><stop offset="1" stop-color="#278CB8"/></radialGradient>
+ <radialGradient id="gold"><stop stop-color="#FFFFFF"/><stop offset=".35" stop-color="#FFF1B8"/><stop offset="1" stop-color="#D58A12"/></radialGradient>
+ <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
 <rect width="1400" height="900" rx="28" fill="url(#bg)"/>
-<text x="70" y="82" fill="#F1F5F9" font-family="Inter,Arial" font-size="34" font-weight="700">LIQUIDITY ORB — TIER IDENTITY</text>
-<text x="70" y="119" fill="#94A3B8" font-family="Inter,Arial" font-size="16">Concept reference · distinct core geometry, material, rings and visual intensity</text>
-<g transform="translate(0 20)" font-family="Inter,Arial">
-<!-- SSS -->
-<g transform="translate(175 290)">
- <circle r="76" fill="#7DEBFF" opacity=".10" filter="url(#glowCyan)"/>
- <circle r="61" fill="none" stroke="#E0F7FF" stroke-width="2.5" opacity=".9"/>
- <circle r="51" fill="none" stroke="#8DEBFF" stroke-width="2" stroke-dasharray="8 5"/>
- <circle r="41" fill="none" stroke="#E0F7FF" stroke-width="1.5" opacity=".8"/>
- <path d="M0 -34 L25 -15 L20 17 L0 34 L-25 15 L-20 -17Z" fill="url(#sss)" stroke="#FFFFFF" stroke-width="2" filter="url(#glowCyan)"/>
- <path d="M0 -34 L0 34 M-20 -17 L25 -15 M-25 15 L20 17" stroke="#FFFFFF" stroke-width="1" opacity=".8"/>
- <path d="M0 -78 V-68 M78 0 H68 M0 78 V68 M-78 0 H-68" stroke="#E0F7FF" stroke-width="3" stroke-linecap="round"/>
- <circle cx="0" cy="-87" r="4" fill="#FFFFFF"/><circle cx="87" cy="0" r="4" fill="#FFFFFF"/><circle cx="-87" cy="0" r="4" fill="#FFFFFF"/>
- <text y="112" text-anchor="middle" fill="#E0F7FF" font-size="23" font-weight="700">SSS</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">CELESTIAL CRYSTAL</text>
+<g font-family="Inter,Arial">
+<text x="65" y="70" fill="#F1F5F9" font-size="32" font-weight="700">LIQUIDITY ORB — TIER IDENTITY &amp; STYLE OPTIONS</text>
+<text x="65" y="105" fill="#94A3B8" font-size="16">Seven data tiers · selectable visual skins · independent AAA game-quality rendering</text>
+<!-- tier row -->
+<g transform="translate(0 20)">
+<g transform="translate(135 280)"><circle r="58" fill="#7DEBFF" opacity=".12" filter="url(#glow)"/><circle r="46" fill="none" stroke="#E0F7FF" stroke-width="2"/><circle r="37" fill="none" stroke="#8DEBFF" stroke-width="2" stroke-dasharray="7 5"/><path d="M0 -29 L23 -13 L18 16 L0 29 L-23 13 L-18 -16Z" fill="url(#core)" stroke="#FFF" stroke-width="2"/><path d="M0 -29V29M-18 -16L23 -13" stroke="#FFF" opacity=".7"/><text y="83" text-anchor="middle" fill="#E0F7FF" font-size="22" font-weight="700">SSS</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">CELESTIAL</text></g>
+<g transform="translate(325 280)"><circle r="48" fill="#22D3EE" opacity=".12" filter="url(#glow)"/><circle r="39" fill="none" stroke="#22D3EE" stroke-width="2.5"/><path d="M-32 -8Q-8 -42 24 -18T26 20Q-5 42 -25 15Q-37 -2 -10 -18" fill="none" stroke="#A5F3FC" stroke-width="3"/><circle r="23" fill="#22D3EE" stroke="#CFFAFE" stroke-width="2"/><text y="83" text-anchor="middle" fill="#22D3EE" font-size="22" font-weight="700">SS</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">VORTEX</text></g>
+<g transform="translate(515 280)"><circle r="41" fill="#3B82F6" opacity=".12" filter="url(#glow)"/><circle r="34" fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="35 8"/><path d="M0 -27L24 -14V14L0 27L-24 14V-14Z" fill="#3B82F6" stroke="#BFDBFE" stroke-width="2"/><path d="M0 -27V27M-24 -14L24 14" stroke="#DBEAFE"/><text y="83" text-anchor="middle" fill="#60A5FA" font-size="22" font-weight="700">S</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">PRISM</text></g>
+<g transform="translate(705 280)"><circle r="34" fill="#A78BFA" opacity=".14" filter="url(#glow)"/><circle r="28" fill="none" stroke="#C4B5FD" stroke-width="2"/><circle r="20" fill="#A78BFA" stroke="#DDD6FE" stroke-width="2"/><text y="83" text-anchor="middle" fill="#A78BFA" font-size="22" font-weight="700">A</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">ARCANE</text></g>
+<g transform="translate(895 280)"><circle r="26" fill="none" stroke="#D4D4D8" stroke-width="2" stroke-dasharray="40 8"/><circle r="19" fill="#A1A1AA" stroke="#E4E4E7" stroke-width="2"/><ellipse cx="-5" cy="-7" rx="7" ry="3" fill="#FFF" opacity=".6"/><text y="83" text-anchor="middle" fill="#D4D4D8" font-size="22" font-weight="700">B</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">METAL</text></g>
+<g transform="translate(1085 280)"><path d="M0 -22L19 -10L15 16L-4 23L-20 9L-17 -14Z" fill="#64748B" stroke="#94A3B8" stroke-width="2"/><path d="M0 -22L-4 23M-17 -14L19 -10" stroke="#CBD5E1" opacity=".4"/><text y="83" text-anchor="middle" fill="#94A3B8" font-size="22" font-weight="700">C</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">STONE</text></g>
+<g transform="translate(1275 280)"><circle r="17" fill="#475569" stroke="#64748B" stroke-width="2"/><circle r="25" fill="none" stroke="#64748B" stroke-dasharray="5 6"/><text y="83" text-anchor="middle" fill="#64748B" font-size="22" font-weight="700">D</text><text y="106" text-anchor="middle" fill="#9FB6C8" font-size="12">SHADOW</text></g>
 </g>
-<!-- AAA -->
-<g transform="translate(525 650)">
- <circle r="58" fill="#FBBF24" opacity=".12" filter="url(#glowViolet)"/>
- <ellipse rx="54" ry="28" transform="rotate(-28)" fill="none" stroke="#FBBF24" stroke-width="2.5"/>
- <ellipse rx="43" ry="34" transform="rotate(42)" fill="none" stroke="#FFE7A3" stroke-width="1.8" opacity=".9"/>
- <path d="M0 -48 L7 -31 L22 -39 L19 -20 L38 -22 L25 -7 L0 -14 L-25 -7 L-38 -22 L-19 -20 L-22 -39 L-7 -31Z" fill="#FBBF24" opacity=".95"/>
- <circle r="24" fill="url(#aaa)" stroke="#FFF7D6" stroke-width="2"/>
- <circle r="10" fill="#FFFFFF" opacity=".8"/>
- <path d="M0 -65 V-55 M46 -46 L39 -39 M65 0 H55 M-46 -46 L-39 -39 M-65 0 H-55" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
- <circle cx="0" cy="-73" r="3.5" fill="#FFFFFF"/><circle cx="72" cy="12" r="3" fill="#FBBF24"/><circle cx="-62" cy="26" r="3" fill="#FDE68A"/>
- <text y="94" text-anchor="middle" fill="#FBBF24" font-size="23" font-weight="700">AAA</text><text y="120" text-anchor="middle" fill="#A7C8D8" font-size="13">SOLAR CROWN</text>
+<path d="M65 440H1335" stroke="#334155"/>
+<text x="65" y="490" fill="#F1F5F9" font-size="24" font-weight="700">ORB STYLE — USER SELECTABLE</text>
+<g transform="translate(0 15)">
+<g transform="translate(210 635)"><circle r="65" fill="#7DEBFF" opacity=".10" filter="url(#glow)"/><circle r="47" fill="none" stroke="#DDF9FF" stroke-width="2"/><path d="M0 -32L25 -14L20 18L0 32L-25 14L-20 -18Z" fill="url(#core)" stroke="#FFF" stroke-width="2"/><text y="100" text-anchor="middle" fill="#E2E8F0" font-size="17" font-weight="700">CELESTIAL CRYSTAL</text></g>
+<g transform="translate(535 635)"><circle r="65" fill="#FBBF24" opacity=".12" filter="url(#glow)"/><ellipse rx="55" ry="27" transform="rotate(-28)" fill="none" stroke="#FBBF24" stroke-width="2.5"/><ellipse rx="44" ry="33" transform="rotate(42)" fill="none" stroke="#FFE7A3" stroke-width="2"/><path d="M0 -43L7 -29L22 -36L19 -18L36 -20L23 -5L0 -12L-23 -5L-36 -20L-19 -18L-22 -36L-7 -29Z" fill="#FBBF24"/><circle r="23" fill="url(#gold)" stroke="#FFF7D6" stroke-width="2"/><circle r="8" fill="#FFF"/><circle cx="0" cy="-64" r="3" fill="#FFF"/><circle cx="60" cy="18" r="3" fill="#FDE68A"/><text y="100" text-anchor="middle" fill="#FDE68A" font-size="17" font-weight="700">SOLAR CROWN</text></g>
+<g transform="translate(860 635)"><circle r="57" fill="#22D3EE" opacity=".10" filter="url(#glow)"/><circle r="43" fill="none" stroke="#22D3EE" stroke-width="2"/><path d="M-38 0Q-8 -42 28 -16T25 19Q-5 42 -25 12" fill="none" stroke="#A5F3FC" stroke-width="3"/><circle r="24" fill="#22D3EE" stroke="#CFFAFE" stroke-width="2"/><text y="100" text-anchor="middle" fill="#A5F3FC" font-size="17" font-weight="700">VORTEX ENERGY</text></g>
+<g transform="translate(1185 635)"><circle r="49" fill="#A78BFA" opacity=".10"/><circle r="38" fill="none" stroke="#C4B5FD" stroke-width="1.5"/><circle r="25" fill="#8B5CF6" stroke="#DDD6FE" stroke-width="2"/><path d="M-44 0Q0 -18 44 0" fill="none" stroke="#DDD6FE" stroke-width="1.5"/><text y="100" text-anchor="middle" fill="#C4B5FD" font-size="17" font-weight="700">ARCANE AURA</text></g>
 </g>
-<!-- SS -->
-<g transform="translate(525 290)">
- <circle r="67" fill="#22D3EE" opacity=".12" filter="url(#glowCyan)"/>
- <circle r="55" fill="none" stroke="#22D3EE" stroke-width="3"/>
- <circle r="43" fill="none" stroke="#A5F3FC" stroke-width="2" stroke-dasharray="22 8"/>
- <path d="M-46 -14 C-22 -50 24 -43 42 -8 C57 22 19 48 -10 38 C-38 28 -39 -2 -14 -18 C5 -30 28 -12 22 7" fill="none" stroke="#A5F3FC" stroke-width="3" stroke-linecap="round"/>
- <circle r="29" fill="url(#ss)" stroke="#BFF8FF" stroke-width="1.5" filter="url(#glowCyan)"/>
- <path d="M-20 0 Q0 -24 20 0 Q0 24 -20 0" fill="none" stroke="#E6FEFF" stroke-width="2" opacity=".8"/>
- <text y="112" text-anchor="middle" fill="#22D3EE" font-size="23" font-weight="700">SS</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">VORTEX CORE</text>
-</g>
-<!-- S -->
-<g transform="translate(875 290)">
- <circle r="56" fill="#3B82F6" opacity=".12" filter="url(#glowBlue)"/>
- <circle r="47" fill="none" stroke="#60A5FA" stroke-width="2.5" stroke-dasharray="44 9"/>
- <path d="M0 -35 L29 -18 L29 18 L0 35 L-29 18 L-29 -18Z" fill="url(#s)" stroke="#BFDBFE" stroke-width="1.5" filter="url(#glowBlue)"/>
- <path d="M0 -35 V35 M-29 -18 L29 18 M29 -18 L-29 18" stroke="#DBEAFE" stroke-width="1.3" opacity=".75"/>
- <text y="112" text-anchor="middle" fill="#60A5FA" font-size="23" font-weight="700">S</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">PRISMATIC CORE</text>
-</g>
-<!-- A -->
-<g transform="translate(1225 290)">
- <circle r="47" fill="#A78BFA" opacity=".14" filter="url(#glowViolet)"/>
- <circle r="38" fill="none" stroke="#C4B5FD" stroke-width="2"/>
- <circle r="28" fill="url(#a)" stroke="#DDD6FE" stroke-width="1.5"/>
- <path d="M-40 0 Q0 -17 40 0 Q0 17 -40 0" fill="none" stroke="#DDD6FE" stroke-width="1.5" opacity=".75"/>
- <text y="112" text-anchor="middle" fill="#A78BFA" font-size="23" font-weight="700">A</text><text y="138" text-anchor="middle" fill="#A7C8D8" font-size="13">ARCANE AURA</text>
-</g>
-<!-- B -->
-<g transform="translate(175 650)">
- <circle r="37" fill="#A1A1AA" opacity=".10"/>
- <circle r="31" fill="none" stroke="#D4D4D8" stroke-width="2" stroke-dasharray="55 12"/>
- <circle r="23" fill="url(#b)" stroke="#E4E4E7" stroke-width="1.5"/>
- <ellipse cx="-7" cy="-9" rx="8" ry="4" fill="#FFFFFF" opacity=".5"/>
- <text y="78" text-anchor="middle" fill="#D4D4D8" font-size="23" font-weight="700">B</text><text y="104" text-anchor="middle" fill="#A7C8D8" font-size="13">METALLIC CORE</text>
-</g>
-<!-- C -->
-<g transform="translate(875 650)">
- <path d="M0 -30 L23 -14 L19 17 L-5 29 L-26 12 L-22 -17Z" fill="url(#c)" stroke="#94A3B8" stroke-width="1.5"/>
- <path d="M0 -30 L-5 29 M-22 -17 L23 -14 M-26 12 L19 17" stroke="#CBD5E1" stroke-width="1" opacity=".35"/>
- <circle r="34" fill="none" stroke="#64748B" stroke-width="1" opacity=".6"/>
- <text y="78" text-anchor="middle" fill="#94A3B8" font-size="23" font-weight="700">C</text><text y="104" text-anchor="middle" fill="#A7C8D8" font-size="13">STONE FRAGMENT</text>
-</g>
-<!-- D -->
-<g transform="translate(1225 650)">
- <circle r="25" fill="url(#d)" stroke="#64748B" stroke-width="1.5"/>
- <circle r="34" fill="none" stroke="#64748B" stroke-width="1.5" stroke-dasharray="7 7"/>
- <circle cx="-7" cy="-8" r="5" fill="#CBD5E1" opacity=".25"/>
- <text y="78" text-anchor="middle" fill="#64748B" font-size="23" font-weight="700">D</text><text y="104" text-anchor="middle" fill="#A7C8D8" font-size="13">SHADOW SEED</text>
-</g>
-</g>
-<text x="70" y="855" fill="#64748B" font-family="Inter,Arial" font-size="13">Concept only — final production sprites should use transparent backgrounds and separate core / ring / aura layers.</text>
-</svg>
+<text x="65" y="850" fill="#94A3B8" font-size="15">AAA = optional render-quality preset (premium game-quality VFX), never a liquidity tier. Style and quality do not alter market data.</text>
+</g></svg>
