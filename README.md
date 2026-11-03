@@ -7,7 +7,7 @@ A multi-timeframe liquidity visualization project.
 - [Orb tier identity and selectable styles](docs/ORB_DESIGN_SPEC.md)
 - [Tier and style reference sheet](assets/orb-tier-reference.svg)
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
-- [Five-option trail effect reference](assets/trail-effect-reference.svg)
+- [Five MOBA-style movement trail reference](assets/trail-effect-reference.svg)
 
 **Terminology:** Liquidity tiers are SSS, SS, S, A, B, C, and D. "AAA" refers only to optional premium game-quality rendering, never to a liquidity tier or signal grade. The Solar Crown artwork is a selectable orb skin.
 
