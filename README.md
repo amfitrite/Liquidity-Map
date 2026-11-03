@@ -9,11 +9,12 @@ A multi-timeframe liquidity visualization project.
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
 - [Premium trail VFX reference — 10 distinct effects](assets/trail-effect-premium-reference.svg)
 - [Trail VFX implementation and animation specification](docs/TRAIL_VFX_IMPLEMENTATION_SPEC.md)
+- [Dukascopy live price feed — tick adapter and no-candlestick UI](docs/DUKASCOPY_LIVE_PRICE_FEED_SPEC.md)
 - [Centered live-price game world — camera and coordinate specification](docs/CENTERED_PRICE_GAME_WORLD_SPEC.md)
 - [Future Liquidity Engine v2.0 — corrected concept, event definitions, tier policy, and validation protocol](docs/FUTURE_LIQUIDITY_ENGINE_SPEC.md)
 - [Legacy trail reference — retained for comparison](assets/trail-effect-reference.svg)
 
-**Future Liquidity is a forecast/scenario layer, not a live order-book map.** Its specification separates price-path distributions, structural-formation scenarios, volatility/density overlays, and optional options-derived gamma context. It also separates Model Reliability from individual Projection Quality. Unvalidated forecasts remain PROVISIONAL (no tier); D is reserved for validated but weak projections.
+**Liquidity Map is a game-like live-price world, not a candlestick chart.** The central price marker follows accepted Dukascopy updates and stays centered; the world moves around it. No candle bodies, wicks, or OHLC bars are rendered. Internal data aggregation may be used by models but is not displayed.\n\n**Future Liquidity is a forecast/scenario layer, not a live order-book map.** Its specification separates price-path distributions, structural-formation scenarios, volatility/density overlays, and optional options-derived gamma context. It also separates Model Reliability from individual Projection Quality. Unvalidated forecasts remain PROVISIONAL (no tier); D is reserved for validated but weak projections.
 
 **Terminology:** Liquidity tiers are SSS, SS, S, A, B, C, and D. "AAA" refers only to optional premium game-quality rendering, never to a liquidity tier or signal grade. The SSS orb is the Golden Sovereign in royal gold; the D orb is the Humble Earthen Seed, deliberately plain and unadorned. Solar Crown remains a selectable finishing style and cannot erase these tier identities.
 
