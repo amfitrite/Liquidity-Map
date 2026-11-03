@@ -1,150 +1,199 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1870" viewBox="0 0 1600 1870">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1810" viewBox="0 0 1600 1810">
 <defs>
- <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#111B2B"/><stop offset="1" stop-color="#080D16"/></linearGradient>
- <radialGradient id="orb"><stop stop-color="#FFFFFF"/><stop offset=".38" stop-color="#D9FBFF"/><stop offset="1" stop-color="#0891B2"/></radialGradient>
- <linearGradient id="ribbon" x1="0" x2="1"><stop stop-color="#22D3EE" stop-opacity="0"/><stop offset=".24" stop-color="#22D3EE" stop-opacity=".22"/><stop offset=".7" stop-color="#67E8F9" stop-opacity=".55"/><stop offset="1" stop-color="#CFFAFE" stop-opacity=".82"/></linearGradient>
- <filter id="glow" x="-30%" y="-250%" width="160%" height="600%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
- <filter id="mist" x="-30%" y="-400%" width="160%" height="900%"><feGaussianBlur stdDeviation="14"/></filter>
- <filter id="soft" x="-30%" y="-250%" width="160%" height="600%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#0B1423"/><stop offset=".48" stop-color="#050B15"/><stop offset="1" stop-color="#080E1A"/></linearGradient>
+ <linearGradient id="panel" x2="0" y2="1"><stop stop-color="#142235"/><stop offset="1" stop-color="#0A1422"/></linearGradient>
+ <linearGradient id="edge" x2="1" y2="1"><stop stop-color="#7DD3FC" stop-opacity=".42"/><stop offset=".45" stop-color="#475569" stop-opacity=".12"/><stop offset="1" stop-color="#C4B5FD" stop-opacity=".28"/></linearGradient>
+ <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#2563EB" stop-opacity="0"/><stop offset=".25" stop-color="#22D3EE" stop-opacity=".55"/><stop offset=".55" stop-color="#A5B4FC" stop-opacity=".8"/><stop offset=".78" stop-color="#E9D5FF" stop-opacity=".75"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".95"/></linearGradient>
+ <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#60A5FA" stop-opacity="0"/><stop offset=".42" stop-color="#BFDBFE" stop-opacity=".9"/><stop offset=".75" stop-color="#E0F2FE"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+ <linearGradient id="mistColor" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#3730A3" stop-opacity="0"/><stop offset=".35" stop-color="#6366F1" stop-opacity=".3"/><stop offset=".72" stop-color="#67E8F9" stop-opacity=".42"/><stop offset="1" stop-color="#E0F2FE" stop-opacity=".55"/></linearGradient>
+ <radialGradient id="orb"><stop stop-color="#FFFFFF"/><stop offset=".23" stop-color="#E0F2FE"/><stop offset=".57" stop-color="#60A5FA"/><stop offset=".83" stop-color="#1D4ED8"/><stop offset="1" stop-color="#0B1A3A"/></radialGradient>
+ <radialGradient id="halo"><stop stop-color="#60A5FA" stop-opacity=".38"/><stop offset=".48" stop-color="#2563EB" stop-opacity=".12"/><stop offset="1" stop-color="#2563EB" stop-opacity="0"/></radialGradient>
+ <filter id="bloom" x="-100%" y="-400%" width="300%" height="900%"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="glow" x="-80%" y="-300%" width="260%" height="700%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="haze" x="-50%" y="-500%" width="200%" height="1100%"><feGaussianBlur stdDeviation="15"/></filter>
+ <filter id="micro" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <pattern id="stars" width="180" height="120" patternUnits="userSpaceOnUse"><circle cx="12" cy="20" r=".8" fill="#93C5FD" opacity=".22"/><circle cx="92" cy="54" r=".7" fill="#E0E7FF" opacity=".3"/><circle cx="145" cy="96" r=".9" fill="#A5B4FC" opacity=".2"/></pattern>
 </defs>
-<rect width="1600" height="1770" rx="30" fill="url(#bg)"/>
+<rect width="1600" height="1810" fill="url(#bg)"/>
+<rect width="1600" height="1810" fill="url(#stars)" opacity=".65"/>
 <g font-family="Inter,Segoe UI,Arial,sans-serif">
- <text x="72" y="75" fill="#F8FAFC" font-size="35" font-weight="750" letter-spacing="1.3">LIQUIDITY MAP / 10 MOVEMENT TRAILS</text>
- <text x="74" y="111" fill="#94A3B8" font-size="17">MOBA-inspired cosmetic trail styles · orb is the live head · effects remain behind and dissipate</text>
- <text x="74" y="143" fill="#94A3B8" font-size="13" letter-spacing="1">TRAIL HUE IS SET BY LIQUIDITY TIER · ORB CORE COLORS STAY UNCHANGED</text>
- 
+ <text x="72" y="70" fill="#F8FAFC" font-size="34" font-weight="800" letter-spacing="2">LIQUIDITY MAP</text>
+ <text x="72" y="108" fill="#E2E8F0" font-size="25" font-weight="650" letter-spacing="1.3">PREMIUM TRAIL COLLECTION</text>
+ <text x="74" y="137" fill="#94A3B8" font-size="14">Ten cosmetic-grade movement trails · layered light, refined materials, signature motifs and progressive dissipation</text>
  <g>
-  <rect x="65" y="158" width="1470" height="84" rx="14" fill="#101A28" stroke="#26384B"/>
-  <text x="88" y="187" fill="#F8FAFC" font-size="14" font-weight="700" letter-spacing="1">TRAIL HEATMAP</text>
-  <text x="88" y="211" fill="#94A3B8" font-size="11">HOT → COLD</text>
-  <g font-size="12" font-weight="700" text-anchor="middle">
-   <rect x="300" y="174" width="150" height="25" rx="6" fill="#FFFFFF"/><text x="375" y="222" fill="#E2E8F0">SSS · WHITE</text>
-   <rect x="470" y="174" width="150" height="25" rx="6" fill="#FF303B"/><text x="545" y="222" fill="#E2E8F0">SS · RED</text>
-   <rect x="640" y="174" width="150" height="25" rx="6" fill="#FF7900"/><text x="715" y="222" fill="#E2E8F0">S · ORANGE</text>
-   <rect x="810" y="174" width="150" height="25" rx="6" fill="#FFD52A"/><text x="885" y="222" fill="#E2E8F0">A · YELLOW</text>
-   <rect x="980" y="174" width="150" height="25" rx="6" fill="#73E6FF"/><text x="1055" y="222" fill="#E2E8F0">B · LIGHT BLUE</text>
-   <rect x="1150" y="174" width="150" height="25" rx="6" fill="#2787E5"/><text x="1225" y="222" fill="#E2E8F0">C · BLUE</text>
-   <rect x="1320" y="174" width="150" height="25" rx="6" fill="#092B68" stroke="#5276A5"/><text x="1395" y="222" fill="#E2E8F0">D · DEEP BLUE</text>
+  <rect x="62" y="158" width="1476" height="88" rx="16" fill="#0D1928" stroke="#334155" stroke-opacity=".65"/>
+  <text x="83" y="185" fill="#E2E8F0" font-size="13" font-weight="700" letter-spacing="1.4">TIER HEATMAP</text>
+  <text x="83" y="213" fill="#94A3B8" font-size="11">HOT → COLD</text>
+  <g font-size="11" text-anchor="middle" font-weight="700">
+   <rect x="278" y="175" width="143" height="23" rx="6" fill="#FFFFFF"/><text x="349" y="220" fill="#E2E8F0">SSS · WHITE</text>
+   <rect x="450" y="175" width="143" height="23" rx="6" fill="#FF303B"/><text x="521" y="220" fill="#E2E8F0">SS · RED</text>
+   <rect x="622" y="175" width="143" height="23" rx="6" fill="#FF7900"/><text x="693" y="220" fill="#E2E8F0">S · ORANGE</text>
+   <rect x="794" y="175" width="143" height="23" rx="6" fill="#FFD52A"/><text x="865" y="220" fill="#E2E8F0">A · YELLOW</text>
+   <rect x="966" y="175" width="143" height="23" rx="6" fill="#73E6FF"/><text x="1037" y="220" fill="#E2E8F0">B · LIGHT BLUE</text>
+   <rect x="1138" y="175" width="143" height="23" rx="6" fill="#2787E5"/><text x="1209" y="220" fill="#E2E8F0">C · BLUE</text>
+   <rect x="1310" y="175" width="143" height="23" rx="6" fill="#092B68" stroke="#5B7AA8"/><text x="1381" y="220" fill="#E2E8F0">D · DEEP BLUE</text>
   </g>
  </g>
- <!-- 01 No Effect -->
- <g transform="translate(55 265)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">01  NO EFFECT</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Plain straight line · no visual treatment</text>
-  <line x1="125" y1="155" x2="620" y2="155" stroke="#67E8F9" stroke-width="2.5"/>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
-  <text x="125" y="205" fill="#64748B" font-size="11">HISTORY</text><text x="620" y="205" text-anchor="middle" fill="#A5F3FC" font-size="11">LIVE ORB</text>
- </g>
- <!-- 02 Aurora Flow -->
- <g transform="translate(825 265)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">02  AURORA FLOW</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Broad soft ribbon · flowing translucent layers</text>
-  <path d="M125 155 C245 140 330 166 430 153 S555 142 620 155" fill="none" stroke="#0891B2" stroke-opacity=".18" stroke-width="32" stroke-linecap="round" filter="url(#glow)"/>
-  <path d="M125 155 C245 140 330 166 430 153 S555 142 620 155" fill="none" stroke="url(#ribbon)" stroke-width="23" stroke-linecap="round" filter="url(#soft)"/>
-  <path d="M225 151 C340 145 430 161 520 151 S582 151 620 155" fill="none" stroke="#D9FBFF" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
- </g>
- <!-- 03 Particle Wake -->
- <g transform="translate(55 575)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">03  PARTICLE WAKE</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Motes deposited along the path · gentle spread and fade</text>
-  <path d="M125 155H620" stroke="#22D3EE" stroke-opacity=".12" stroke-width="2"/>
-  <g fill="#67E8F9" filter="url(#soft)">
-   <circle cx="155" cy="153" r="1.5" opacity=".18"/><circle cx="184" cy="165" r="2" opacity=".22"/><circle cx="215" cy="145" r="1.7" opacity=".27"/><circle cx="245" cy="157" r="2.4" opacity=".31"/><circle cx="278" cy="140" r="1.8" opacity=".36"/><circle cx="308" cy="171" r="2.1" opacity=".4"/><circle cx="338" cy="153" r="2.7" opacity=".44"/><circle cx="370" cy="139" r="1.8" opacity=".5"/><circle cx="400" cy="166" r="2.6" opacity=".56"/><circle cx="430" cy="151" r="3" opacity=".61"/><circle cx="462" cy="174" r="2.2" opacity=".67"/><circle cx="492" cy="140" r="2.7" opacity=".72"/><circle cx="520" cy="157" r="3.2" opacity=".78"/><circle cx="550" cy="146" r="3.4" opacity=".84"/><circle cx="580" cy="162" r="3.6" opacity=".9"/>
+
+ <!-- CARD TEMPLATE NOTES: Every trail is a residual ribbon/wake leading into the orb on the right. -->
+ <!-- 01 NO EFFECT -->
+ <g transform="translate(55 270)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <path d="M20 86H700" stroke="#7DD3FC" stroke-opacity=".07"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">01 / NO EFFECT</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Pure line · no embellishment</text>
+  <line x1="105" y1="145" x2="620" y2="145" stroke="#73E6FF" stroke-width="2.5"/>
+  <g transform="translate(620 145)">
+   <circle r="43" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/>
+   <circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".88"/><path d="M-17 -4A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="1.3"/>
   </g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <text x="104" y="212" fill="#64748B" font-size="10" letter-spacing="1">ORIGIN</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 04 Mist Veil -->
- <g transform="translate(825 575)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">04  MIST VEIL</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Diffuse haze · low-contrast wisps · slow dissipation</text>
-  <g fill="#22D3EE" filter="url(#mist)">
-   <ellipse cx="235" cy="157" rx="95" ry="17" opacity=".08"/><ellipse cx="330" cy="154" rx="128" ry="22" opacity=".11"/><ellipse cx="435" cy="155" rx="130" ry="23" opacity=".15"/><ellipse cx="530" cy="154" rx="108" ry="21" opacity=".19"/>
+
+ <!-- 02 AURORA FLOW -->
+ <g transform="translate(825 270)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">02 / AURORA FLOW</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Iridescent silk ribbons · pearlescent edge lighting</text>
+  <path d="M95 147 C188 95 260 190 360 143 S500 108 620 145" fill="none" stroke="#2563EB" stroke-opacity=".24" stroke-width="30" stroke-linecap="round" filter="url(#bloom)"/>
+  <path d="M95 147 C188 95 260 190 360 143 S500 108 620 145" fill="none" stroke="url(#aurora)" stroke-opacity=".75" stroke-width="19" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M120 151 C210 115 270 169 365 144 S510 125 620 145" fill="none" stroke="#E0F2FE" stroke-opacity=".82" stroke-width="3" stroke-linecap="round"/>
+  <path d="M170 159 C244 123 300 183 395 148 S530 137 620 145" fill="none" stroke="#C4B5FD" stroke-opacity=".65" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+  <g fill="#E0F2FE" filter="url(#micro)"><circle cx="205" cy="125" r="2"/><circle cx="298" cy="172" r="2.4"/><circle cx="413" cy="126" r="2"/><circle cx="504" cy="119" r="2.5"/><circle cx="562" cy="136" r="1.8"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><circle r="29" fill="none" stroke="#BFDBFE" stroke-opacity=".45"/><path d="M-18 -3A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.3"/></g>
+  <text x="95" y="212" fill="#64748B" font-size="10" letter-spacing="1">FADED ORIGIN</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
+ </g>
+
+ <!-- 03 PARTICLE WAKE -->
+ <g transform="translate(55 565)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">03 / STARDUST WAKE</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Dense micro-particles · jewel sparks · depth of field</text>
+  <path d="M105 145 C265 130 430 166 620 145" fill="none" stroke="#60A5FA" stroke-opacity=".16" stroke-width="13" filter="url(#glow)"/>
+  <g fill="#CFFAFE" filter="url(#micro)">
+   <circle cx="132" cy="139" r="1.2" opacity=".15"/><circle cx="152" cy="159" r="1.5" opacity=".18"/><circle cx="171" cy="130" r="1.1" opacity=".22"/><circle cx="191" cy="148" r="2" opacity=".3"/><circle cx="215" cy="164" r="1.4" opacity=".34"/><circle cx="231" cy="133" r="2.2" opacity=".35"/><circle cx="253" cy="150" r="1.7" opacity=".4"/><circle cx="275" cy="126" r="1.2" opacity=".45"/><circle cx="295" cy="167" r="2.5" opacity=".45"/><circle cx="318" cy="145" r="2" opacity=".5"/><circle cx="340" cy="132" r="1.8" opacity=".55"/><circle cx="362" cy="159" r="2.6" opacity=".57"/><circle cx="382" cy="140" r="1.5" opacity=".62"/><circle cx="405" cy="126" r="2.2" opacity=".65"/><circle cx="425" cy="160" r="2.8" opacity=".68"/><circle cx="450" cy="144" r="2" opacity=".72"/><circle cx="470" cy="127" r="2.4" opacity=".75"/><circle cx="493" cy="156" r="3" opacity=".8"/><circle cx="515" cy="139" r="2.6" opacity=".84"/><circle cx="538" cy="154" r="3.3" opacity=".9"/><circle cx="561" cy="133" r="2.8" opacity=".93"/><circle cx="585" cy="146" r="3.3"/>
   </g>
-  <g fill="#A5F3FC" filter="url(#mist)"><ellipse cx="370" cy="143" rx="145" ry="9" opacity=".1"/><ellipse cx="500" cy="166" rx="105" ry="10" opacity=".11"/></g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
- </g>
- <!-- 05 Afterimage Echo -->
- <g transform="translate(55 885)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">05  AFTERIMAGE ECHO</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Faint orb copies · older echoes become smaller and dimmer</text>
-  <g fill="#67E8F9" filter="url(#soft)">
-   <circle cx="205" cy="155" r="5" opacity=".10"/><circle cx="275" cy="155" r="6" opacity=".15"/><circle cx="345" cy="155" r="7" opacity=".23"/><circle cx="415" cy="155" r="8" opacity=".32"/><circle cx="485" cy="155" r="10" opacity=".43"/><circle cx="545" cy="155" r="12" opacity=".58"/>
+  <g fill="#FFFFFF" filter="url(#glow)">
+   <path d="M205 111l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" opacity=".45"/><path d="M337 175l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z" opacity=".65"/><path d="M482 106l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" opacity=".85"/>
   </g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><path d="M-18 -3A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.3"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">DISSIPATING DUST</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 06 Twin Streamers -->
- <g transform="translate(825 885)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">06  TWIN STREAMERS</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Parallel soft filaments · gentle lateral waviness</text>
-  <path d="M125 143 C235 123 330 163 430 144 S550 133 620 155" fill="none" stroke="#22D3EE" stroke-opacity=".32" stroke-width="7" stroke-linecap="round" filter="url(#soft)"/>
-  <path d="M125 167 C235 187 330 147 430 166 S550 177 620 155" fill="none" stroke="#67E8F9" stroke-opacity=".40" stroke-width="7" stroke-linecap="round" filter="url(#soft)"/>
-  <path d="M270 150 C360 145 455 159 560 151" fill="none" stroke="#D9FBFF" stroke-opacity=".35" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+
+ <!-- 04 NEBULA VEIL -->
+ <g transform="translate(825 565)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">04 / NEBULA VEIL</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Volumetric wisps · layered translucent cloud · inner filaments</text>
+  <g fill="#312E81" filter="url(#haze)"><ellipse cx="248" cy="145" rx="120" ry="26" opacity=".28"/><ellipse cx="340" cy="143" rx="140" ry="32" opacity=".26"/><ellipse cx="465" cy="145" rx="135" ry="28" opacity=".3"/></g>
+  <g fill="#22D3EE" filter="url(#haze)"><ellipse cx="305" cy="131" rx="122" ry="13" opacity=".28"/><ellipse cx="430" cy="158" rx="138" ry="19" opacity=".25"/><ellipse cx="530" cy="140" rx="74" ry="18" opacity=".26"/></g>
+  <path d="M122 147 C200 107 246 175 330 137 S490 124 620 145" fill="none" stroke="url(#mistColor)" stroke-width="16" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M186 159 C250 119 289 178 365 145 S522 130 620 145" fill="none" stroke="#C4B5FD" stroke-opacity=".55" stroke-width="2" filter="url(#glow)"/>
+  <g fill="#DDEBFF"><circle cx="252" cy="116" r="1.5" opacity=".5"/><circle cx="376" cy="169" r="1.8" opacity=".65"/><circle cx="490" cy="116" r="1.4" opacity=".5"/><circle cx="558" cy="158" r="2" opacity=".8"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><path d="M-18 -3A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.3"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">DIFFUSE VEIL</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 07 Sparkle Drift -->
- <g transform="translate(55 1195)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">07  SPARKLE DRIFT</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Sparse tiny glints and motes distributed along the wake</text>
-  <g fill="#A5F3FC" filter="url(#soft)">
-   <path d="M175 142l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" opacity=".18"/>
-   <path d="M250 161l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" opacity=".25"/>
-   <path d="M330 139l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" opacity=".33"/>
-   <path d="M405 165l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" opacity=".43"/>
-   <path d="M485 143l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" opacity=".58"/>
-   <path d="M550 160l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" opacity=".72"/>
+
+ <!-- 05 SPECTRAL AFTERIMAGE -->
+ <g transform="translate(55 860)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">05 / SPECTRAL AFTERIMAGE</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Glossy echo orbs · fading halos · temporal depth</text>
+  <g>
+   <circle cx="173" cy="145" r="7" fill="#60A5FA" opacity=".08" stroke="#BFDBFE" stroke-opacity=".12"/>
+   <circle cx="246" cy="145" r="10" fill="#60A5FA" opacity=".12" stroke="#BFDBFE" stroke-opacity=".18"/><circle cx="246" cy="145" r="15" fill="none" stroke="#60A5FA" stroke-opacity=".08"/>
+   <circle cx="322" cy="145" r="12" fill="#60A5FA" opacity=".2" stroke="#BFDBFE" stroke-opacity=".25"/><circle cx="322" cy="145" r="19" fill="none" stroke="#93C5FD" stroke-opacity=".14"/>
+   <circle cx="402" cy="145" r="15" fill="#60A5FA" opacity=".25" stroke="#BFDBFE" stroke-opacity=".35"/><circle cx="402" cy="145" r="23" fill="none" stroke="#93C5FD" stroke-opacity=".22"/>
+   <circle cx="486" cy="145" r="17" fill="#60A5FA" opacity=".34" stroke="#BFDBFE" stroke-opacity=".5"/><circle cx="486" cy="145" r="27" fill="none" stroke="#93C5FD" stroke-opacity=".28"/>
+   <circle cx="557" cy="145" r="19" fill="#60A5FA" opacity=".52" stroke="#BFDBFE" stroke-opacity=".58"/><circle cx="557" cy="145" r="33" fill="none" stroke="#93C5FD" stroke-opacity=".32"/>
   </g>
-  <g fill="#67E8F9"><circle cx="210" cy="177" r="1.8" opacity=".25"/><circle cx="292" cy="126" r="2" opacity=".32"/><circle cx="375" cy="180" r="2.2" opacity=".38"/><circle cx="460" cy="126" r="2.4" opacity=".55"/><circle cx="520" cy="181" r="2.7" opacity=".7"/></g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <g fill="#FFFFFF" opacity=".55"><circle cx="243" cy="141" r="1.8"/><circle cx="319" cy="140" r="2.2"/><circle cx="399" cy="139" r="2.7"/><circle cx="483" cy="137" r="3"/><circle cx="554" cy="136" r="3.5"/></g>
+  <g transform="translate(620 145)"><circle r="48" fill="url(#halo)"/><circle r="24" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5.5" fill="#FFFFFF" opacity=".9"/><circle r="31" fill="none" stroke="#BFDBFE" stroke-opacity=".58"/><circle r="38" fill="none" stroke="#93C5FD" stroke-opacity=".22" stroke-dasharray="3 6"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">OLDER GHOSTS</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 08 Frost Dust -->
- <g transform="translate(825 1195)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">08  FROST DUST</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Tiny soft-edged crystalline flecks · no sharp projectiles</text>
-  <g stroke="#A5F3FC" stroke-width="1.5" stroke-linecap="round" opacity=".65">
-   <path d="M180 145v13m-6-6.5h12m-10-4.5l8 9m0-9l-8 9"/>
-   <path d="M270 165v10m-5-5h10m-8-4l6 8m0-8l-6 8"/>
-   <path d="M365 138v12m-6-6h12m-9-4l6 8m0-8l-6 8"/>
-   <path d="M450 166v9m-4.5-4.5h9"/>
-   <path d="M535 145v11m-5.5-5.5h11m-8-4l6 8m0-8l-6 8"/>
+
+ <!-- 06 PRISMATIC SERPENTINE -->
+ <g transform="translate(825 860)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">06 / PRISMATIC SERPENTINE</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Interwoven glass filaments · refractive edges · layered depth</text>
+  <path d="M104 143 C185 91 230 193 316 143 S453 94 530 143 S584 169 620 145" fill="none" stroke="#2563EB" stroke-opacity=".22" stroke-width="20" stroke-linecap="round" filter="url(#bloom)"/>
+  <path d="M104 143 C185 91 230 193 316 143 S453 94 530 143 S584 169 620 145" fill="none" stroke="url(#aurora)" stroke-width="7" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M104 158 C185 210 230 108 316 158 S453 207 530 158 S584 123 620 145" fill="none" stroke="#A5F3FC" stroke-opacity=".82" stroke-width="6" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M104 146 C185 130 230 164 316 146 S453 132 530 146 S584 148 620 145" fill="none" stroke="#F5F3FF" stroke-opacity=".8" stroke-width="1.8"/>
+  <g fill="#E0F2FE"><circle cx="230" cy="148" r="2.6"/><circle cx="365" cy="151" r="2.8"/><circle cx="490" cy="147" r="3"/></g>
+  <g transform="translate(620 145)"><circle r="47" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><circle r="31" fill="none" stroke="#C4B5FD" stroke-opacity=".5" stroke-width="1.2"/><path d="M-25 0Q0 -34 25 0" fill="none" stroke="#FFFFFF" stroke-opacity=".55"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">BRAIDED FILAMENTS</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
+ </g>
+
+ <!-- 07 ASTRAL FILIGREE -->
+ <g transform="translate(55 1155)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">07 / ASTRAL FILIGREE</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Delicate luminous ornament · fine connecting threads · jeweled nodes</text>
+  <path d="M110 145 C230 132 350 158 470 145 S565 144 620 145" fill="none" stroke="#60A5FA" stroke-opacity=".25" stroke-width="2" filter="url(#glow)"/>
+  <g stroke="#A5D8FF" stroke-opacity=".6" fill="none" stroke-width="1.1">
+   <path d="M167 145l11-13 11 13-11 13z M178 132Q190 145 178 158 M167 145H189"/>
+   <path d="M260 145l13-16 13 16-13 16z M260 145Q273 129 286 145Q273 161 260 145"/>
+   <path d="M360 145l11-14 11 14-11 14z M349 145H393 M371 131Q390 145 371 159"/>
+   <path d="M463 145l13-15 13 15-13 15z M463 145Q476 130 489 145Q476 160 463 145"/>
+   <path d="M550 145l9-12 9 12-9 12z M550 145H568"/>
   </g>
-  <g fill="#CFFAFE" opacity=".48"><circle cx="220" cy="177" r="2"/><circle cx="310" cy="126" r="1.6"/><circle cx="415" cy="184" r="1.8"/><circle cx="495" cy="126" r="2.2"/><circle cx="570" cy="174" r="2.4"/></g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <g fill="#E0F2FE" filter="url(#glow)"><circle cx="178" cy="145" r="3"/><circle cx="273" cy="145" r="3.4"/><circle cx="371" cy="145" r="3"/><circle cx="476" cy="145" r="3.4"/><circle cx="559" cy="145" r="3.8"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><circle r="31" fill="none" stroke="#C4B5FD" stroke-opacity=".6"/><path d="M-25 0Q0 -32 25 0Q0 32 -25 0Z" fill="none" stroke="#E0F2FE" stroke-opacity=".45"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">ORNAMENTED WAKE</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 09 Luminous Drift -->
- <g transform="translate(55 1505)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">09  LUMINOUS DRIFT</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Soft elongated glow motes · gently disperse around the path</text>
-  <g fill="#22D3EE" filter="url(#glow)">
-   <ellipse cx="190" cy="151" rx="7" ry="2" opacity=".13"/><ellipse cx="270" cy="160" rx="8" ry="2.5" opacity=".18"/><ellipse cx="350" cy="145" rx="9" ry="3" opacity=".24"/><ellipse cx="430" cy="162" rx="10" ry="3" opacity=".34"/><ellipse cx="505" cy="149" rx="12" ry="4" opacity=".46"/><ellipse cx="570" cy="157" rx="13" ry="4.5" opacity=".62"/>
+
+ <!-- 08 FROSTED CRYSTAL DRIFT -->
+ <g transform="translate(825 1155)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">08 / FROSTED CRYSTAL DRIFT</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Faceted micro-crystals · icy caustics · drifting frost dust</text>
+  <path d="M110 145 C250 127 390 163 620 145" fill="none" stroke="#60A5FA" stroke-opacity=".18" stroke-width="13" filter="url(#glow)"/>
+  <g fill="#BFDBFE" fill-opacity=".13" stroke="#DBF4FF" stroke-opacity=".7" stroke-width="1.2">
+   <path d="M164 129l8-10 10 13-6 11-9-3z"/><path d="M236 157l10-15 9 13-7 12z"/><path d="M306 126l8-11 12 13-8 13-9-5z"/><path d="M378 158l11-16 10 13-9 15z"/><path d="M455 125l8-12 12 13-8 13-9-5z"/><path d="M525 157l10-15 10 12-7 14z"/>
   </g>
-  <g fill="#CFFAFE"><circle cx="240" cy="132" r="1.6" opacity=".22"/><circle cx="320" cy="181" r="1.8" opacity=".3"/><circle cx="400" cy="128" r="1.6" opacity=".35"/><circle cx="480" cy="180" r="2" opacity=".5"/></g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <g stroke="#E0F2FE" stroke-opacity=".55" fill="none"><path d="M172 119l4 24m-4-12l-9 4m9-4l9 4"/><path d="M314 115l3 26m-3-13l-9 4m9-4l9 4"/><path d="M463 113l3 27m-3-13l-9 4m9-4l9 4"/></g>
+  <g fill="#FFFFFF" filter="url(#glow)"><circle cx="205" cy="145" r="2"/><circle cx="276" cy="170" r="1.8"/><circle cx="345" cy="137" r="2.3"/><circle cx="425" cy="166" r="2.4"/><circle cx="495" cy="140" r="2.5"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><path d="M-18 -3A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.3"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">CRYSTAL RESIDUE</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <!-- 10 Ripple Echo -->
- <g transform="translate(825 1505)">
-  <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">10  RIPPLE ECHO</text>
-  <text x="30" y="68" fill="#94A3B8" font-size="13">Soft elliptical rings left along the path · older rings fade</text>
-  <g fill="none" stroke="#67E8F9" stroke-width="1.5">
-   <ellipse cx="205" cy="155" rx="22" ry="12" opacity=".12"/>
-   <ellipse cx="295" cy="155" rx="19" ry="10" opacity=".18"/>
-   <ellipse cx="385" cy="155" rx="16" ry="9" opacity=".27"/>
-   <ellipse cx="470" cy="155" rx="13" ry="7" opacity=".38"/>
-   <ellipse cx="540" cy="155" rx="10" ry="6" opacity=".53"/>
-   <ellipse cx="585" cy="155" rx="8" ry="5" opacity=".66"/>
+
+ <!-- 09 BLOOMING PETALS -->
+ <g transform="translate(55 1450)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">09 / BLOOMING PETALS</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Opalescent petals · floating floral fragments · delicate light threads</text>
+  <path d="M110 145 C230 112 345 174 450 142 S555 139 620 145" fill="none" stroke="#60A5FA" stroke-opacity=".24" stroke-width="8" filter="url(#glow)"/>
+  <g fill="#A5B4FC" fill-opacity=".32" stroke="#E0E7FF" stroke-opacity=".8" stroke-width="1.1">
+   <path d="M177 144Q155 121 174 112Q191 127 177 144Z"/><path d="M177 144Q201 122 211 139Q195 153 177 144Z"/>
+   <path d="M277 147Q254 122 274 114Q292 129 277 147Z"/><path d="M277 147Q300 126 311 143Q295 156 277 147Z"/>
+   <path d="M386 144Q365 120 384 112Q402 127 386 144Z"/><path d="M386 144Q408 124 420 139Q404 155 386 144Z"/>
+   <path d="M496 145Q477 123 495 115Q513 130 496 145Z"/><path d="M496 145Q518 126 529 141Q514 155 496 145Z"/>
   </g>
-  <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <g fill="#FFFFFF" opacity=".85"><circle cx="193" cy="128" r="2"/><circle cx="292" cy="131" r="2.2"/><circle cx="402" cy="129" r="2"/><circle cx="512" cy="132" r="2.4"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><circle r="30" fill="none" stroke="#DDD6FE" stroke-opacity=".5"/><path d="M-18 -3A18 18 0 0 1 15 -14" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1.3"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">FLOATING PETALS</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
  </g>
- <text x="76" y="1835" fill="#64748B" font-size="13">Trail hues: SSS white → SS red → S orange → A yellow → B light blue → C blue → D deep blue. Tier hue stays fixed along the trail; age changes opacity only. Orb colors are unchanged.</text>
+
+ <!-- 10 CELESTIAL RINGS -->
+ <g transform="translate(825 1450)">
+  <rect width="720" height="265" rx="20" fill="url(#panel)" stroke="url(#edge)"/>
+  <text x="28" y="40" fill="#F8FAFC" font-size="19" font-weight="750">10 / CELESTIAL RINGS</text>
+  <text x="28" y="64" fill="#94A3B8" font-size="12">Nested translucent ellipses · refraction · drifting luminous nodes</text>
+  <g fill="none" stroke-linecap="round" filter="url(#glow)">
+   <ellipse cx="198" cy="145" rx="36" ry="13" stroke="#60A5FA" stroke-opacity=".18" stroke-width="2"/>
+   <ellipse cx="294" cy="145" rx="40" ry="15" stroke="#93C5FD" stroke-opacity=".25" stroke-width="2"/>
+   <ellipse cx="390" cy="145" rx="44" ry="17" stroke="#BFDBFE" stroke-opacity=".35" stroke-width="2.2"/>
+   <ellipse cx="484" cy="145" rx="47" ry="19" stroke="#DBEAFE" stroke-opacity=".45" stroke-width="2.4"/>
+   <ellipse cx="560" cy="145" rx="39" ry="18" stroke="#E0F2FE" stroke-opacity=".62" stroke-width="2.6"/>
+   <path d="M112 145 C235 111 395 179 620 145" stroke="#93C5FD" stroke-opacity=".22" stroke-width="1.5"/>
+  </g>
+  <g fill="#E0F2FE"><circle cx="198" cy="132" r="2"/><circle cx="294" cy="160" r="2.2"/><circle cx="390" cy="128" r="2.4"/><circle cx="484" cy="164" r="2.6"/><circle cx="560" cy="127" r="3"/></g>
+  <g transform="translate(620 145)"><circle r="46" fill="url(#halo)"/><circle r="23" fill="url(#orb)" stroke="#E0F2FE" stroke-width="1.2"/><circle cx="-7" cy="-8" r="5" fill="#FFFFFF" opacity=".9"/><circle r="31" fill="none" stroke="#BFDBFE" stroke-opacity=".65"/><circle r="39" fill="none" stroke="#93C5FD" stroke-opacity=".25" stroke-dasharray="2 6"/></g>
+  <text x="105" y="212" fill="#64748B" font-size="10" letter-spacing="1">DISSIPATING ECHOES</text><text x="620" y="212" fill="#A5D8F8" font-size="10" text-anchor="middle" letter-spacing="1">LIVE ORB</text>
+ </g>
+ <text x="74" y="1775" fill="#94A3B8" font-size="12">Premium concept direction · Trail Effect defines form and material; tier heatmap defines hue; age defines opacity and dissipation.</text>
+ <text x="74" y="1794" fill="#64748B" font-size="10">All trails are residues behind the orb along recorded history. No forward projection, slash, weapon arc or attack burst.</text>
 </g>
 </svg>
