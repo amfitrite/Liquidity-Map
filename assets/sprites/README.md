@@ -68,4 +68,13 @@ In `spritesheet_orbs_matrix.svg`, the columns represent the 4 active lifecycle s
 
 1. **LOD 0 (Macro View / Tooltip Inspection / 2x - 8x)**: Full layers active, multi-point gradients, fine particles, animated orbital paths.
 2. **LOD 1 (1x Chart Nominal View)**: Subtle aura, primary orbit line, solid core with primary crown/seal silhouette.
-3. **LOD 2 (Zoomed Out / Clustered View)**: Core silhouette and tier hue only; orbits, particles, and fine facet lines omitted to maintain 60 FPS under the 100-object budget.
+3. **LOD 2 (Zoomed Out / Dense View)**: Preserve each individual orb's tier-specific silhouette/core and state cue; remove orbits, particles, and fine facet lines. LOD must never merge separate liquidity objects into a cluster orb. Any screen-space overlap handling must preserve each object's exact world coordinates and unique ID.
+
+
+## 6. Centered live-price world integration
+
+The orb atlas is an asset library, not a chart layout. In the application, the Dukascopy live-price marker stays at the center of the main viewport; historical liquidity objects occupy the past/left world and future projections the right/future world. Do not render candles or OHLC bars. Orb sprite positions must be computed from immutable world coordinates through the centered camera transform.
+
+## 7. Lifecycle and identity
+
+Tier (SSS through D) is independent from lifecycle (FRESH, TESTED, PARTIALLY_SWEPT, SWEPT, INVALIDATED, EXPIRED). State overlays must not destroy tier silhouette. LOD may simplify ornamentation but may not merge or delete independent liquidity objects. See [Orb & Trail Production Integration Specification](../../docs/ORB_TRAIL_PRODUCTION_INTEGRATION_SPEC.md).
