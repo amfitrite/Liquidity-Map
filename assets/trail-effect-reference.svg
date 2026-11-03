@@ -1,77 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180">
 <defs>
  <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#111B2B"/><stop offset="1" stop-color="#080D16"/></linearGradient>
- <linearGradient id="line" x1="0" x2="1"><stop stop-color="#155E75" stop-opacity=".18"/><stop offset=".55" stop-color="#67E8F9"/><stop offset="1" stop-color="#ECFEFF"/></linearGradient>
- <linearGradient id="comet" x1="0" x2="1"><stop stop-color="#22D3EE" stop-opacity="0"/><stop offset=".55" stop-color="#22D3EE" stop-opacity=".35"/><stop offset=".88" stop-color="#A5F3FC" stop-opacity=".9"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
- <linearGradient id="ribbon" x1="0" x2="1"><stop stop-color="#0891B2" stop-opacity="0"/><stop offset=".25" stop-color="#22D3EE" stop-opacity=".45"/><stop offset=".72" stop-color="#A5F3FC" stop-opacity=".9"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
- <radialGradient id="orb"><stop stop-color="#FFFFFF"/><stop offset=".4" stop-color="#CFFAFE"/><stop offset="1" stop-color="#0891B2"/></radialGradient>
- <filter id="bloom" x="-100%" y="-300%" width="300%" height="700%"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
- <filter id="soft" x="-100%" y="-200%" width="300%" height="500%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <radialGradient id="orb"><stop stop-color="#FFFFFF"/><stop offset=".38" stop-color="#D9FBFF"/><stop offset="1" stop-color="#0891B2"/></radialGradient>
+ <linearGradient id="ribbon" x1="0" x2="1"><stop stop-color="#22D3EE" stop-opacity="0"/><stop offset=".22" stop-color="#22D3EE" stop-opacity=".25"/><stop offset=".7" stop-color="#67E8F9" stop-opacity=".58"/><stop offset="1" stop-color="#CFFAFE" stop-opacity=".82"/></linearGradient>
+ <filter id="glow" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="mist" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="17"/></filter>
+ <filter id="soft" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
-<rect width="1600" height="1120" rx="28" fill="url(#bg)"/>
+<rect width="1600" height="1180" rx="30" fill="url(#bg)"/>
 <g font-family="Inter,Segoe UI,Arial,sans-serif">
- <text x="76" y="86" fill="#F8FAFC" font-size="36" font-weight="750" letter-spacing="1.5">LIQUIDITY MAP / TRAIL FX</text>
- <text x="78" y="122" fill="#94A3B8" font-size="17">Five selectable trail treatments · premium game-VFX finish · same underlying timeline</text>
- <g transform="translate(0 170)">
-  <rect x="56" y="0" width="1488" height="160" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="92" y="42" fill="#F8FAFC" font-size="22" font-weight="700">01  NO EFFECT</text>
-  <text x="92" y="70" fill="#94A3B8" font-size="14">Straight Line · plain, solid, no decoration</text>
-  <line x1="430" y1="88" x2="1328" y2="88" stroke="#67E8F9" stroke-width="3" stroke-linecap="butt"/>
-  <circle cx="1328" cy="88" r="15" fill="url(#orb)" stroke="#ECFEFF" stroke-width="2"/>
-  <text x="430" y="126" fill="#64748B" font-size="12">ORIGIN</text><text x="1328" y="126" text-anchor="middle" fill="#A5F3FC" font-size="12">NOW</text>
-  <rect x="1377" y="55" width="126" height="64" rx="12" fill="#0B1220" stroke="#334155"/>
-  <text x="1440" y="82" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="700">NO FX</text><text x="1440" y="101" text-anchor="middle" fill="#94A3B8" font-size="10">PURE LINE</text>
+ <text x="74" y="78" fill="#F8FAFC" font-size="35" font-weight="750" letter-spacing="1.5">LIQUIDITY MAP / MOVEMENT TRAILS</text>
+ <text x="76" y="112" fill="#94A3B8" font-size="17">MOBA-inspired movement residue · the orb is the live head · the trail remains behind and dissipates</text>
+ <g transform="translate(0 145)">
+  <rect x="56" y="0" width="1488" height="174" rx="18" fill="#111C2B" stroke="#26384B"/>
+  <text x="92" y="43" fill="#F8FAFC" font-size="22" font-weight="700">01  NO EFFECT</text>
+  <text x="92" y="71" fill="#94A3B8" font-size="14">Plain straight line · no glow, particles, texture, or animation</text>
+  <line x1="420" y1="98" x2="1320" y2="98" stroke="#67E8F9" stroke-width="2.5"/>
+  <circle cx="1320" cy="98" r="17" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
+  <text x="420" y="137" fill="#64748B" font-size="12">OLDER TRAIL</text><text x="1320" y="137" text-anchor="middle" fill="#A5F3FC" font-size="12">LIVE ORB</text>
  </g>
- <g transform="translate(0 350)">
-  <rect x="56" y="0" width="1488" height="160" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="92" y="42" fill="#F8FAFC" font-size="22" font-weight="700">02  PARTICLE STREAM</text>
-  <text x="92" y="70" fill="#94A3B8" font-size="14">Fine particles · controlled density · subtle depth and motion</text>
-  <line x1="430" y1="88" x2="1328" y2="88" stroke="#22D3EE" stroke-opacity=".22" stroke-width="2"/>
+ <g transform="translate(0 335)">
+  <rect x="56" y="0" width="1488" height="174" rx="18" fill="#111C2B" stroke="#26384B"/>
+  <text x="92" y="43" fill="#F8FAFC" font-size="22" font-weight="700">02  AURORA FLOW</text>
+  <text x="92" y="71" fill="#94A3B8" font-size="14">Soft luminous ribbon · layered translucent flow · rounded, diffused tail</text>
+  <path d="M420 100 C610 89 750 107 920 98 S1150 87 1320 98" fill="none" stroke="#0891B2" stroke-opacity=".18" stroke-width="34" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M420 100 C610 89 750 107 920 98 S1150 87 1320 98" fill="none" stroke="url(#ribbon)" stroke-width="23" stroke-linecap="round" filter="url(#soft)"/>
+  <path d="M510 96 C680 91 820 103 980 98 S1170 93 1320 98" fill="none" stroke="#D9FBFF" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="1320" cy="98" r="17" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2" filter="url(#soft)"/>
+  <text x="420" y="137" fill="#64748B" font-size="12">OLDER / FADING</text><text x="1320" y="137" text-anchor="middle" fill="#A5F3FC" font-size="12">LIVE ORB</text>
+ </g>
+ <g transform="translate(0 525)">
+  <rect x="56" y="0" width="1488" height="174" rx="18" fill="#111C2B" stroke="#26384B"/>
+  <text x="92" y="43" fill="#F8FAFC" font-size="22" font-weight="700">03  PARTICLE WAKE</text>
+  <text x="92" y="71" fill="#94A3B8" font-size="14">Small motes deposited along the path · gentle spread · gradual fade</text>
+  <path d="M420 98H1320" stroke="#22D3EE" stroke-opacity=".12" stroke-width="2"/>
   <g fill="#67E8F9" filter="url(#soft)">
-   <circle cx="474" cy="88" r="2.2"/><circle cx="510" cy="83" r="3"/><circle cx="547" cy="94" r="2"/><circle cx="580" cy="87" r="3.4"/><circle cx="624" cy="78" r="2.2"/><circle cx="655" cy="96" r="2.8"/><circle cx="695" cy="86" r="3.1"/><circle cx="729" cy="91" r="1.8"/><circle cx="766" cy="78" r="3"/><circle cx="801" cy="99" r="2.5"/><circle cx="841" cy="86" r="3.6"/><circle cx="876" cy="91" r="2.2"/><circle cx="912" cy="80" r="2.8"/><circle cx="946" cy="97" r="2.6"/><circle cx="986" cy="87" r="3.3"/><circle cx="1024" cy="78" r="2.1"/><circle cx="1062" cy="92" r="3.1"/><circle cx="1098" cy="85" r="2.4"/><circle cx="1136" cy="96" r="3"/><circle cx="1172" cy="84" r="2.2"/><circle cx="1207" cy="89" r="3.4"/><circle cx="1244" cy="80" r="2.7"/><circle cx="1281" cy="88" r="3.8"/>
+   <circle cx="488" cy="96" r="1.5" opacity=".20"/><circle cx="530" cy="107" r="2" opacity=".24"/><circle cx="574" cy="88" r="1.6" opacity=".26"/><circle cx="615" cy="99" r="2.5" opacity=".31"/><circle cx="656" cy="82" r="1.8" opacity=".35"/><circle cx="690" cy="112" r="2.1" opacity=".38"/><circle cx="731" cy="94" r="2.7" opacity=".43"/><circle cx="769" cy="80" r="1.8" opacity=".45"/><circle cx="805" cy="107" r="2.6" opacity=".48"/><circle cx="843" cy="93" r="3" opacity=".52"/><circle cx="882" cy="114" r="2.2" opacity=".56"/><circle cx="920" cy="83" r="2.7" opacity=".61"/><circle cx="958" cy="98" r="3.2" opacity=".64"/><circle cx="998" cy="108" r="2.5" opacity=".68"/><circle cx="1036" cy="87" r="3.2" opacity=".73"/><circle cx="1076" cy="99" r="3.5" opacity=".77"/><circle cx="1116" cy="82" r="2.8" opacity=".82"/><circle cx="1155" cy="109" r="3.1" opacity=".86"/><circle cx="1195" cy="95" r="3.8" opacity=".91"/><circle cx="1235" cy="88" r="3.2" opacity=".94"/><circle cx="1271" cy="101" r="4.2" opacity=".98"/>
   </g>
-  <g fill="#CFFAFE" opacity=".65"><circle cx="495" cy="101" r="1"/><circle cx="567" cy="72" r="1.1"/><circle cx="641" cy="108" r="1"/><circle cx="715" cy="69" r="1.2"/><circle cx="786" cy="107" r="1"/><circle cx="858" cy="70" r="1.1"/><circle cx="931" cy="109" r="1.2"/><circle cx="1003" cy="67" r="1"/><circle cx="1079" cy="108" r="1.2"/><circle cx="1150" cy="70" r="1"/><circle cx="1228" cy="106" r="1.1"/></g>
-  <circle cx="1328" cy="88" r="15" fill="url(#orb)" stroke="#ECFEFF" stroke-width="2" filter="url(#soft)"/>
-  <text x="430" y="126" fill="#64748B" font-size="12">ORIGIN</text><text x="1328" y="126" text-anchor="middle" fill="#A5F3FC" font-size="12">NOW</text>
+  <g fill="#CFFAFE"><circle cx="550" cy="78" r="1" opacity=".18"/><circle cx="640" cy="119" r="1.1" opacity=".28"/><circle cx="755" cy="119" r="1.1" opacity=".32"/><circle cx="864" cy="71" r="1.2" opacity=".4"/><circle cx="940" cy="121" r="1.3" opacity=".48"/><circle cx="1050" cy="73" r="1.2" opacity=".55"/><circle cx="1135" cy="123" r="1.3" opacity=".7"/><circle cx="1210" cy="72" r="1.3" opacity=".85"/></g>
+  <circle cx="1320" cy="98" r="17" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2" filter="url(#soft)"/>
+  <text x="420" y="137" fill="#64748B" font-size="12">OLDER / FADING</text><text x="1320" y="137" text-anchor="middle" fill="#A5F3FC" font-size="12">LIVE ORB</text>
  </g>
- <g transform="translate(0 530)">
-  <rect x="56" y="0" width="1488" height="160" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="92" y="42" fill="#F8FAFC" font-size="22" font-weight="700">03  COMET TRAIL</text>
-  <text x="92" y="70" fill="#94A3B8" font-size="14">Tapered luminous tail · bright head · refined bloom and sparks</text>
-  <path d="M430 88H1328" stroke="#22D3EE" stroke-opacity=".18" stroke-width="26" filter="url(#bloom)"/>
-  <path d="M430 88H1328" stroke="url(#comet)" stroke-width="13" stroke-linecap="round" filter="url(#soft)"/>
-  <path d="M760 88H1328" stroke="#CFFAFE" stroke-opacity=".8" stroke-width="2.4" stroke-linecap="round"/>
-  <g fill="#CFFAFE" filter="url(#soft)"><circle cx="1218" cy="64" r="2"/><circle cx="1250" cy="108" r="1.8"/><circle cx="1284" cy="70" r="2.2"/></g>
-  <circle cx="1328" cy="88" r="16" fill="url(#orb)" stroke="#FFFFFF" stroke-width="2" filter="url(#bloom)"/>
-  <text x="430" y="126" fill="#64748B" font-size="12">ORIGIN</text><text x="1328" y="126" text-anchor="middle" fill="#A5F3FC" font-size="12">NOW</text>
- </g>
- <g transform="translate(0 710)">
-  <rect x="56" y="0" width="1488" height="160" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="92" y="42" fill="#F8FAFC" font-size="22" font-weight="700">04  ENERGY RIBBON</text>
-  <text x="92" y="70" fill="#94A3B8" font-size="14">Layered silk-like band · inner highlight · subtle surface turbulence</text>
-  <path d="M430 88 C650 72 870 104 1060 86 S1230 84 1328 88" fill="none" stroke="#0891B2" stroke-opacity=".25" stroke-width="27" stroke-linecap="round" filter="url(#bloom)"/>
-  <path d="M430 88 C650 72 870 104 1060 86 S1230 84 1328 88" fill="none" stroke="url(#ribbon)" stroke-width="15" stroke-linecap="round" filter="url(#soft)"/>
-  <path d="M590 84 C760 76 900 98 1080 86 S1240 84 1328 88" fill="none" stroke="#E0FCFF" stroke-opacity=".8" stroke-width="2" stroke-linecap="round"/>
-  <circle cx="1328" cy="88" r="16" fill="url(#orb)" stroke="#FFFFFF" stroke-width="2" filter="url(#bloom)"/>
-  <text x="430" y="126" fill="#64748B" font-size="12">ORIGIN</text><text x="1328" y="126" text-anchor="middle" fill="#A5F3FC" font-size="12">NOW</text>
- </g>
- <g transform="translate(0 890)">
-  <rect x="56" y="0" width="1488" height="160" rx="18" fill="#111C2B" stroke="#26384B"/>
-  <text x="92" y="42" fill="#F8FAFC" font-size="22" font-weight="700">05  ARCANE SIGIL</text>
-  <text x="92" y="70" fill="#94A3B8" font-size="14">Fine luminous filament · sparse runic geometry · occasional glints</text>
-  <line x1="430" y1="88" x2="1328" y2="88" stroke="#22D3EE" stroke-opacity=".42" stroke-width="2" filter="url(#soft)"/>
-  <g stroke="#A5F3FC" fill="none" stroke-width="1.7" opacity=".9">
-   <path d="M505 78L515 88L505 98L495 88Z M500 82H510 M500 94H510"/>
-   <path d="M640 77L650 88L640 99L630 88Z M635 83L645 93M645 83L635 93"/>
-   <path d="M785 78L795 88L785 98L775 88Z M780 88H790 M785 78V98"/>
-   <path d="M925 77L935 88L925 99L915 88Z M920 82L930 94M930 82L920 94"/>
-   <path d="M1070 78L1080 88L1070 98L1060 88Z M1065 88H1075 M1070 78V98"/>
-   <path d="M1207 77L1217 88L1207 99L1197 88Z M1202 83L1212 93M1212 83L1202 93"/>
+ <g transform="translate(0 715)">
+  <rect x="56" y="0" width="1488" height="174" rx="18" fill="#111C2B" stroke="#26384B"/>
+  <text x="92" y="43" fill="#F8FAFC" font-size="22" font-weight="700">04  MIST VEIL</text>
+  <text x="92" y="71" fill="#94A3B8" font-size="14">Diffuse soft haze · overlapping wisps · no hard edges or impact burst</text>
+  <g fill="#22D3EE" filter="url(#mist)">
+   <ellipse cx="560" cy="100" rx="100" ry="15" opacity=".08"/><ellipse cx="700" cy="99" rx="132" ry="19" opacity=".11"/><ellipse cx="850" cy="98" rx="142" ry="20" opacity=".14"/><ellipse cx="990" cy="99" rx="144" ry="22" opacity=".17"/><ellipse cx="1120" cy="98" rx="122" ry="20" opacity=".20"/><ellipse cx="1230" cy="98" rx="83" ry="17" opacity=".22"/>
   </g>
-  <g fill="#E0FCFF" filter="url(#soft)"><circle cx="566" cy="88" r="2"/><circle cx="715" cy="88" r="2"/><circle cx="855" cy="88" r="2"/><circle cx="1000" cy="88" r="2"/><circle cx="1140" cy="88" r="2"/></g>
-  <circle cx="1328" cy="88" r="16" fill="url(#orb)" stroke="#FFFFFF" stroke-width="2" filter="url(#bloom)"/>
-  <text x="430" y="126" fill="#64748B" font-size="12">ORIGIN</text><text x="1328" y="126" text-anchor="middle" fill="#A5F3FC" font-size="12">NOW</text>
+  <g fill="#A5F3FC" filter="url(#mist)"><ellipse cx="870" cy="89" rx="180" ry="8" opacity=".10"/><ellipse cx="1090" cy="108" rx="155" ry="10" opacity=".12"/></g>
+  <circle cx="1320" cy="98" r="17" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2" filter="url(#soft)"/>
+  <text x="420" y="137" fill="#64748B" font-size="12">OLDER / FADING</text><text x="1320" y="137" text-anchor="middle" fill="#A5F3FC" font-size="12">LIVE ORB</text>
  </g>
- <text x="78" y="1090" fill="#64748B" font-size="13">Concept reference only · illustrative cyan tier tint; runtime must tint each effect from its owning liquidity tier · trails represent age/history, never forecast direction.</text>
+ <g transform="translate(0 905)">
+  <rect x="56" y="0" width="1488" height="174" rx="18" fill="#111C2B" stroke="#26384B"/>
+  <text x="92" y="43" fill="#F8FAFC" font-size="22" font-weight="700">05  AFTERIMAGE ECHO</text>
+  <text x="92" y="71" fill="#94A3B8" font-size="14">Soft repeated orb echoes · each older echo becomes smaller, dimmer, and more diffuse</text>
+  <g>
+   <circle cx="590" cy="98" r="5" fill="#67E8F9" opacity=".12" filter="url(#soft)"/>
+   <circle cx="700" cy="98" r="6" fill="#67E8F9" opacity=".18" filter="url(#soft)"/>
+   <circle cx="810" cy="98" r="7" fill="#67E8F9" opacity=".25" filter="url(#soft)"/>
+   <circle cx="920" cy="98" r="8" fill="#67E8F9" opacity=".34" filter="url(#soft)"/>
+   <circle cx="1030" cy="98" r="10" fill="#67E8F9" opacity=".44" filter="url(#soft)"/>
+   <circle cx="1140" cy="98" r="11" fill="#67E8F9" opacity=".56" filter="url(#soft)"/>
+   <circle cx="1245" cy="98" r="13" fill="#67E8F9" opacity=".72" filter="url(#soft)"/>
+  </g>
+  <circle cx="1320" cy="98" r="17" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2" filter="url(#soft)"/>
+  <text x="420" y="137" fill="#64748B" font-size="12">OLDER ECHOES</text><text x="1320" y="137" text-anchor="middle" fill="#A5F3FC" font-size="12">LIVE ORB</text>
+ </g>
+ <text x="76" y="1138" fill="#64748B" font-size="13">Concept reference · cyan is illustrative only; runtime tint follows liquidity tier · every effect is residue behind the orb, never an attack slash or forward projectile.</text>
 </g>
 </svg>
