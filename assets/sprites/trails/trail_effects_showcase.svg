@@ -12,7 +12,7 @@
       <stop offset="100%" stop-color="#0C101C" stop-opacity="0.98"/>
     </linearGradient>
 
-    <!-- Candlestick chart simulation grid -->
+    <!-- Neutral world-space reference grid; no candlesticks are rendered -->
     <pattern id="chart-grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <line x1="0" y1="0" x2="40" y2="0" stroke="#334155" stroke-opacity="0.12" stroke-width="1"/>
       <line x1="0" y1="0" x2="0" y2="40" stroke="#334155" stroke-opacity="0.12" stroke-width="1"/>
@@ -139,7 +139,7 @@
       <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.85"/>
     </linearGradient>
 
-    <!-- LIVE ORB HEAD ICONS (Centered at 0,0) -->
+    <!-- OBJECT ANCHOR ICONS (Centered at 0,0) -->
     <g id="head-sss">
       <circle r="22" fill="#D6A332" opacity="0.25" filter="url(#hyper-bloom-white)"/>
       <circle r="14" fill="#FFE082" stroke="#FFF" stroke-width="2"/>
@@ -482,8 +482,8 @@
   <g transform="translate(64 2050)" font-family="Inter,Segoe UI,Arial,sans-serif">
     <rect width="1472" height="280" rx="16" fill="#090E17" stroke="#334155" stroke-width="1"/>
     
-    <text x="28" y="32" fill="#F8FAFC" font-size="15" font-weight="700">MULTI-TIER CONFLUENCE STACK (LIVE CHART PERSPECTIVE)</text>
-    <text x="28" y="52" fill="#94A3B8" font-size="11">Demonstrating how straight horizontal liquidity lines preserve perfect price readability without obstructing candle wicks</text>
+    <text x="28" y="32" fill="#F8FAFC" font-size="15" font-weight="700">MULTI-TIER CONFLUENCE STACK (CENTERED LIVE-PRICE WORLD)</text>
+    <text x="28" y="52" fill="#94A3B8" font-size="11">Demonstrating straight horizontal liquidity levels around a centered live-price anchor; no candles or OHLC bars</text>
 
     <!-- Stack of 7 horizontal liquidity levels -->
     <!-- SSS Line -->
