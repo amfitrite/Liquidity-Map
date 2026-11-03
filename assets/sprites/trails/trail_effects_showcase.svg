@@ -1,0 +1,525 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1600 2400" width="1600" height="2400">
+  <defs>
+    <!-- Background & Grid -->
+    <linearGradient id="bg-space" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#070911"/>
+      <stop offset="50%" stop-color="#0B101E"/>
+      <stop offset="100%" stop-color="#05070D"/>
+    </linearGradient>
+
+    <linearGradient id="card-surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121829" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0C101C" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Candlestick chart simulation grid -->
+    <pattern id="chart-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="40" y2="0" stroke="#334155" stroke-opacity="0.12" stroke-width="1"/>
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#334155" stroke-opacity="0.12" stroke-width="1"/>
+    </pattern>
+
+    <!-- AAA High-End Multi-Stage Glow Filters -->
+    <filter id="hyper-bloom-white" x="-20%" y="-400%" width="140%" height="900%">
+      <feGaussianBlur stdDeviation="14" result="broad"/>
+      <feGaussianBlur stdDeviation="4" result="mid"/>
+      <feGaussianBlur stdDeviation="1.2" result="sharp"/>
+      <feMerge>
+        <feMergeNode in="broad"/>
+        <feMergeNode in="mid"/>
+        <feMergeNode in="sharp"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="bloom-red" x="-20%" y="-350%" width="140%" height="800%">
+      <feGaussianBlur stdDeviation="10" result="b1"/>
+      <feGaussianBlur stdDeviation="3.5" result="b2"/>
+      <feMerge>
+        <feMergeNode in="b1"/>
+        <feMergeNode in="b2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="bloom-orange" x="-20%" y="-350%" width="140%" height="800%">
+      <feGaussianBlur stdDeviation="9" result="b1"/>
+      <feGaussianBlur stdDeviation="3" result="b2"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="bloom-yellow" x="-20%" y="-350%" width="140%" height="800%">
+      <feGaussianBlur stdDeviation="8" result="b1"/>
+      <feGaussianBlur stdDeviation="2.5" result="b2"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="bloom-cyan" x="-20%" y="-350%" width="140%" height="800%">
+      <feGaussianBlur stdDeviation="9" result="b1"/>
+      <feGaussianBlur stdDeviation="3" result="b2"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="bloom-blue" x="-20%" y="-350%" width="140%" height="800%">
+      <feGaussianBlur stdDeviation="7" result="b1"/>
+      <feGaussianBlur stdDeviation="2" result="b2"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- HORIZONTAL DISSIPATION GRADIENTS (Left = History / 0% Alpha; Right = Live Head / 100% Core) -->
+    <!-- SSS White -->
+    <linearGradient id="grad-sss-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#E2E8F0" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#F8FAFC" stop-opacity="0.65"/>
+      <stop offset="92%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="grad-sss-aura" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E2E8F0" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#CBD5E1" stop-opacity="0.06"/>
+      <stop offset="75%" stop-color="#F1F5F9" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- SS Red -->
+    <linearGradient id="grad-ss-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF303B" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#991B1B" stop-opacity="0.15"/>
+      <stop offset="65%" stop-color="#EF4444" stop-opacity="0.6"/>
+      <stop offset="90%" stop-color="#FF303B" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFE4E6" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="grad-ss-aura" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF303B" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#DC2626" stop-opacity="0.08"/>
+      <stop offset="80%" stop-color="#F87171" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FF303B" stop-opacity="0.45"/>
+    </linearGradient>
+
+    <!-- S Orange -->
+    <linearGradient id="grad-s-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF7900" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#C2410C" stop-opacity="0.15"/>
+      <stop offset="70%" stop-color="#F97316" stop-opacity="0.65"/>
+      <stop offset="92%" stop-color="#FF7900" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FFEDD5" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- A Yellow -->
+    <linearGradient id="grad-a-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFD52A" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#CA8A04" stop-opacity="0.15"/>
+      <stop offset="70%" stop-color="#EAB308" stop-opacity="0.65"/>
+      <stop offset="92%" stop-color="#FFD52A" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#FEF9C3" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- B Cyan -->
+    <linearGradient id="grad-b-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#73E6FF" stop-opacity="0"/>
+      <stop offset="35%" stop-color="#0284C7" stop-opacity="0.15"/>
+      <stop offset="70%" stop-color="#38BDF8" stop-opacity="0.65"/>
+      <stop offset="92%" stop-color="#73E6FF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ECFEFF" stop-opacity="1"/>
+    </linearGradient>
+
+    <!-- C Cobalt Blue -->
+    <linearGradient id="grad-c-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2787E5" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#1D4ED8" stop-opacity="0.15"/>
+      <stop offset="75%" stop-color="#3B82F6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- D Deep Blue -->
+    <linearGradient id="grad-d-core" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#092B68" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#0F172A" stop-opacity="0.15"/>
+      <stop offset="80%" stop-color="#1E3A8A" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- LIVE ORB HEAD ICONS (Centered at 0,0) -->
+    <g id="head-sss">
+      <circle r="22" fill="#D6A332" opacity="0.25" filter="url(#hyper-bloom-white)"/>
+      <circle r="14" fill="#FFE082" stroke="#FFF" stroke-width="2"/>
+      <circle r="6" fill="#FFF"/>
+      <!-- Imperial Crown Silhouette -->
+      <path d="M-10 -7 L-7 -17 L-3 -11 L0 -19 L3 -11 L7 -17 L10 -7 Z" fill="#FFF" stroke="#D6A332" stroke-width="1.2"/>
+    </g>
+
+    <g id="head-ss">
+      <circle r="19" fill="#FF303B" opacity="0.22" filter="url(#bloom-red)"/>
+      <circle r="12" fill="#FB7185" stroke="#FFF" stroke-width="1.8"/>
+      <circle r="5" fill="#FFF"/>
+      <path d="M-8 -6 L-5 -14 L0 -9 L5 -14 L8 -6 Z" fill="#FFF" stroke="#BE123C" stroke-width="1"/>
+    </g>
+
+    <g id="head-s">
+      <circle r="16" fill="#FF7900" opacity="0.2" filter="url(#bloom-orange)"/>
+      <path d="M0 -12 L10 -5 L10 5 L0 12 L-10 5 L-10 -5 Z" fill="#FB923C" stroke="#FFF" stroke-width="1.5"/>
+      <circle r="3.5" fill="#FFF"/>
+    </g>
+
+    <g id="head-a">
+      <circle r="14" fill="#FFD52A" opacity="0.18" filter="url(#bloom-yellow)"/>
+      <polygon points="0,-10 8,-5 8,5 0,10 -8,5 -8,-5" fill="#FACC15" stroke="#FFF" stroke-width="1.4"/>
+      <circle r="3" fill="#FFF"/>
+    </g>
+
+    <g id="head-b">
+      <circle r="12" fill="#73E6FF" opacity="0.16" filter="url(#bloom-cyan)"/>
+      <circle r="8" fill="#38BDF8" stroke="#FFF" stroke-width="1.2"/>
+      <circle r="2.5" fill="#FFF"/>
+    </g>
+
+    <g id="head-c">
+      <polygon points="-8,-6 -2,-9 6,-7 9,-2 7,6 1,8 -6,4 -9,-2" fill="#64748B" stroke="#CBD5E1" stroke-width="1.4"/>
+      <circle r="2" fill="#FFF"/>
+    </g>
+
+    <g id="head-d">
+      <path d="M-6 -4 C-4 -8 0 -8 4 -6 C7 -4 8 -1 6 3 C4 6 0 7 -4 6 C-7 5 -8 1 -8 -2 Z" fill="#9A7658" stroke="#D6B99A" stroke-width="1.2"/>
+    </g>
+  </defs>
+
+  <!-- BACKGROUND CANVAS -->
+  <rect width="1600" height="2400" fill="url(#bg-space)"/>
+  <rect width="1600" height="2400" fill="url(#chart-grid)"/>
+
+  <!-- HEADER TITLE & ARCHITECTURE STATEMENT -->
+  <g transform="translate(64 54)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <div class="header-tags">
+      <rect width="180" height="26" rx="6" fill="#D6A332" fill-opacity="0.2" stroke="#D6A332" stroke-width="1"/>
+      <text x="12" y="17" fill="#FDE047" font-size="11" font-weight="800" letter-spacing="1">AAA LIQUIDITY ENGINE</text>
+    </div>
+    <text x="0" y="64" fill="#FFFFFF" font-size="36" font-weight="800" letter-spacing="1.5">STRAIGHT-LINE LIQUIDITY TRAIL VFX</text>
+    <text x="0" y="94" fill="#94A3B8" font-size="15" font-weight="500">
+      Liquidity levels in institutional markets are strictly straight horizontal price coordinates.
+    </text>
+    <text x="0" y="116" fill="#64748B" font-size="13">
+      The live orb represents current price / latest observation (Head). The trail extends horizontally backwards into formation history with mathematical dissipation.
+    </text>
+    <line x1="0" y1="136" x2="1472" y2="136" stroke="#334155" stroke-width="1"/>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 01: SSS IMPERIAL SOVEREIGN · QUANTUM HYPER-BEAM (Y = 220)          -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 220)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <!-- Panel Backdrop -->
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#F8FAFC" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <!-- Meta Info Left -->
+    <text x="28" y="38" fill="#FFFFFF" font-size="16" font-weight="800" letter-spacing="1">01 / SSS · QUANTUM HYPER-BEAM (SOVEREIGN HORIZON)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Macro MN1 External Pool · Trail Heatmap: #FFFFFF White · Concentrated Laser Core + Dual Harmonic Rails</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,750.40 XAUUSD | STATUS: FRESH | DECAY: pow(age, 1.8)</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start (Origin)</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#F8FAFC" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD (t_now)</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#F8FAFC" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL TRAIL BEAM (Y = 140) -->
+    <g id="trail-sss-stream">
+      <!-- Layer 1: Broad Volumetric Atmosphere Envelope (28px height) -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-sss-aura)" stroke-width="32" stroke-linecap="round" filter="url(#hyper-bloom-white)"/>
+
+      <!-- Layer 2: Secondary Harmonic Containment Rails (Offset +/- 7px) -->
+      <line x1="480" y1="133" x2="1350" y2="133" stroke="url(#grad-sss-core)" stroke-width="1.2" opacity="0.75" stroke-dasharray="24 6 8 6"/>
+      <line x1="480" y1="147" x2="1350" y2="147" stroke="url(#grad-sss-core)" stroke-width="1.2" opacity="0.75" stroke-dasharray="24 6 8 6"/>
+
+      <!-- Layer 3: Precision Coordinate Ticks along the straight line -->
+      <g stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.2">
+        <line x1="550" y1="136" x2="550" y2="144"/>
+        <line x1="720" y1="135" x2="720" y2="145"/>
+        <line x1="890" y1="134" x2="890" y2="146"/>
+        <line x1="1060" y1="133" x2="1060" y2="147"/>
+        <line x1="1210" y1="132" x2="1210" y2="148"/>
+      </g>
+
+      <!-- Layer 4: Micro-Quantum Photonic Packets (Diamond nodes) -->
+      <path d="M720 140 L724 137 L728 140 L724 143 Z" fill="#FFF" filter="url(#hyper-bloom-white)"/>
+      <path d="M1060 140 L1065 136 L1070 140 L1065 144 Z" fill="#FFF" filter="url(#hyper-bloom-white)"/>
+      <path d="M1210 140 L1216 135 L1222 140 L1216 145 Z" fill="#FFF" filter="url(#hyper-bloom-white)"/>
+
+      <!-- Layer 5: Razor-Sharp Hyper-Dense Incandescent Core (White-Hot) -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-sss-core)" stroke-width="3.5" stroke-linecap="round" filter="url(#hyper-bloom-white)"/>
+      <line x1="600" y1="140" x2="1350" y2="140" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+
+      <!-- Anchor Live Head -->
+      <use xlink:href="#head-sss" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 02: SS CRIMSON DYNAST · FUSION PLASMA CONDUIT (Y = 480)           -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 480)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#FF303B" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#FF8A92" font-size="16" font-weight="800" letter-spacing="1">02 / SS · FUSION PLASMA CONDUIT (DYNASTIC CORE)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Weekly W1 External Liquidity · Trail Heatmap: #FF303B Red · Thermal Ionization Envelope + Plasma Stream</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,742.15 XAUUSD | STATUS: FRESH | THERMAL EMISSION: 940 MW</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#FF8A92" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#FF303B" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL PLASMA BEAM (Y = 140) -->
+    <g id="trail-ss-stream">
+      <!-- Layer 1: Volumetric Crimson Bloom Envelope -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-ss-aura)" stroke-width="28" stroke-linecap="round" filter="url(#bloom-red)"/>
+
+      <!-- Layer 2: Thermal Ionization Guides (Offset +/- 5px) -->
+      <line x1="500" y1="134" x2="1350" y2="134" stroke="url(#grad-ss-core)" stroke-width="1.5" opacity="0.6"/>
+      <line x1="500" y1="146" x2="1350" y2="146" stroke="url(#grad-ss-core)" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Layer 3: Plasma Heat Sparks along trajectory -->
+      <circle cx="820" cy="132" r="2.5" fill="#FFE4E6" filter="url(#bloom-red)"/>
+      <circle cx="980" cy="147" r="2" fill="#FFE4E6" filter="url(#bloom-red)"/>
+      <circle cx="1140" cy="133" r="3" fill="#FFF" filter="url(#bloom-red)"/>
+      <circle cx="1260" cy="146" r="2.8" fill="#FFF" filter="url(#bloom-red)"/>
+
+      <!-- Layer 4: Primary Straight Plasma Line -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-ss-core)" stroke-width="3.5" stroke-linecap="round" filter="url(#bloom-red)"/>
+      <line x1="680" y1="140" x2="1350" y2="140" stroke="#FFE4E6" stroke-width="1.4" stroke-linecap="round"/>
+
+      <!-- Live Head -->
+      <use xlink:href="#head-ss" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 03: S SAPPHIRE DUKE · ASTRAL CONSTELLATION HORIZON (Y = 740)      -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 740)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#FF7900" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#FDBA74" font-size="16" font-weight="800" letter-spacing="1">03 / S · ASTRAL CONSTELLATION HORIZON (HERALDIC RAY)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Daily D1 External Pool · Trail Heatmap: #FF7900 Solar Orange · Starlight Nodes + Celestial Coordinate Axis</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,734.80 XAUUSD | STATUS: FRESH | SPECTRAL GRADE: O-TYPE</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#FDBA74" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#FF7900" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL ASTRAL RAY (Y = 140) -->
+    <g id="trail-s-stream">
+      <!-- Layer 1: Ambient Solar Orange Glow -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="#FF7900" stroke-opacity="0.18" stroke-width="24" stroke-linecap="round" filter="url(#bloom-orange)"/>
+
+      <!-- Layer 2: Constellation Star Nodes on the straight line -->
+      <g fill="#FFF" filter="url(#bloom-orange)">
+        <polygon points="620,135 623,140 620,145 617,140" fill="#FFEDD5"/>
+        <polygon points="880,134 884,140 880,146 876,140" fill="#FFF"/>
+        <polygon points="1120,133 1125,140 1120,147 1115,140" fill="#FFF"/>
+      </g>
+
+      <!-- Layer 3: Celestial Fine Ticks -->
+      <g stroke="#FED7AA" stroke-width="1" opacity="0.75">
+        <line x1="450" y1="137" x2="450" y2="143"/>
+        <line x1="750" y1="136" x2="750" y2="144"/>
+        <line x1="1000" y1="135" x2="1000" y2="145"/>
+        <line x1="1250" y1="134" x2="1250" y2="146"/>
+      </g>
+
+      <!-- Layer 4: Straight Core Beam -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-s-core)" stroke-width="3" stroke-linecap="round" filter="url(#bloom-orange)"/>
+      <line x1="700" y1="140" x2="1350" y2="140" stroke="#FFF7ED" stroke-width="1.2" stroke-linecap="round"/>
+
+      <use xlink:href="#head-s" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 04: A AZURE KNIGHT · CYBER NEON DATA RAIL (Y = 1000)               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 1000)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#FFD52A" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#FEF08A" font-size="16" font-weight="800" letter-spacing="1">04 / A · CYBER NEON DATA RAIL (KNIGHT'S PRECISION)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Intraday H4 Major Structure · Trail Heatmap: #FFD52A Yellow · Segmented High-Frequency Telemetry Ticks</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,728.50 XAUUSD | STATUS: FRESH | BANDWIDTH: 40 Gbps OPTICAL</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#FEF08A" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#FFD52A" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL NEON DATA STREAM (Y = 140) -->
+    <g id="trail-a-stream">
+      <!-- Layer 1: Ambient Neon Yellow Glow -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="#FFD52A" stroke-opacity="0.16" stroke-width="22" stroke-linecap="round" filter="url(#bloom-yellow)"/>
+
+      <!-- Layer 2: Precision Telemetry Binary Track (Upper & Lower) -->
+      <line x1="520" y1="134" x2="1350" y2="134" stroke="url(#grad-a-core)" stroke-width="1" stroke-dasharray="14 4 4 4" opacity="0.75"/>
+      <line x1="520" y1="146" x2="1350" y2="146" stroke="url(#grad-a-core)" stroke-width="1" stroke-dasharray="14 4 4 4" opacity="0.75"/>
+
+      <!-- Layer 3: High-Frequency Micro Notches -->
+      <g stroke="#FEF9C3" stroke-width="1" opacity="0.8">
+        <line x1="680" y1="136" x2="680" y2="144"/>
+        <line x1="740" y1="136" x2="740" y2="144"/>
+        <line x1="800" y1="136" x2="800" y2="144"/>
+        <line x1="960" y1="135" x2="960" y2="145"/>
+        <line x1="1120" y1="135" x2="1120" y2="145"/>
+        <line x1="1240" y1="134" x2="1240" y2="146"/>
+      </g>
+
+      <!-- Layer 4: Razor Fiber-Optic Core Line -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-a-core)" stroke-width="2.8" stroke-linecap="round" filter="url(#bloom-yellow)"/>
+      <line x1="720" y1="140" x2="1350" y2="140" stroke="#FEF9C3" stroke-width="1.2" stroke-linecap="round"/>
+
+      <use xlink:href="#head-a" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 05: B JADE MERCHANT · CRYO-PRISMATIC FILAMENT (Y = 1260)           -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 1260)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#73E6FF" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#BAE6FD" font-size="16" font-weight="800" letter-spacing="1">05 / B · CRYO-PRISMATIC FILAMENT (JADE GUILD HORIZON)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Intraday H1 Structure · Trail Heatmap: #73E6FF Light Blue / Cyan · Crystal Caustic Facets &amp; Sub-Zero Glow</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,721.20 XAUUSD | STATUS: FRESH | REFRACTIVE INDEX: 1.54</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#BAE6FD" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#73E6FF" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL CRYO FILAMENT (Y = 140) -->
+    <g id="trail-b-stream">
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="#73E6FF" stroke-opacity="0.15" stroke-width="20" stroke-linecap="round" filter="url(#bloom-cyan)"/>
+
+      <!-- Frost crystal particles drifting close to line -->
+      <polygon points="760,136 763,140 760,144 757,140" fill="#E0F2FE" opacity="0.8"/>
+      <polygon points="1020,135 1024,140 1020,145 1016,140" fill="#FFF" filter="url(#bloom-cyan)"/>
+      <polygon points="1210,134 1215,140 1210,146 1205,140" fill="#FFF" filter="url(#bloom-cyan)"/>
+
+      <!-- Straight core line -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-b-core)" stroke-width="2.6" stroke-linecap="round" filter="url(#bloom-cyan)"/>
+      <line x1="780" y1="140" x2="1350" y2="140" stroke="#F0FDF4" stroke-width="1.1" stroke-linecap="round"/>
+
+      <use xlink:href="#head-b" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 06: C IRON CRAFTER · HEAVY FLUX INDUCTION CHANNEL (Y = 1520)       -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 1520)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#2787E5" stroke-opacity="0.3" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#93C5FD" font-size="16" font-weight="800" letter-spacing="1">06 / C · HEAVY FLUX INDUCTION CHANNEL (FORGED LINE)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Session M15 Structure · Trail Heatmap: #2787E5 Blue · Industrial Twin Magnetic Rails, Utilitarian</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,715.60 XAUUSD | STATUS: FRESH | RESISTANCE: 0.04 OHMS</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#93C5FD" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#2787E5" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL FLUX CHANNEL (Y = 140) -->
+    <g id="trail-c-stream">
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="#2787E5" stroke-opacity="0.12" stroke-width="16" stroke-linecap="round" filter="url(#bloom-blue)"/>
+      
+      <!-- Twin Guide Rails -->
+      <line x1="450" y1="136" x2="1350" y2="136" stroke="#3B82F6" stroke-width="1" opacity="0.6"/>
+      <line x1="450" y1="144" x2="1350" y2="144" stroke="#3B82F6" stroke-width="1" opacity="0.6"/>
+
+      <!-- Core Line -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-c-core)" stroke-width="2.2" stroke-linecap="round" filter="url(#bloom-blue)"/>
+      <line x1="840" y1="140" x2="1350" y2="140" stroke="#EFF6FF" stroke-width="1" stroke-linecap="round"/>
+
+      <use xlink:href="#head-c" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PRESET 07: D EARTHEN PEASANT · MINIMAL HORIZON RAY (Y = 1780)             -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 1780)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="240" rx="16" fill="url(#card-surface)" stroke="#092B68" stroke-opacity="0.4" stroke-width="1.5"/>
+    
+    <text x="28" y="38" fill="#60A5FA" font-size="16" font-weight="800" letter-spacing="1">07 / D · MINIMAL HORIZON RAY (COMMON FOLK / BASELINE)</text>
+    <text x="28" y="60" fill="#94A3B8" font-size="12">Micro M5/M1 Structure · Trail Heatmap: #092B68 Deep Blue · Clean, Zero Clutter, Pure Mathematical Dissipation</text>
+    <text x="28" y="212" fill="#E2E8F0" font-size="11" font-family="monospace">COORD: 2,710.10 XAUUSD | STATUS: FRESH | BUDGET: ULTRA-LIGHTWEIGHT</text>
+
+    <!-- Timestamp markers -->
+    <text x="240" y="100" fill="#64748B" font-size="10" font-family="monospace">t_start</text>
+    <line x1="240" y1="110" x2="240" y2="170" stroke="#475569" stroke-width="1" stroke-dasharray="3 3"/>
+    
+    <text x="1350" y="100" fill="#60A5FA" font-size="10" font-family="monospace" text-anchor="middle">LIVE HEAD</text>
+    <line x1="1350" y1="110" x2="1350" y2="170" stroke="#092B68" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- STRAIGHT HORIZONTAL MINIMAL RAY (Y = 140) -->
+    <g id="trail-d-stream">
+      <!-- Pure unadorned straight line with smooth alpha fade -->
+      <line x1="240" y1="140" x2="1350" y2="140" stroke="url(#grad-d-core)" stroke-width="1.8" stroke-linecap="round"/>
+      <use xlink:href="#head-d" transform="translate(1350 140)"/>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- MULTI-TIER CONFLUENCE STACK (SIMULATED CHART VIEW) (Y = 2050)             -->
+  <!-- ========================================================================= -->
+  <g transform="translate(64 2050)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect width="1472" height="280" rx="16" fill="#090E17" stroke="#334155" stroke-width="1"/>
+    
+    <text x="28" y="32" fill="#F8FAFC" font-size="15" font-weight="700">MULTI-TIER CONFLUENCE STACK (LIVE CHART PERSPECTIVE)</text>
+    <text x="28" y="52" fill="#94A3B8" font-size="11">Demonstrating how straight horizontal liquidity lines preserve perfect price readability without obstructing candle wicks</text>
+
+    <!-- Stack of 7 horizontal liquidity levels -->
+    <!-- SSS Line -->
+    <text x="40" y="84" fill="#FFFFFF" font-size="10" font-family="monospace">MN1 BSL 2,750.00 [SSS]</text>
+    <line x1="210" y1="80" x2="1380" y2="80" stroke="url(#grad-sss-core)" stroke-width="2.5" filter="url(#hyper-bloom-white)"/>
+    <use xlink:href="#head-sss" transform="translate(1380 80) scale(0.7)"/>
+
+    <!-- SS Line -->
+    <text x="40" y="114" fill="#FF8A92" font-size="10" font-family="monospace">W1  BSL 2,742.50 [SS]</text>
+    <line x1="340" y1="110" x2="1380" y2="110" stroke="url(#grad-ss-core)" stroke-width="2.2" filter="url(#bloom-red)"/>
+    <use xlink:href="#head-ss" transform="translate(1380 110) scale(0.7)"/>
+
+    <!-- S Line -->
+    <text x="40" y="144" fill="#FDBA74" font-size="10" font-family="monospace">D1  BSL 2,735.00 [S]</text>
+    <line x1="480" y1="140" x2="1380" y2="140" stroke="url(#grad-s-core)" stroke-width="2" filter="url(#bloom-orange)"/>
+    <use xlink:href="#head-s" transform="translate(1380 140) scale(0.7)"/>
+
+    <!-- A Line -->
+    <text x="40" y="174" fill="#FEF08A" font-size="10" font-family="monospace">H4  SSL 2,728.00 [A]</text>
+    <line x1="600" y1="170" x2="1380" y2="170" stroke="url(#grad-a-core)" stroke-width="1.8" filter="url(#bloom-yellow)"/>
+    <use xlink:href="#head-a" transform="translate(1380 170) scale(0.7)"/>
+
+    <!-- B Line -->
+    <text x="40" y="204" fill="#BAE6FD" font-size="10" font-family="monospace">H1  SSL 2,720.00 [B]</text>
+    <line x1="720" y1="200" x2="1380" y2="200" stroke="url(#grad-b-core)" stroke-width="1.6" filter="url(#bloom-cyan)"/>
+    <use xlink:href="#head-b" transform="translate(1380 200) scale(0.7)"/>
+
+    <!-- C Line -->
+    <text x="40" y="234" fill="#93C5FD" font-size="10" font-family="monospace">M15 SSL 2,714.50 [C]</text>
+    <line x1="880" y1="230" x2="1380" y2="230" stroke="url(#grad-c-core)" stroke-width="1.4"/>
+    <use xlink:href="#head-c" transform="translate(1380 230) scale(0.7)"/>
+
+    <!-- D Line -->
+    <text x="40" y="264" fill="#60A5FA" font-size="10" font-family="monospace">M5  SSL 2,709.00 [D]</text>
+    <line x1="1020" y1="260" x2="1380" y2="260" stroke="url(#grad-d-core)" stroke-width="1.2"/>
+    <use xlink:href="#head-d" transform="translate(1380 260) scale(0.7)"/>
+  </g>
+
+</svg>
