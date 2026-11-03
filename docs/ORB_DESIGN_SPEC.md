@@ -8,7 +8,7 @@
 These are three independent settings:
 
 - **Liquidity tier** communicates the model's assessed level strength and tier label. The orb core keeps its existing tier palette; the trail uses a separate heatmap palette defined below.
-- **Orb style** is a user-selectable visual skin. It controls core geometry, material, rings, aura, and orb particles. Trail appearance is controlled independently by Trail Effect.
+- **Orb style** is a user-selectable finishing skin. It controls secondary surface treatment, highlights, decorative rings, aura, and particles. It must preserve each tier's defining silhouette, core material family, and base color. Trail appearance is controlled independently by Trail Effect.
 - **Render quality** controls visual fidelity and performance cost. "AAA quality" means premium game-quality rendering; it is not a liquidity tier and must never appear as a signal grade.
 
 Changing style or quality must never change detection, tier, score, lifecycle, coordinates, or probabilities.
@@ -29,9 +29,29 @@ The tier hierarchy contains exactly seven tiers:
 
 Suggested nominal diameters at 1x: SSS 36 px, SS 31 px, S 26 px, A 21 px, B 17 px, C 13 px, D 10 px. These are starting values only. Size must not be the sole strength cue.
 
+### Per-tier orb geometry and material construction
+
+Each tier must have its own recognizable base object. The reference SVG is an enlarged inspection sheet, not a claim that every orb renders at the same size in the chart.
+
+| Tier | Named identity | Required geometry and material cues |
+|---|---|---|
+| SSS | Celestial Crystal | A prominent faceted crystal nucleus with a clear diamond/star silhouette, three concentric precision rings, multiple internal facet planes, and restrained radial glints. Ice cyan-white glass with bright refractive edges. |
+| SS | Vortex Energy | A smooth, rounded liquid-energy nucleus with a visible internal spiral/swirl, two intersecting elliptical orbit rings, and flowing energy arcs. Cyan luminous-fluid material; less angular than SSS. |
+| S | Sapphire Prism | A sharply cut polygonal sapphire nucleus with distinct triangular facet planes and one segmented orbital ring. Strong blue glass, crisp edges, and geometric symmetry. |
+| A | Arcane Sphere | A soft spherical violet nucleus with a single fine orbit ring, a faint diffuse aura, and subtle internal light. Keep the silhouette calm and less ornamented than the upper tiers. |
+| B | Brushed Silver | A metallic bead with fine brushed surface grooves, a controlled specular highlight, and one partial machined ring. Silver-gray material; avoid excessive glow. |
+| C | Rough Mineral | A small irregular stone/mineral nucleus with uneven facets, low-reflective slate material, and only a minimal outline. The silhouette should feel naturally fractured, not polished. |
+| D | Shadow Seed | The smallest compact dark seed/nucleus with a broken, incomplete outline and graphite material. No aura; use only subtle surface contrast so it remains visible on the dark chart. |
+
+- The tier identity owns the base silhouette, base material family, and base hue. The user-selected Orb Style may decorate or finish that object but must not turn every tier into the same orb geometry.
+- Preserve the signature cues at all supported zoom levels: three-ring crystal for SSS, double-orbit vortex for SS, segmented sapphire prism for S, fine-ring sphere for A, brushed partial-ring metal for B, rough mineral for C, and broken-outline shadow seed for D.
+- At the chart's nominal 1x size, simplify micro-details through LOD rather than removing the defining silhouette. SSS/SS may carry more fine detail; C/D must remain compact and readable without invented glow.
+- The showcase SVG enlarges all seven identities for inspection. Use the 1x nominal size row as the implementation size reference.
+
+
 ## User-selectable orb styles
 
-Provide a visible Orb Style setting with a live preview. The selected style applies consistently to every tier while preserving each tier's color identity. Initial presets:
+Provide a visible Orb Style setting with a live preview. The selected style applies consistently to every tier while preserving each tier's core silhouette, material family, and color identity. Initial presets:
 
 1. **Celestial Crystal** — faceted luminous core, precision rings, restrained star glints.
 2. **Solar Crown** — white-hot center, six short crown rays, two offset elliptical orbits, floating sparks. This is the former gold concept; it is a style preset, not an AAA tier.
@@ -40,7 +60,7 @@ Provide a visible Orb Style setting with a live preview. The selected style appl
 5. **Arcane Aura** — smooth orb, fine rune-like ring, soft controlled aura.
 6. **Minimal / Clean** — compact solid core, thin outline, no particles, minimal glow.
 
-The style changes geometry and material only. Tier hue remains the source of truth; a style may use lighter/darker shades of that hue for highlights and shadows but must not replace it with a fixed style color.
+The style changes secondary finishing and embellishment only; it must not erase the tier-specific base geometry or material signature. Tier hue remains the source of truth; a style may use lighter/darker shades of that hue for highlights and shadows but must not replace it with a fixed style color.
 
 ## AAA game-quality rendering option
 
@@ -166,6 +186,6 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 
 ## Reference artwork
 
-- [Tier identity and style examples](../assets/orb-tier-reference.svg)
+- [Seven tier-specific orb designs](../assets/orb-tier-reference.svg)
 - [Five trail-effect visual options](../assets/trail-effect-reference.svg)
 - [Solar Crown style close-up](../assets/orb-aaa-reference.svg) — the filename is retained for compatibility; this image is a style/quality reference, not an AAA tier.
