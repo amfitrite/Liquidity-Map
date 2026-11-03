@@ -21,6 +21,7 @@ class LiquidityMapService:
             symbol=self.config.symbol,
             price_basis=self.config.price_basis,
             poll_interval=self.config.feed_poll_interval,
+            simulation_mode=self.config.simulation_mode,
         )
         self.registry = MasterLiquidityRegistry(base_price=self.feed.current_mid)
         self.future_engine = FutureLiquidityEngine()
@@ -34,7 +35,6 @@ class LiquidityMapService:
 
     def start(self):
         self.feed.start()
-        logger.info("LiquidityMapService running on %s", self.config.symbol)
 
     def stop(self):
         self.feed.stop()

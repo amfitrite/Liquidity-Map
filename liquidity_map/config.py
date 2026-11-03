@@ -83,9 +83,8 @@ class AppConfig:
     # Instrument & Feed
     symbol: str = "XAUUSD"
     price_basis: str = "MID"  # MID, BID, or ASK
-    dukascopy_url: str = "https://freeserv.dukascopy.com/2.0/index.php"
-    feed_poll_interval: float = 0.5  # seconds
-    simulation_mode: bool = True  # True enables seamless real-time market simulator when offline/closed
+    feed_poll_interval: float = 1.5  # seconds
+    simulation_mode: bool = False  # Strictly authentic Dukascopy live feed (no demo)
 
     # Rendering & World Camera Defaults
     max_visible_objects: int = 120
