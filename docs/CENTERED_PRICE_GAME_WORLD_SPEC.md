@@ -2,12 +2,12 @@
 
 **Version:** 1.0  
 **Status:** Design specification; renderer implementation not yet verified  
-**Applies to:** Entire Liquidity Map visual world, including Historical Liquidity, live price, Future Liquidity, candles, and market overlays  
+**Applies to:** Entire Liquidity Map visual world, including Historical Liquidity, the Dukascopy live-price marker, Future Liquidity, and market overlays  
 **Primary interaction model:** A game-like world camera that follows the live market point and keeps it at the center of the playfield
 
 ## 1. Product premise
 
-Liquidity Map is **not a conventional trading chart whose newest candle is pinned to the right edge**.
+Liquidity Map is **not a candlestick chart** and does not render candle bodies, wicks, OHLC bars, or a latest candle pinned to the right edge. The central player-like object is the continuously updated Dukascopy live price.
 
 The default view behaves like a game camera following a player character:
 - The current live market point is the player/anchor.
@@ -83,15 +83,15 @@ The renderer may use another mathematically equivalent transform, but it must pr
 
 The center contains the live market anchor:
 - A clear live-price marker/orb acts as the player.
-- The latest tick and active candle update around this anchor.
+- The live price marker and numeric price update directly from accepted Dukascopy tick/quote events. No candle is rendered.
 - A live status/price readout can be attached to the marker or HUD.
-- The center marker should remain visually legible above candles and effects.
+- The center marker should remain visually legible above liquidity objects and effects.
 - It must not be mistaken for a Historical or Future Liquidity tier orb.
 
 ### 4.2 Left — historical world
 
 Past market content is rendered behind the live anchor:
-- Historical candles and price movement.
+- Historical price movement trace, only if enabled; never a candlestick series.
 - Historical Liquidity objects at their recorded price/time coordinates.
 - Existing trails that represent recorded historical movement.
 - Swept, mitigated, expired, or archived objects according to visibility settings.
@@ -157,8 +157,8 @@ If the product later decides that the live point must remain centered at all tim
 
 | Object | Horizontal placement | Vertical placement |
 |---|---|---|
-| Historical candle | Its actual timestamp relative to live time | Its actual OHLC prices relative to live price |
-| Live/forming candle | At the live-time anchor | Its OHLC prices relative to live price |
+| Historical tick/price sample | Its actual timestamp relative to live time | Its actual accepted price basis relative to live price |
+| Live price marker | At the live-time anchor | The selected Dukascopy price basis at the center anchor |
 | Historical Liquidity orb | Recorded detection/event time | Recorded price/zone relative to live price |
 | Historical trail | Recorded samples only, leftward in time | Recorded prices relative to live price |
 | Future probability zone | Forecast horizon/time distribution to the right | Projected price interval relative to live price |
@@ -185,10 +185,10 @@ The camera must remain deterministic for a given set of input data, zoom, and re
 ## 8. Parallax, background, and game-like presentation
 
 - Background stars, grid, depth layers, and decorative scenery may use restrained parallax.
-- Market objects, candles, liquidity zones, and price labels must use the true market-world transform, not decorative parallax.
+- Market objects, optional price trace, liquidity zones, and price labels must use the true market-world transform, not decorative parallax.
 - Background motion must never imply measured order flow, actual order-book depth, or a forecast.
 - HUD, menus, legends, status panels, and buttons remain fixed in screen-space.
-- Preserve readability of candles and liquidity objects; visual effects cannot obscure the live anchor or price information.
+- Preserve readability of liquidity objects; visual effects cannot obscure the live anchor or numeric price information.
 - Any game-like ornament is cosmetic and must never alter calculations, object lifecycle, tiers, or probabilities.
 
 ## 9. Performance and viewport management
@@ -215,7 +215,7 @@ The camera must remain deterministic for a given set of input data, zoom, and re
 - [ ] Future scenarios remain visually distinct from observed historical movement and trails.
 - [ ] Zoom changes only the camera scale and never modify price coordinates or forecast probabilities.
 - [ ] INSPECT mode is clearly indicated and has an explicit Return to Live action.
-- [ ] Replay cannot access future candles, forecast revisions, or outcomes unavailable at the replay timestamp.
+- [ ] Replay cannot access future ticks/quotes, forecast revisions, or outcomes unavailable at the replay timestamp.
 - [ ] HUD controls remain screen-anchored while market objects move in world space.
 - [ ] Background parallax cannot be mistaken for market movement or order flow.
 - [ ] Camera/rendering changes do not alter detection, probabilities, tiers, lifecycle, or storage.
@@ -227,5 +227,21 @@ The camera must remain deterministic for a given set of input data, zoom, and re
 - Future Liquidity retains its distinct forecast/scenario semantics and validation requirements.
 - The Future Liquidity specification must use this centered world layout when defining its renderer.
 - The MTF tier/render specification must preserve independent liquidity objects and existing performance limits under this camera.
-- No trading platform conventions (newest candle pinned to right edge, future blank chart space beginning at the last candle) may override the centered live-anchor default.
+- No trading-platform convention (candlesticks or a right-edge latest-price marker) may override the centered live-anchor default.
 - No buy/sell automation or trading execution is introduced by this visual specification.
+
+
+## 12. No-candlestick, Dukascopy-driven live price
+
+The default renderer has **no candle visualization**. The central market object is the current price marker driven by the accepted Dukascopy feed.
+
+- The actual Dukascopy event/payload semantics must be inspected by the feed adapter; do not assume a quote update is an executed trade.
+- Choose and display one consistent price basis (BID, ASK, MID, or a documented provider price).
+- Every accepted update changes the numeric live-price value and causes the world transform to recenter around that price.
+- The live marker remains fixed at the center of the main playfield; historical and projected objects shift relative to it.
+- If feed updates stop, show STALE/OFFLINE state and the last update time. Never make a frozen value look live.
+- Rendering interpolation may smooth visual movement but cannot create synthetic market ticks or feed model calculations.
+
+Internal OHLC/time aggregation may be used by a detection/model adapter if justified, but those derived bars must never be rendered as candles. Raw source observations and derived aggregates must remain distinguishable.
+
+The feed payload, selected price basis, freshness rules, and reconnect behavior are specified in [DUKASCOPY_LIVE_PRICE_FEED_SPEC.md](DUKASCOPY_LIVE_PRICE_FEED_SPEC.md).
