@@ -64,11 +64,28 @@ Allow Auto quality to adapt to visible object count and frame rate. Quality chan
 
 Do not imply a precise mitigation percentage unless the detection model defines and validates it.
 
-## Trail options
+## Trail Effect — five selectable options
 
-Trail is independently selectable from orb style. Initial trail families: Minimal Line, Soft Glow, Particle, Comet, Energy Ribbon, Chinese Ink Brush, Dry Brush, Silk Flow, Miasma, Spirit Wisp, Arcane Rune, Cosmic Nebula, Lightning Arc, Windstream, Ember, Frost Shard, Blade Slash, Energy Pulse, Spectral Flame, Sakura/Petal, Liquid Mercury, Digital Glitch, Fiber Optic, and Prism Flow.
+Keep the first release deliberately focused: exactly **five** choices in the Trail Effect selector. Four are premium, AAA-game-quality VFX presets; the fifth is a plain line with no effect.
 
-Trail represents the object's age/history from formation to now, not a price path or forecast. Active trails extend to NOW; swept/mitigated trails end at event time; historical trails remain static and fade. Trail color follows tier identity. Trail style must not change data or calculations.
+1. **No Effect (Straight Line)** — a clean, straight, unadorned line connecting the orb's historical origin to its current endpoint. No glow, particles, gradients, animation, distortion, or decorative geometry. This is the default lightweight option.
+2. **Particle Stream** — a refined stream of small tier-colored particles following the trail, with varied particle size, soft depth, controlled fade, and subtle motion. It should feel like a polished game VFX system, not noisy confetti.
+3. **Comet Trail** — a luminous tapered tail with a bright leading edge, layered soft bloom, fine sparks, and a smooth fade toward the origin. The orb remains the visual head; the trail must not imply a direction of future price movement.
+4. **Energy Ribbon** — a smooth flowing, multi-layer ribbon with a restrained inner highlight, subtle turbulence, and tier-colored edge lighting. Keep its width controlled so nearby trails remain readable.
+5. **Arcane Sigil** — a premium magical trail made from sparse geometric/rune fragments, fine luminous filaments, and occasional tiny glints. Keep symbols subtle and legible; do not create text-like glyph clutter.
+
+### Trail rendering rules
+
+- All four effect presets must share the same high-quality visual standard: smooth curves, clean antialiasing, soft but controlled bloom, tier-colored highlights, polished fade transitions, and no jagged particle edges.
+- Trail hue follows the orb's liquidity tier. Effects may use lighter/darker shades of that hue for depth, but may not replace the tier identity with a fixed palette.
+- Trail style is independent of Orb Style and Render Quality. The user can combine any orb skin with any trail effect.
+- Trail is a visual history/age trace from formation to now, **not** a price path, prediction, or directional signal. Do not bend it toward forecast prices or use arrowheads.
+- Active liquidity trail extends to NOW. Swept/mitigated trail ends at the event time. Historical trails remain static and fade.
+- No Effect must remain a literal straight line; do not add a glow or particle effect to it, even when Render Quality is Ultra / AAA.
+- Render Quality may improve the fidelity of an enabled effect, but must never change which effect is selected or silently turn No Effect into an effect.
+- Provide a reduced-motion option. When animation is disabled, preserve the selected effect's static appearance.
+- Apply LOD and particle budgets. Animate only visible active/replay-window trails; simplify or bake historical trails to protect frame rate.
+- Trail effects must never alter liquidity detection, tier, score, lifecycle, coordinates, or probability calculations.
 
 ## Overlap and multi-timeframe handling
 
@@ -96,6 +113,9 @@ User settings should include Orb Style, Render Quality (Auto/Performance/Balance
 - [ ] No "AAA" liquidity tier or signal grade is introduced by the visual system.
 - [ ] Orb Style can be changed with a live preview.
 - [ ] Render Quality can be changed independently from Orb Style.
+- [ ] Trail Effect selector contains exactly five options: No Effect, Particle Stream, Comet Trail, Energy Ribbon, Arcane Sigil.
+- [ ] No Effect renders only a plain straight line, regardless of Render Quality.
+- [ ] Four effect presets meet the premium AAA-game visual quality target without obscuring nearby liquidity objects.
 - [ ] Tier hue and lifecycle identity persist across all styles and quality levels.
 - [ ] Nearby liquidity objects remain individually selectable with true price/time coordinates.
 - [ ] Visual effects never alter data, scoring, or probabilities.
