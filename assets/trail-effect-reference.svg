@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1770" viewBox="0 0 1600 1770">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1870" viewBox="0 0 1600 1870">
 <defs>
  <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#111B2B"/><stop offset="1" stop-color="#080D16"/></linearGradient>
  <radialGradient id="orb"><stop stop-color="#FFFFFF"/><stop offset=".38" stop-color="#D9FBFF"/><stop offset="1" stop-color="#0891B2"/></radialGradient>
@@ -11,10 +11,24 @@
 <g font-family="Inter,Segoe UI,Arial,sans-serif">
  <text x="72" y="75" fill="#F8FAFC" font-size="35" font-weight="750" letter-spacing="1.3">LIQUIDITY MAP / 10 MOVEMENT TRAILS</text>
  <text x="74" y="111" fill="#94A3B8" font-size="17">MOBA-inspired cosmetic trail styles · orb is the live head · effects remain behind and dissipate</text>
- <text x="74" y="143" fill="#67E8F9" font-size="13" letter-spacing="1">ILLUSTRATIVE TIER COLOR: CYAN · ACTUAL TRAIL COLOR FOLLOWS THE ORB'S LIQUIDITY TIER</text>
+ <text x="74" y="143" fill="#94A3B8" font-size="13" letter-spacing="1">TRAIL HUE IS SET BY LIQUIDITY TIER · ORB CORE COLORS STAY UNCHANGED</text>
  
+ <g>
+  <rect x="65" y="158" width="1470" height="84" rx="14" fill="#101A28" stroke="#26384B"/>
+  <text x="88" y="187" fill="#F8FAFC" font-size="14" font-weight="700" letter-spacing="1">TRAIL HEATMAP</text>
+  <text x="88" y="211" fill="#94A3B8" font-size="11">HOT → COLD</text>
+  <g font-size="12" font-weight="700" text-anchor="middle">
+   <rect x="300" y="174" width="150" height="25" rx="6" fill="#FFFFFF"/><text x="375" y="222" fill="#E2E8F0">SSS · WHITE</text>
+   <rect x="470" y="174" width="150" height="25" rx="6" fill="#FF303B"/><text x="545" y="222" fill="#E2E8F0">SS · RED</text>
+   <rect x="640" y="174" width="150" height="25" rx="6" fill="#FF7900"/><text x="715" y="222" fill="#E2E8F0">S · ORANGE</text>
+   <rect x="810" y="174" width="150" height="25" rx="6" fill="#FFD52A"/><text x="885" y="222" fill="#E2E8F0">A · YELLOW</text>
+   <rect x="980" y="174" width="150" height="25" rx="6" fill="#73E6FF"/><text x="1055" y="222" fill="#E2E8F0">B · LIGHT BLUE</text>
+   <rect x="1150" y="174" width="150" height="25" rx="6" fill="#2787E5"/><text x="1225" y="222" fill="#E2E8F0">C · BLUE</text>
+   <rect x="1320" y="174" width="150" height="25" rx="6" fill="#092B68" stroke="#5276A5"/><text x="1395" y="222" fill="#E2E8F0">D · DEEP BLUE</text>
+  </g>
+ </g>
  <!-- 01 No Effect -->
- <g transform="translate(55 175)">
+ <g transform="translate(55 265)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">01  NO EFFECT</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Plain straight line · no visual treatment</text>
@@ -23,7 +37,7 @@
   <text x="125" y="205" fill="#64748B" font-size="11">HISTORY</text><text x="620" y="205" text-anchor="middle" fill="#A5F3FC" font-size="11">LIVE ORB</text>
  </g>
  <!-- 02 Aurora Flow -->
- <g transform="translate(825 175)">
+ <g transform="translate(825 265)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">02  AURORA FLOW</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Broad soft ribbon · flowing translucent layers</text>
@@ -33,7 +47,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 03 Particle Wake -->
- <g transform="translate(55 485)">
+ <g transform="translate(55 575)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">03  PARTICLE WAKE</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Motes deposited along the path · gentle spread and fade</text>
@@ -44,7 +58,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 04 Mist Veil -->
- <g transform="translate(825 485)">
+ <g transform="translate(825 575)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">04  MIST VEIL</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Diffuse haze · low-contrast wisps · slow dissipation</text>
@@ -55,7 +69,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 05 Afterimage Echo -->
- <g transform="translate(55 795)">
+ <g transform="translate(55 885)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">05  AFTERIMAGE ECHO</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Faint orb copies · older echoes become smaller and dimmer</text>
@@ -65,7 +79,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 06 Twin Streamers -->
- <g transform="translate(825 795)">
+ <g transform="translate(825 885)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">06  TWIN STREAMERS</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Parallel soft filaments · gentle lateral waviness</text>
@@ -75,7 +89,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 07 Sparkle Drift -->
- <g transform="translate(55 1105)">
+ <g transform="translate(55 1195)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">07  SPARKLE DRIFT</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Sparse tiny glints and motes distributed along the wake</text>
@@ -91,7 +105,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 08 Frost Dust -->
- <g transform="translate(825 1105)">
+ <g transform="translate(825 1195)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">08  FROST DUST</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Tiny soft-edged crystalline flecks · no sharp projectiles</text>
@@ -106,7 +120,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 09 Luminous Drift -->
- <g transform="translate(55 1415)">
+ <g transform="translate(55 1505)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">09  LUMINOUS DRIFT</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Soft elongated glow motes · gently disperse around the path</text>
@@ -117,7 +131,7 @@
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
  <!-- 10 Ripple Echo -->
- <g transform="translate(825 1415)">
+ <g transform="translate(825 1505)">
   <rect width="720" height="285" rx="18" fill="#111C2B" stroke="#26384B"/>
   <text x="30" y="42" fill="#F8FAFC" font-size="21" font-weight="700">10  RIPPLE ECHO</text>
   <text x="30" y="68" fill="#94A3B8" font-size="13">Soft elliptical rings left along the path · older rings fade</text>
@@ -131,6 +145,6 @@
   </g>
   <circle cx="620" cy="155" r="16" fill="url(#orb)" stroke="#E0FCFF" stroke-width="2"/>
  </g>
- <text x="76" y="1740" fill="#64748B" font-size="13">Concept reference only · each effect is residue behind the live orb along recorded history, never a slash, attack arc, or forward projectile.</text>
+ <text x="76" y="1835" fill="#64748B" font-size="13">Trail hues: SSS white → SS red → S orange → A yellow → B light blue → C blue → D deep blue. Tier hue stays fixed along the trail; age changes opacity only. Orb colors are unchanged.</text>
 </g>
 </svg>
