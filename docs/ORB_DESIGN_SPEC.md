@@ -19,13 +19,13 @@ The tier hierarchy contains exactly seven tiers:
 
 | Tier | Color | Core / material | Signature |
 |---|---|---|---|
-| SSS | Royal gold `#E8B84D` | Golden Sovereign | Imperial crown silhouette, gold core, 3 royal orbits, jeweled highlights |
-| SS | Cyan `#22D3EE` | Vortex / liquid energy | Smooth energy core, 2 orbit rings, vortex arcs |
-| S | Blue `#3B82F6` | Sapphire / prism | Geometric faceted core, 1 segmented orbit |
-| A | Violet `#A78BFA` | Arcane / ethereal | Soft spherical core, 1 fine ring, faint aura |
-| B | Silver `#A1A1AA` | Brushed metal | Metallic bead, partial ring, controlled specular highlight |
-| C | Slate `#64748B` | Rough mineral | Small irregular/faceted stone core, minimal outline |
-| D | Earth / worn clay `#80634B` | Humble Earthen Seed | Rough unadorned clay-stone nucleus, uneven facets, no aura or jewels |
+| SSS | Imperial gold `#D6A332` | Golden Emperor / sovereign | Dominant gold core, imperial crown, triple orbit, royal gemstone and regal highlights |
+| SS | Crimson ruby `#C02645` | Crimson Dynast / royal heir | Ruby core, smaller crown, ceremonial orbit and subordinate royal regalia |
+| S | Royal violet `#7251C8` | Sapphire Duke / high nobility | Heraldic shield-cut gem, refined half-orbits and noble-house detailing |
+| A | Azure `#1D4ED8` | Azure Knight / knightly order | Armored prism, disciplined geometry and single steel halo |
+| B | Jade `#16866B` | Jade Merchant / guilded class | Polished jade bead, trade seal and simple halo |
+| C | Iron `#64748B` | Iron Crafter / common craft | Rough forged metal, worn facets, no orbit or gemstone |
+| D | Earth clay `#9A7658` | Earthen Peasant / common folk | Handmade clay-like nucleus, humble irregular form, no halo or ornament |
 
 Suggested nominal diameters at 1x: SSS 36 px, SS 31 px, S 26 px, A 21 px, B 17 px, C 13 px, D 10 px. These are starting values only. Size must not be the sole strength cue.
 
@@ -36,15 +36,15 @@ Each tier must have its own recognizable base object. The reference SVG is an en
 | Tier | Named identity | Required geometry and material cues |
 |---|---|---|
 | SSS | Golden Sovereign | The unmistakable ruler of all seven tiers: rich royal-gold core, a clearly readable crown silhouette, three precise royal orbit rings, engraved regalia, and restrained jewel-like highlights. It must look prestigious, commanding, and expensive without becoming visually noisy. Gold is the SSS orb identity; the separate trail heatmap remains white for SSS. |
-| SS | Vortex Energy | A smooth, rounded liquid-energy nucleus with a visible internal spiral/swirl, two intersecting elliptical orbit rings, and flowing energy arcs. Cyan luminous-fluid material; less angular than SSS. |
-| S | Sapphire Prism | A sharply cut polygonal sapphire nucleus with distinct triangular facet planes and one segmented orbital ring. Strong blue glass, crisp edges, and geometric symmetry. |
-| A | Arcane Sphere | A soft spherical violet nucleus with a single fine orbit ring, a faint diffuse aura, and subtle internal light. Keep the silhouette calm and less ornamented than the upper tiers. |
-| B | Brushed Silver | A metallic bead with fine brushed surface grooves, a controlled specular highlight, and one partial machined ring. Silver-gray material; avoid excessive glow. |
-| C | Rough Mineral | A small irregular stone/mineral nucleus with uneven facets, low-reflective slate material, and only a minimal outline. The silhouette should feel naturally fractured, not polished. |
-| D | Humble Earthen Seed | The lowest/commoner identity: a small worn clay-and-stone nucleus with uneven rough facets, muted earth-brown material, no crown, no jewelry, no orbit ornament, and no aura. It should feel ordinary and unadorned, while retaining enough edge contrast to remain visible. |
+| SS | Crimson Dynast | Ruby-red royal nucleus with a smaller subordinate crown, ceremonial orbit and noble regalia. Prestigious, but clearly below the SSS emperor. |
+| S | Sapphire Duke | Royal-violet heraldic shield-cut gem with refined half-orbits and noble-house detailing. High nobility, but no imperial crown. |
+| A | Azure Knight | Armored blue prism with disciplined geometry and one steel-like halo. Elite guard/order identity rather than royal authority. |
+| B | Jade Merchant | Polished jade bead with a trade-seal motif and simple halo. Prosperous guild class, but no crown or aristocratic regalia. |
+| C | Iron Crafter | Rough forged-metal fragment with worn facets and utilitarian construction. No gemstone, orbit, crown or aura. |
+| D | Earthen Peasant | Modest handmade clay-like nucleus with irregular humble shape and almost no ornament. No halo, crown, gemstone or glow; it should feel like the lowest social tier while remaining visible on the chart. |
 
-- The tier identity owns the base silhouette, base material family, and base hue. The user-selected Orb Style may decorate or finish that object but must not turn every tier into the same orb geometry.
-- Preserve the signature cues at all supported zoom levels: imperial gold crown and three royal orbits for SSS, double-orbit vortex for SS, segmented sapphire prism for S, fine-ring sphere for A, brushed partial-ring metal for B, rough mineral for C, and unadorned earthen commoner seed for D.
+- The tier identity owns the base silhouette, base material family, and base hue. The social hierarchy must read immediately: sovereign (SSS) → royal heir (SS) → high nobility (S) → knightly order (A) → guilded merchant (B) → common craft (C) → peasant/common folk (D). The user-selected Orb Style may decorate or finish that object but must not turn every tier into the same orb geometry.
+- Preserve the signature cues at all supported zoom levels: imperial gold crown and three royal orbits for SSS, ruby coronet for SS, heraldic shield-gem for S, armored prism for A, jade trade-seal for B, rough forged iron for C, and humble clay nucleus for D.
 - At the chart's nominal 1x size, simplify micro-details through LOD rather than removing the defining silhouette. SSS/SS may carry more fine detail; C/D must remain compact and readable without invented glow.
 - The showcase SVG enlarges all seven identities for inspection. Use the 1x nominal size row as the implementation size reference.
 
