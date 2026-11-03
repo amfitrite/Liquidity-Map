@@ -9,6 +9,7 @@ A multi-timeframe liquidity visualization project.
 - [Solar Crown style close-up](assets/orb-aaa-reference.svg)
 - [Premium trail VFX reference — 10 distinct effects](assets/trail-effect-premium-reference.svg)
 - [Trail VFX implementation and animation specification](docs/TRAIL_VFX_IMPLEMENTATION_SPEC.md)
+- [Future Liquidity Engine concept and technical specification](docs/FUTURE_LIQUIDITY_ENGINE_SPEC.md)
 - [Legacy trail reference — retained for comparison](assets/trail-effect-reference.svg)
 
 **Terminology:** Liquidity tiers are SSS, SS, S, A, B, C, and D. "AAA" refers only to optional premium game-quality rendering, never to a liquidity tier or signal grade. The SSS orb is the Golden Sovereign in royal gold; the D orb is the Humble Earthen Seed, deliberately plain and unadorned. Solar Crown remains a selectable finishing style and cannot erase these tier identities.
