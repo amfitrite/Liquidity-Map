@@ -1,307 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liquidity Map · AAA Straight-Line Trail Studio</title>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
-  <style>
-    @keyframes pulse-flow {
-      0% { transform: translateX(0); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateX(200px); opacity: 0; }
-    }
-    .flow-packet {
-      animation: pulse-flow 3s linear infinite;
-    }
-    .candlestick-pattern {
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Liquidity Map · Centered Live-Price Trail Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#070a11;--panel:#101725;--line:#263246;--muted:#91a0b7;--text:#edf3ff;--tier:#fff;--tier-core:#fff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 45%,#172239 0,#090e18 48%,#05070c 100%);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;padding:24px}
+main{max-width:1200px;margin:auto;display:grid;gap:18px}header,.panel{background:#0d1421df;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 18px 60px #0006}
+h1{font-size:22px;margin:0 0 4px}p{color:var(--muted);margin:4px 0}.eyebrow{color:#8ca9d6;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:14px}.controls label{display:flex;gap:8px;align-items:center;color:#b8c5d9;font-size:12px}
+select,input,button{background:#111d2d;border:1px solid #34445d;color:#eaf1ff;border-radius:8px;padding:8px 10px}
+button{cursor:pointer}button.active{border-color:#9bb9e8;background:#1b2d47}
+.stage-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.price{font:600 22px ui-monospace,monospace;color:#fff}.feed{font:11px ui-monospace,monospace;color:#fbbf24;letter-spacing:.08em}
+.world{height:360px;position:relative;overflow:hidden;border:1px solid #29384d;border-radius:12px;background:radial-gradient(ellipse at center,#101e31 0,#09111d 55%,#060a11 100%)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#8da2c00b 1px,transparent 1px),linear-gradient(90deg,#8da2c00b 1px,transparent 1px);background-size:40px 40px}
+.axis{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed #e7eefc50}
+.anchor-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;text-align:center;white-space:nowrap}
+.live-orb{width:34px;height:34px;margin:0 auto 8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 8%,#d9e6ff 14%,#7188aa 38%,#16243a 67%,#050a13 100%);border:1px solid #f7fbff;box-shadow:0 0 10px #fff,0 0 28px #9fc8ff88,0 0 65px #80b9ff33;animation:breath 2.8s ease-in-out infinite}
+@keyframes breath{50%{box-shadow:0 0 14px #fff,0 0 34px #9fc8ff99,0 0 78px #80b9ff55}}
+.live-caption{font-size:10px;letter-spacing:.16em;color:#dbeafe;text-shadow:0 1px 8px #000}
+.trail{position:absolute;top:50%;height:3px;left:15%;width:35%;transform:translateY(-50%);background:linear-gradient(90deg,transparent,var(--tier) 75%,var(--tier-core));box-shadow:0 0 7px var(--tier),0 0 18px var(--tier);opacity:.9}
+.trail:before{content:"";position:absolute;left:0;right:0;top:-10px;height:23px;background:linear-gradient(90deg,transparent,var(--tier) 100%);filter:blur(11px);opacity:.32}
+.trail.future{left:50%;width:35%;height:2px;background:repeating-linear-gradient(90deg,var(--tier) 0 8px,transparent 8px 16px);opacity:.42;box-shadow:0 0 12px var(--tier)}
+.trail.future:before{opacity:.15}
+.tail-node{position:absolute;left:22%;top:calc(50% - 4px);width:8px;height:8px;transform:rotate(45deg);background:var(--tier-core);box-shadow:0 0 12px var(--tier)}
+.left-tag,.right-tag{position:absolute;top:calc(50% + 28px);font-size:10px;letter-spacing:.12em;color:#91a0b7}
+.left-tag{left:15%}.right-tag{right:15%}
+.price-line{position:absolute;left:50%;right:0;top:calc(50% + 1px);border-top:1px solid #fff2}
+.note{font-size:12px;color:#9eacc2;margin-top:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.card{border:1px solid #26364b;border-radius:10px;padding:12px;background:#0a111c}
+.card b{display:block;color:#dce8fb;margin-bottom:4px;font-size:12px}.card span{font-size:11px;color:#91a0b7}
+@media(max-width:650px){body{padding:12px}.world{height:300px}.price{font-size:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
 </head>
-<body class="bg-[#070911] text-slate-100 min-h-screen p-6 font-sans antialiased">
-  <div class="max-w-7xl mx-auto space-y-6">
-
-    <!-- HEADER -->
-    <header class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-800 gap-4">
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 text-xs font-bold rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/30">
-            AAA Game-Grade VFX
-          </span>
-          <span class="text-xs text-slate-400 font-mono">Straight Horizontal Liquidity Geometry</span>
-        </div>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-1 text-white">
-          Straight-Line Liquidity Trail Studio
-        </h1>
-        <p class="text-sm text-slate-400 mt-0.5">
-          Eliminating arbitrary wavy curves in favor of institutional straight-line price level horizons
-        </p>
-      </div>
-
-      <!-- MASTER CONTROLS -->
-      <div class="flex flex-wrap items-center gap-3 bg-slate-900/90 p-3 rounded-xl border border-slate-800 text-xs">
-        <!-- Tier Heatmap Selector -->
-        <div class="flex items-center gap-1.5">
-          <span class="text-slate-400 font-medium">Tier Heatmap:</span>
-          <select id="tier-select" onchange="updateTrail()" class="bg-slate-950 text-slate-200 border border-slate-800 rounded px-2.5 py-1 text-xs focus:outline-none focus:border-sky-500 font-semibold">
-            <option value="sss">SSS · #FFFFFF Imperial White</option>
-            <option value="ss">SS · #FF303B Crimson Red</option>
-            <option value="s">S · #FF7900 Solar Orange</option>
-            <option value="a">A · #FFD52A Cyber Yellow</option>
-            <option value="b" selected>B · #73E6FF Neon Cyan</option>
-            <option value="c">C · #2787E5 Cobalt Blue</option>
-            <option value="d">D · #092B68 Deep Blue</option>
-          </select>
-        </div>
-
-        <div class="h-4 w-px bg-slate-800"></div>
-
-        <!-- Preset Style Selector -->
-        <div class="flex items-center gap-1.5">
-          <span class="text-slate-400 font-medium">VFX Material:</span>
-          <select id="preset-select" onchange="updateTrail()" class="bg-slate-950 text-slate-200 border border-slate-800 rounded px-2.5 py-1 text-xs focus:outline-none focus:border-sky-500 font-semibold">
-            <option value="quantum">01. Quantum Hyper-Beam (Harmonic Rails)</option>
-            <option value="plasma">02. Fusion Plasma Conduit (Ionization)</option>
-            <option value="astral">03. Astral Constellation (Star Nodes)</option>
-            <option value="cyber">04. Cyber Neon Data Rail (Telemetry Ticks)</option>
-            <option value="cryo">05. Cryo-Prismatic (Refractive Crystal)</option>
-            <option value="flux">06. Heavy Flux Channel (Twin Magnetics)</option>
-            <option value="minimal">07. Minimal Horizon (Clean Mathematical)</option>
-          </select>
-        </div>
-
-        <div class="h-4 w-px bg-slate-800"></div>
-
-        <!-- Trail Length Slider -->
-        <div class="flex items-center gap-2">
-          <span class="text-slate-400 font-medium">Span:</span>
-          <input type="range" id="length-slider" min="300" max="950" value="700" oninput="updateTrail()" class="w-24 accent-sky-400">
-          <span id="length-val" class="font-mono text-slate-300 w-12 text-right">700px</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- LIVE VIEWPORT STAGE -->
-    <div class="bg-slate-900/90 rounded-2xl border border-slate-800 p-6 shadow-2xl space-y-4">
-      <div class="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-800">
-        <div class="flex items-center gap-4">
-          <span class="flex items-center gap-1.5 font-medium text-slate-300">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            Simulated Candlestick Viewport (XAUUSD 1-Minute Frame)
-          </span>
-          <span class="font-mono text-slate-500">Price: 2,745.50</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-slate-500">Background:</span>
-          <button onclick="toggleGrid(true)" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white border border-slate-700">Candles On</button>
-          <button onclick="toggleGrid(false)" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white border border-slate-700">Dark OLED</button>
-        </div>
-      </div>
-
-      <!-- INTERACTIVE SVG CANVAS STAGE -->
-      <div id="stage-box" class="w-full h-[360px] bg-[#0A0E18] rounded-xl border border-slate-800/80 candlestick-pattern relative overflow-hidden flex items-center justify-center">
-
-        <!-- Simulated Candlestick bars in background -->
-        <svg id="candlestick-layer" class="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
-          <!-- Green Bullish Candle -->
-          <line x1="220" y1="110" x2="220" y2="240" stroke="#10B981" stroke-width="1.5"/>
-          <rect x="214" y="140" width="12" height="70" fill="#10B981"/>
-
-          <!-- Red Bearish Candle -->
-          <line x1="310" y1="90" x2="310" y2="210" stroke="#EF4444" stroke-width="1.5"/>
-          <rect x="304" y="110" width="12" height="60" fill="#EF4444"/>
-
-          <!-- Bullish -->
-          <line x1="420" y1="130" x2="420" y2="270" stroke="#10B981" stroke-width="1.5"/>
-          <rect x="414" y="160" width="12" height="70" fill="#10B981"/>
-
-          <!-- Long rejection wick sweeping near the trail level (Y=180) -->
-          <line x1="580" y1="100" x2="580" y2="250" stroke="#EF4444" stroke-width="1.5"/>
-          <rect x="574" y="120" width="12" height="55" fill="#EF4444"/>
-
-          <!-- Bullish candle pushing towards the live head -->
-          <line x1="720" y1="140" x2="720" y2="230" stroke="#10B981" stroke-width="1.5"/>
-          <rect x="714" y="150" width="12" height="50" fill="#10B981"/>
-
-          <line x1="840" y1="120" x2="840" y2="260" stroke="#10B981" stroke-width="1.5"/>
-          <rect x="834" y="140" width="12" height="80" fill="#10B981"/>
-        </svg>
-
-        <!-- Dynamic Straight Trail SVG Element -->
-        <svg id="live-trail-svg" class="w-full h-full absolute inset-0" viewBox="0 0 1200 360">
-          <defs id="dynamic-defs">
-            <!-- Dynamically generated filters & gradients -->
-          </defs>
-          <g id="dynamic-trail-group">
-            <!-- Trail contents injected by JS -->
-          </g>
-        </svg>
-
-      </div>
-
-      <!-- LAYER BREAKDOWN EXPLANATION -->
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-3 pt-3 text-xs">
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-          <span class="text-sky-400 font-bold block mb-1">Layer 1: Envelope</span>
-          <p class="text-slate-400 text-[11px]">Volumetric Gaussian bloom creating macro depth without covering candle bodies.</p>
-        </div>
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-          <span class="text-sky-400 font-bold block mb-1">Layer 2: Rails</span>
-          <p class="text-slate-400 text-[11px]">Harmonic guidance lines showing institutional order boundary precision.</p>
-        </div>
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-          <span class="text-sky-400 font-bold block mb-1">Layer 3: Telemetry</span>
-          <p class="text-slate-400 text-[11px]">Calibrated price coordinate notches mapped across historical candle bars.</p>
-        </div>
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-          <span class="text-sky-400 font-bold block mb-1">Layer 4: Photonic Nodes</span>
-          <p class="text-slate-400 text-[11px]">Diamond energy nodes highlighting liquidity volume clusters.</p>
-        </div>
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-          <span class="text-sky-400 font-bold block mb-1">Layer 5: Laser Core</span>
-          <p class="text-slate-400 text-[11px]">Razor-sharp incandescent center beam connecting directly into the Live Orb.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- COMPARISON GALLERY PREVIEW -->
-    <div class="bg-slate-900/80 rounded-2xl border border-slate-800 p-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2">
-        <div>
-          <h3 class="text-lg font-bold text-white flex items-center gap-2">
-            <span>Master Artwork Showcase (All 7 Presets Stacked)</span>
-            <span class="px-2 py-0.5 text-xs rounded bg-sky-500/20 text-sky-300 font-mono">1600×2400 px</span>
-          </h3>
-          <p class="text-xs text-slate-400">Straight horizontal liquidity paths rendered across the complete tier heatmap hierarchy</p>
-        </div>
-        <a href="trail_effects_showcase.svg" target="_blank" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-700 flex items-center gap-1.5 self-start">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          Open Master Artwork in New Tab
-        </a>
-      </div>
-      <div class="mt-4 bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex justify-center">
-        <img src="trail_effects_showcase.svg" alt="Trail Effects Master Showcase" class="max-w-full h-auto rounded-lg shadow-2xl">
-      </div>
-    </div>
-
-  </div>
-
-  <script>
-    const TIER_COLORS = {
-      sss: { hex: '#FFFFFF', core: '#FFFFFF', name: 'Imperial White', blur: '#FFFFFF' },
-      ss:  { hex: '#FF303B', core: '#FFE4E6', name: 'Crimson Red',    blur: '#FF303B' },
-      s:   { hex: '#FF7900', core: '#FFF7ED', name: 'Solar Orange',   blur: '#FF7900' },
-      a:   { hex: '#FFD52A', core: '#FEF9C3', name: 'Cyber Yellow',   blur: '#FFD52A' },
-      b:   { hex: '#73E6FF', core: '#F0FDFA', name: 'Neon Cyan',      blur: '#73E6FF' },
-      c:   { hex: '#2787E5', core: '#EFF6FF', name: 'Cobalt Blue',    blur: '#2787E5' },
-      d:   { hex: '#092B68', core: '#93C5FD', name: 'Deep Blue',      blur: '#1E40AF' }
-    };
-
-    function toggleGrid(show) {
-      const el = document.getElementById('candlestick-layer');
-      el.style.display = show ? 'block' : 'none';
-    }
-
-    function updateTrail() {
-      const tierKey = document.getElementById('tier-select').value;
-      const presetKey = document.getElementById('preset-select').value;
-      const spanLen = parseInt(document.getElementById('length-slider').value);
-      document.getElementById('length-val').innerText = spanLen + 'px';
-
-      const tier = TIER_COLORS[tierKey];
-      const headX = 1050;
-      const startX = headX - spanLen;
-      const centerY = 180;
-
-      const defs = `
-        <filter id="live-bloom" x="-20%" y="-400%" width="140%" height="900%">
-          <feGaussianBlur stdDeviation="8" result="b1"/>
-          <feGaussianBlur stdDeviation="2.5" result="b2"/>
-          <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <linearGradient id="live-trail-grad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="${tier.hex}" stop-opacity="0"/>
-          <stop offset="35%" stop-color="${tier.hex}" stop-opacity="0.15"/>
-          <stop offset="70%" stop-color="${tier.hex}" stop-opacity="0.65"/>
-          <stop offset="92%" stop-color="${tier.hex}" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="${tier.core}" stop-opacity="1"/>
-        </linearGradient>
-        <linearGradient id="live-aura-grad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="${tier.hex}" stop-opacity="0"/>
-          <stop offset="40%" stop-color="${tier.hex}" stop-opacity="0.08"/>
-          <stop offset="80%" stop-color="${tier.hex}" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="${tier.hex}" stop-opacity="0.5"/>
-        </linearGradient>
-      `;
-
-      let elements = `
-        <!-- Volumetric Glow Envelope -->
-        <line x1="${startX}" y1="${centerY}" x2="${headX}" y2="${centerY}" stroke="url(#live-aura-grad)" stroke-width="26" stroke-linecap="round" filter="url(#live-bloom)"/>
-      `;
-
-      if (presetKey === 'quantum') {
-        elements += `
-          <!-- Harmonic Rails -->
-          <line x1="${startX + 180}" y1="${centerY - 6}" x2="${headX}" y2="${centerY - 6}" stroke="url(#live-trail-grad)" stroke-width="1.2" opacity="0.75" stroke-dasharray="20 6 6 6"/>
-          <line x1="${startX + 180}" y1="${centerY + 6}" x2="${headX}" y2="${centerY + 6}" stroke="url(#live-trail-grad)" stroke-width="1.2" opacity="0.75" stroke-dasharray="20 6 6 6"/>
-          <!-- Diamond Nodes -->
-          <polygon points="${startX + 300},${centerY - 4} ${startX + 304},${centerY} ${startX + 300},${centerY + 4} ${startX + 296},${centerY}" fill="${tier.core}" filter="url(#live-bloom)"/>
-          <polygon points="${startX + 500},${centerY - 5} ${startX + 505},${centerY} ${startX + 500},${centerY + 5} ${startX + 495},${centerY}" fill="#FFF" filter="url(#live-bloom)"/>
-        `;
-      } else if (presetKey === 'plasma') {
-        elements += `
-          <line x1="${startX + 150}" y1="${centerY - 5}" x2="${headX}" y2="${centerY - 5}" stroke="url(#live-trail-grad)" stroke-width="1.5" opacity="0.6"/>
-          <line x1="${startX + 150}" y1="${centerY + 5}" x2="${headX}" y2="${centerY + 5}" stroke="url(#live-trail-grad)" stroke-width="1.5" opacity="0.6"/>
-          <circle cx="${startX + 350}" cy="${centerY - 3}" r="2" fill="${tier.core}"/>
-          <circle cx="${startX + 520}" cy="${centerY + 4}" r="2.5" fill="#FFF"/>
-        `;
-      } else if (presetKey === 'cyber') {
-        elements += `
-          <line x1="${startX + 120}" y1="${centerY - 7}" x2="${headX}" y2="${centerY - 7}" stroke="url(#live-trail-grad)" stroke-width="1" stroke-dasharray="12 4 4 4" opacity="0.8"/>
-          <line x1="${startX + 120}" y1="${centerY + 7}" x2="${headX}" y2="${centerY + 7}" stroke="url(#live-trail-grad)" stroke-width="1" stroke-dasharray="12 4 4 4" opacity="0.8"/>
-          <g stroke="${tier.core}" stroke-width="1.2" opacity="0.8">
-            <line x1="${startX + 240}" y1="${centerY - 4}" x2="${startX + 240}" y2="${centerY + 4}"/>
-            <line x1="${startX + 380}" y1="${centerY - 4}" x2="${startX + 380}" y2="${centerY + 4}"/>
-            <line x1="${startX + 520}" y1="${centerY - 5}" x2="${startX + 520}" y2="${centerY + 5}"/>
-          </g>
-        `;
-      } else if (presetKey === 'astral') {
-        elements += `
-          <g fill="${tier.core}" filter="url(#live-bloom)">
-            <polygon points="${startX + 260},${centerY - 5} ${startX + 264},${centerY} ${startX + 260},${centerY + 5} ${startX + 256},${centerY}"/>
-            <polygon points="${startX + 480},${centerY - 6} ${startX + 485},${centerY} ${startX + 480},${centerY + 6} ${startX + 475},${centerY}"/>
-          </g>
-        `;
-      } else if (presetKey === 'flux') {
-        elements += `
-          <line x1="${startX + 100}" y1="${centerY - 4}" x2="${headX}" y2="${centerY - 4}" stroke="${tier.hex}" stroke-width="1" opacity="0.65"/>
-          <line x1="${startX + 100}" y1="${centerY + 4}" x2="${headX}" y2="${centerY + 4}" stroke="${tier.hex}" stroke-width="1" opacity="0.65"/>
-        `;
-      }
-
-      // Incandescent Razor Core
-      elements += `
-        <line x1="${startX}" y1="${centerY}" x2="${headX}" y2="${centerY}" stroke="url(#live-trail-grad)" stroke-width="3" stroke-linecap="round" filter="url(#live-bloom)"/>
-        <line x1="${startX + 200}" y1="${centerY}" x2="${headX}" y2="${centerY}" stroke="${tier.core}" stroke-width="1.4" stroke-linecap="round"/>
-
-        <!-- Live Orb Head -->
-        <g transform="translate(${headX} ${centerY})">
-          <circle r="16" fill="${tier.hex}" opacity="0.3" filter="url(#live-bloom)"/>
-          <circle r="10" fill="${tier.core}" stroke="#FFF" stroke-width="1.8"/>
-          <circle r="4" fill="#FFF"/>
-        </g>
-      `;
-
-      document.getElementById('dynamic-defs').innerHTML = defs;
-      document.getElementById('dynamic-trail-group').innerHTML = elements;
-    }
-
-    // Initialize on load
-    updateTrail();
-  </script>
-</body>
-</html>
+<body>
+<main>
+<header>
+<div class="eyebrow">Visual reference · not a connected market feed</div>
+<h1>Centered Live-Price Trail Studio</h1>
+<p>The live-price anchor stays in the middle. Historical context extends left; forecast projection extends right. No candlesticks or OHLC bars are rendered.</p>
+<div class="controls">
+<label>Tier <select id="tier"><option value="sss">SSS · Sovereign</option><option value="ss">SS · Dynast</option><option value="s">S · Duke</option><option value="a">A · Knight</option><option value="b">B · Merchant</option><option value="c">C · Crafter</option><option value="d">D · Peasant</option></select></label>
+<label>Material <select id="material"><option value="beam">Quantum Beam</option><option value="plasma">Fusion Plasma</option><option value="constellation">Astral Constellation</option><option value="rail">Cyber Data Rail</option><option value="minimal">Minimal Horizon</option></select></label>
+<label>Trail length <input id="length" type="range" min="120" max="420" value="300"></label>
+<button id="toggle">Pause demo motion</button>
+</div>
+</header>
+<section class="panel">
+<div class="stage-head"><div><div class="eyebrow">Centered world viewport</div><div class="price" id="price">2,745.50</div></div><div class="feed" id="feed">SIMULATED DEMO · NOT DUKASCOPY LIVE</div></div>
+<div class="world" id="world">
+<div class="grid"></div><div class="axis"></div><div class="price-line"></div>
+<div class="trail" id="history"></div><div class="tail-node"></div><div class="trail future" id="future"></div>
+<div class="anchor-label"><div class="live-orb"></div><div class="live-caption">LIVE PRICE ANCHOR</div></div>
+<div class="left-tag">HISTORY / OBSERVED</div><div class="right-tag">FUTURE / SCENARIO</div>
+</div>
+<div class="note">The number and subtle vertical marker movement are a deterministic local demonstration only. Connect the real Dukascopy adapter in the application; never treat this demo animation as market observations.</div>
+</section>
+<section class="panel">
+<div class="eyebrow">Material construction</div><div class="cards">
+<div class="card"><b>1 · Atmosphere envelope</b><span>Soft broad glow; cached and clamped to avoid obscuring adjacent objects.</span></div>
+<div class="card"><b>2 · Containment rails</b><span>Thin parallel rails that preserve the exact horizontal price coordinate.</span></div>
+<div class="card"><b>3 · Telemetry ticks</b><span>Small calibrated marks; decorative only, not order-book depth.</span></div>
+<div class="card"><b>4 · Photonic nodes</b><span>Optional sparse particles with deterministic seeds and reduced-motion support.</span></div>
+<div class="card"><b>5 · Incandescent core</b><span>Sharp narrow center line; tier heatmap hue with a restrained white specular accent.</span></div>
+</div>
+</section>
+</main>
+<script>
+const tiers={
+sss:["#fff","#fff"],ss:["#ff303b","#ffe4e6"],s:["#ff7900","#fff7ed"],a:["#ffd52a","#fef9c3"],b:["#73e6ff","#f0fdff"],c:["#2787e5","#eff6ff"],d:["#244f91","#b9d6ff"]
+};
+const materials={beam:["3px","0.9"],plasma:["5px","0.8"],constellation:["2px","0.72"],rail:["2px","0.8"],minimal:["1px","0.65"]};
+let running=true,step=0;
+const $=id=>document.getElementById(id);
+function update(){
+ const [color,core]=tiers[$("tier").value],mat=materials[$("material").value];
+ document.documentElement.style.setProperty("--tier",color);
+ document.documentElement.style.setProperty("--tier-core",core);
+ $("history").style.width=$("length").value+"px";
+ $("history").style.height=mat[0];
+ $("history").style.opacity=mat[1];
+ $("future").style.width=Math.max(100,Number($("length").value)*.72)+"px";
+}
+["tier","material","length"].forEach(id=>$(id).addEventListener("input",update));
+$("toggle").addEventListener("click",()=>{running=!running;$("toggle").textContent=running?"Pause demo motion":"Resume demo motion";});
+function frame(){
+ if(running){
+  step+=1;
+  const p=2745.50+Math.sin(step/28)*1.35+Math.sin(step/8)*.16;
+  $("price").textContent=p.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+ }
+ requestAnimationFrame(frame);
+}
+update();frame();
+</script>
+</body></html>
